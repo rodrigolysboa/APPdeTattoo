@@ -26,12 +26,95 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "imageBase64 is required" });
     }
 
-    const prompts = {
-      clean:
-        "Transforme essa tatuagem em um desenho limpo sobre fundo branco sólido. Remova totalmente pele, sombras, reflexos, textura e qualquer fundo. Corrija perspectiva e rotação. Complete partes faltantes mantendo o estilo original. Alta fidelidade.",
-      shadow:
-        "Crie um decalque de tatuagem com linhas pretas e sombras leves, sem pele, sem textura, fundo branco sólido. Corrija perspectiva e complete áreas ocultas mantendo o estilo."
-    };
+const prompts = {
+  line: `
+Você receberá uma imagem que contém uma tatuagem aplicada sobre pele humana (com curvatura, perspectiva, sombras, reflexos, textura, pelos e possível corte do desenho). Sua tarefa NÃO é apenas remover o fundo: você deve RECRIAR a ARTE ORIGINAL INTENCIONAL da tatuagem como um DESENHO NOVO, totalmente em uma folha de papel plana.
+
+INSTRUÇÕES OBRIGATÓRIAS (NÃO NEGOCIÁVEIS)
+
+1) DESVINCULAÇÃO TOTAL DA PELE
+Ignore completamente:
+- pele, poros, pelos, brilho, reflexos, sombras, vermelhidão
+- marca d’água, fundo, ambiente ou objetos
+Considere exclusivamente o DESENHO DA TATUAGEM como referência conceitual.
+
+2) DESENROLAR E CORRIGIR (PLANO 2D)
+- Corrija rotação, perspectiva e deformações da pele
+- Reprojete o desenho como se tivesse sido criado em papel plano
+
+3) RECONSTRUÇÃO INTELIGENTE (OBRIGATÓRIA)
+- Recrie partes ausentes, cortadas ou apagadas
+- Não invente novos elementos
+- Preserve estilo, ritmo, espessura e fluidez dos traços
+
+4) LINE ART PURO
+- SOMENTE linhas
+- Remover totalmente: sombras, preenchimentos, texturas
+- Linhas pretas limpas, contínuas e profissionais
+
+5) APERFEIÇOAMENTO TÉCNICO
+- Corrija assimetrias e erros do tatuador
+- Geometria perfeita (círculos, retas, simetria)
+
+6) TEXTOS / LETTERING
+- Decifre letras borradas
+- Recrie com alinhamento e espaçamento corretos
+
+SAÍDA FINAL
+- Arte NOVA
+- Apenas linhas pretas
+- Fundo branco absoluto (#FFFFFF)
+- Pronto para estêncil profissional
+`,
+
+  shadow: `
+Você receberá uma imagem com uma tatuagem sobre pele humana. Sua tarefa é RECRIAR a ARTE ORIGINAL como um DESENHO NOVO EM PAPEL, com LINHAS LIMPAS e SOMBRA SUAVE CONTROLADA.
+
+REGRAS OBRIGATÓRIAS
+- Ignore completamente pele, fundo, luz, reflexos e ambiente
+- Corrija perspectiva e deformações
+- Reconstrua partes faltantes sem inventar novos elementos
+
+LINHAS + SOMBRA
+- Priorize linhas nítidas
+- Aplique sombra leve apenas para volume
+- Proibido sombra pesada, manchas ou textura de pele
+
+APERFEIÇOAMENTO
+- Corrija geometria, simetria e proporção
+- Deixe pronto para decalque premium
+
+SAÍDA FINAL
+- Linhas limpas + sombra suave
+- Fundo branco absoluto
+- Alta definição
+`,
+
+  clean: `
+Você receberá uma tatuagem aplicada sobre pele. Sua tarefa é RECRIAR uma ARTE NOVA, LIMPA E PROFISSIONAL, como se tivesse sido desenhada originalmente em papel.
+
+INSTRUÇÕES OBRIGATÓRIAS
+- Ignore totalmente a pele e o ambiente
+- Corrija perspectiva e curvatura
+- Reconstrua partes faltantes
+- Preserve volumes, sombreados e pintura de forma limpa
+
+APERFEIÇOAMENTO
+- Corrija erros técnicos do tatuador
+- Geometria perfeita
+- Harmonia visual profissional
+
+TEXTOS
+- Recrie lettering com clareza total
+
+SAÍDA FINAL
+- Ilustração limpa e nova
+- Fundo branco absoluto (#FFFFFF)
+- Alta resolução
+- Pronto para impressão
+`
+};
+
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
