@@ -4,19 +4,17 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ✅ Preflight (CORS)
+  // ✅ Preflight
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  // ✅ Healthcheck (se abrir no navegador)
+  // ✅ Healthcheck (abrir no navegador)
   if (req.method === "GET") {
-    return res
-      .status(200)
-      .json({ ok: true, message: "API online. Use POST em /api/generate" });
+    return res.status(200).json({ ok: true, message: "API online. Use POST em /api/generate" });
   }
 
-  // ❌ Só aceita POST para gerar
+  // ❌ Bloqueia tudo que não for POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -27,11 +25,6 @@ export default async function handler(req, res) {
     if (!imageBase64) {
       return res.status(400).json({ error: "imageBase64 is required" });
     }
-
-    // ✅ aceita tanto base64 puro quanto dataURL (data:image/png;base64,...)
-    const normalizedBase64 = String(imageBase64).includes("base64,")
-      ? String(imageBase64).split("base64,")[1]
-      : String(imageBase64);
 
     const prompts = {
       clean:
@@ -56,7 +49,7 @@ export default async function handler(req, res) {
             {
               inlineData: {
                 mimeType: "image/png",
-                data: normalizedBase64
+                data: imageBase64
               }
             },
             { text: prompts[style] || prompts.clean }
@@ -73,32 +66,15 @@ export default async function handler(req, res) {
 
     const json = await response.json();
 
-    // ✅ se a API retornar erro, repassa de um jeito útil
-    if (!response.ok) {
-      return res.status(500).json({
-        error: "Gemini request failed",
-        status: response.status,
-        raw: json
-      });
-    }
-
     const parts = json?.candidates?.[0]?.content?.parts || [];
-   const imagePart = parts.find(p => p.inlineData && p.inlineData.data);
+    const inline = parts.find(p => p?.inlineData?.data)?.inlineData?.data;
 
-if (!imagePart) {
-  return res.status(200).json({
-    warning: "Resposta recebida, mas sem imagem",
-    raw: json
-  });
-}
-
-return res.status(200).json({
-  imageBase64: imagePart.inlineData.data
-});
-
+    if (!inline) {
+      return res.status(500).json({ error: "No image returned", raw: json });
+    }
 
     return res.status(200).json({ imageBase64: inline });
   } catch (err) {
-    return res.status(500).json({ error: err?.message || "Unexpected error" });
+    return res.status(500).json({ error: err.message || "Unexpected error" });
   }
 }
