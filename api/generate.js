@@ -43,20 +43,26 @@ export default async function handler(req, res) {
       apiKey;
 
     const payload = {
-      contents: [
+  contents: [
+    {
+      role: "user",
+      parts: [
         {
-          parts: [
-            {
-              inlineData: {
-                mimeType: "image/png",
-                data: imageBase64
-              }
-            },
-            { text: prompts[style] || prompts.clean }
-          ]
+          text:
+            (prompts[style] || prompts.clean) +
+            " Gere SOMENTE a imagem final. Não explique nada."
+        },
+        {
+          inlineData: {
+            mimeType: "image/png",
+            data: imageBase64
+          }
         }
       ]
-    };
+    }
+  ]
+};
+
 
     const response = await fetch(url, {
       method: "POST",
