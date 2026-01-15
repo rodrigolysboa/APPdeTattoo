@@ -13,7 +13,7 @@
     }
     input, textarea, button {
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
       margin: 10px auto;
       padding: 12px;
       border-radius: 6px;
@@ -31,31 +31,55 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
-    img {
-      max-width: 100%;
-      margin-top: 20px;
-      border-radius: 8px;
-    }
-
-    /* Loader */
     #loader {
       display: none;
-      margin: 18px auto;
-      width: 34px;
-      height: 34px;
-      border: 4px solid rgba(255,255,255,0.2);
-      border-top-color: #ff0055;
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
+      margin: 12px auto 0;
+      max-width: 420px;
+      font-size: 14px;
+      opacity: 0.9;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    #erro {
+      display: none;
+      margin: 12px auto 0;
+      max-width: 420px;
+      background: rgba(255,0,85,0.15);
+      border: 1px solid rgba(255,0,85,0.4);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 14px;
+      white-space: pre-wrap;
     }
-
+    img {
+      max-width: 420px;
+      width: 100%;
+      margin-top: 18px;
+      border-radius: 10px;
+      background: #fff;
+    }
     .hint {
+      max-width: 420px;
+      margin: 6px auto 0;
+      font-size: 12px;
       opacity: 0.75;
-      font-size: 13px;
-      margin-top: 4px;
+    }
+    .row {
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    select {
+      width: 100%;
+      max-width: 420px;
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      display: block;
     }
   </style>
 </head>
@@ -65,108 +89,132 @@
 
   <input type="file" id="image" accept="image/*" />
 
-  <textarea id="prompt" placeholder="Descreva o estilo da tatuagem (ex: traço fino, blackwork, line art)..."></textarea>
+  <select id="style">
+    <option value="clean">Modo 1 — Desenho limpo (fundo branco)</option>
+    <option value="shadow">Modo 2 — Linhas + sombra leve</option>
+  </select>
 
-  <button id="btnGerar" onclick="gerar()">Gerar Arte</button>
+  <textarea id="prompt" placeholder="(Opcional) Observações: ex: traço fino, line art, completar partes escondidas..."></textarea>
 
-  <div id="loader"></div>
-  <div class="hint" id="status"></div>
+  <button id="btnGerar">Gerar Arte</button>
+
+  <div id="loader">⏳ Gerando... (não feche a página)</div>
+  <div id="erro"></div>
 
   <div id="resultado"></div>
 
   <script>
-    async function gerar() {
-      const btn = document.getElementById("btnGerar");
-      const loader = document.getElementById("loader");
-      const status = document.getElementById("status");
-      const resultadoDiv = document.getElementById("resultado");
+    const btn = document.getElementById("btnGerar");
+    const loader = document.getElementById("loader");
+    const erroBox = document.getElementById("erro");
+    const resultado = document.getElementById("resultado");
 
-      const file = document.getElementById("image").files[0];
-      const prompt = (document.getElementById("prompt").value || "").trim();
+    // ✅ limites (ajuste se quiser)
+    const MAX_FILE_MB = 4;        // limite do arquivo original
+    const MAX_W = 1024;           // reduz largura (boa relação qualidade/peso)
+    const JPEG_QUALITY = 0.82;    // compressão
 
-      // ✅ validações
-      if (!file) {
-        alert("Selecione uma imagem primeiro.");
-        return;
-      }
-      if (!prompt) {
-        alert("Escreva o prompt (o que você quer que a IA faça).");
-        return;
-      }
+    function showError(msg) {
+      erroBox.style.display = "block";
+      erroBox.textContent = msg;
+    }
+    function clearError() {
+      erroBox.style.display = "none";
+      erroBox.textContent = "";
+    }
 
-      // ✅ limite de tamanho (2MB)
-      const MAX_BYTES = 2 * 1024 * 1024; // 2MB
-      if (file.size > MAX_BYTES) {
-        alert("Imagem muito grande. Use uma imagem de até 2MB.");
-        return;
-      }
-
-      // limpa resultado anterior
-      resultadoDiv.innerHTML = "";
-      status.textContent = "";
-
-      // ✅ converter imagem para base64
-      const imageBase64 = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          try {
-            const b64 = String(reader.result).split(",")[1];
-            if (!b64) return reject(new Error("Falha ao ler base64 da imagem."));
-            resolve(b64);
-          } catch (e) {
-            reject(e);
-          }
-        };
-        reader.onerror = () => reject(new Error("Erro ao ler o arquivo."));
-        reader.readAsDataURL(file);
+    // ✅ Converte e comprime antes de base64 (evita payload gigante)
+    async function fileToBase64Compressed(file) {
+      // 1) cria imagem a partir do arquivo
+      const img = await new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const i = new Image();
+        i.onload = () => { URL.revokeObjectURL(url); resolve(i); };
+        i.onerror = (e) => { URL.revokeObjectURL(url); reject(new Error("Não consegui ler a imagem.")); };
+        i.src = url;
       });
 
-      // ✅ request com try/catch/finally (spinner + erro)
-      try {
-        btn.disabled = true;
-        loader.style.display = "block";
-        status.textContent = "Gerando... aguarde";
+      // 2) calcula novo tamanho
+      let w = img.naturalWidth || img.width;
+      let h = img.naturalHeight || img.height;
 
-        // 🔥 AQUI: manda o prompt do textarea
-        // Sua API atual retorna: { imageBase64: "...." }
+      if (!w || !h) throw new Error("Imagem inválida.");
+
+      if (w > MAX_W) {
+        const ratio = MAX_W / w;
+        w = Math.round(w * ratio);
+        h = Math.round(h * ratio);
+      }
+
+      // 3) desenha no canvas e exporta jpeg comprimido
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY);
+      // retorna só a parte base64 (sem "data:image/...;base64,")
+      return dataUrl.split(",")[1];
+    }
+
+    async function gerar() {
+      clearError();
+      resultado.innerHTML = "";
+
+      const file = document.getElementById("image").files[0];
+      const style = document.getElementById("style").value;
+      const prompt = (document.getElementById("prompt").value || "").trim();
+
+      if (!file) {
+        showError("Envie uma imagem primeiro.");
+        return;
+      }
+
+      // ✅ Limite do arquivo original
+      const mb = file.size / (1024 * 1024);
+      if (mb > MAX_FILE_MB) {
+        showError(`Arquivo muito grande (${mb.toFixed(2)}MB). Use até ${MAX_FILE_MB}MB.`);
+        return;
+      }
+
+      btn.disabled = true;
+      loader.style.display = "block";
+
+      try {
+        // ✅ base64 comprimido
+        const imageBase64 = await fileToBase64Compressed(file);
+
         const res = await fetch("/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            imageBase64: imageBase64,
-            // Se sua API usar "style", deixe fixo:
-            style: "clean",
-            // E se você quiser também enviar prompt livre:
-            prompt: prompt
+            imageBase64,
+            style,
+            // prompt é opcional — se sua API não usa, pode remover sem problema
+            prompt
           })
         });
 
         const data = await res.json().catch(() => ({}));
 
-        // ✅ valida retorno
-        if (!res.ok) {
-          throw new Error(data?.error || `Erro HTTP ${res.status}`);
+        if (!res.ok || !data.imageBase64) {
+          throw new Error(data.error || `Erro ao gerar imagem (status ${res.status})`);
         }
 
-        // ✅ sua API (generate.js) retorna imageBase64
-        const outB64 = data?.imageBase64;
-        if (!outB64) {
-          throw new Error(data?.error || "Resposta sem imagem (imageBase64 vazio).");
-        }
-
-        // ✅ exibir
-        resultadoDiv.innerHTML = `<img id="resultadoImg" src="data:image/png;base64,${outB64}" />`;
-        status.textContent = "Pronto ✅";
+        const img = document.createElement("img");
+        img.src = "data:image/png;base64," + data.imageBase64;
+        resultado.appendChild(img);
 
       } catch (err) {
-        console.error(err);
-        alert("Erro: " + (err?.message || err));
-        status.textContent = "Erro ao gerar. Veja o console.";
+        showError("Erro: " + (err?.message || String(err)));
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
       }
     }
+
+    btn.addEventListener("click", gerar);
   </script>
 
 </body>
