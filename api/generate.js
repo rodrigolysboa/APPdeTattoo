@@ -83,11 +83,19 @@ export default async function handler(req, res) {
     }
 
     const parts = json?.candidates?.[0]?.content?.parts || [];
-    const inline = parts.find(p => p?.inlineData?.data)?.inlineData?.data;
+   const imagePart = parts.find(p => p.inlineData && p.inlineData.data);
 
-    if (!inline) {
-      return res.status(500).json({ error: "No image returned", raw: json });
-    }
+if (!imagePart) {
+  return res.status(200).json({
+    warning: "Resposta recebida, mas sem imagem",
+    raw: json
+  });
+}
+
+return res.status(200).json({
+  imageBase64: imagePart.inlineData.data
+});
+
 
     return res.status(200).json({ imageBase64: inline });
   } catch (err) {
