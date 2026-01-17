@@ -89,11 +89,11 @@
 
   <input type="file" id="image" accept="image/*" />
 
-<select id="style">
-  <option value="line">Modo 1 — Decalque linhas (line art puro)</option>
-  <option value="shadow">Modo 2 — Linhas + sombra leve</option>
-  <option value="clean">Modo 3 — Tatuagem → desenho limpo</option>
-</select>
+  <select id="style">
+    <option value="line">Modo 1 — Decalque linhas (line art puro)</option>
+    <option value="shadow">Modo 2 — Linhas + sombra leve</option>
+    <option value="clean">Modo 3 — Tatuagem → desenho limpo</option>
+  </select>
 
   <textarea id="prompt" placeholder="(Opcional) Observações: ex: traço fino, line art, completar partes escondidas..."></textarea>
 
@@ -111,9 +111,11 @@
     const resultado = document.getElementById("resultado");
 
     // ✅ limites (ajuste se quiser)
-    const MAX_FILE_MB = 4;        // limite do arquivo original
-    const MAX_W = 1024;           // reduz largura (boa relação qualidade/peso)
-    const JPEG_QUALITY = 0.82;    // compressão
+    const MAX_FILE_MB = 6;            // limite do arquivo original (mais seguro pro usuário)
+    const MAX_W = 1200;               // melhor detalhamento sem explodir payload
+    const JPEG_QUALITY = 0.86;        // compressão boa p/ tattoo
+    const MAX_BASE64_LEN = 4_500_000; // limite aproximado do base64 (evita travas)
+    const API_TIMEOUT_MS = 60_000;    // timeout da chamada da API
 
     function showError(msg) {
       erroBox.style.display = "block";
@@ -126,19 +128,16 @@
 
     // ✅ Converte e comprime antes de base64 (evita payload gigante)
     async function fileToBase64Compressed(file) {
-      // 1) cria imagem a partir do arquivo
       const img = await new Promise((resolve, reject) => {
         const url = URL.createObjectURL(file);
         const i = new Image();
         i.onload = () => { URL.revokeObjectURL(url); resolve(i); };
-        i.onerror = (e) => { URL.revokeObjectURL(url); reject(new Error("Não consegui ler a imagem.")); };
+        i.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Não consegui ler a imagem.")); };
         i.src = url;
       });
 
-      // 2) calcula novo tamanho
       let w = img.naturalWidth || img.width;
       let h = img.naturalHeight || img.height;
-
       if (!w || !h) throw new Error("Imagem inválida.");
 
       if (w > MAX_W) {
@@ -147,16 +146,20 @@
         h = Math.round(h * ratio);
       }
 
-      // 3) desenha no canvas e exporta jpeg comprimido
       const canvas = document.createElement("canvas");
       canvas.width = w;
       canvas.height = h;
-      const ctx = canvas.getContext("2d");
+
+      const ctx = canvas.getContext("2d", { willReadFrequently: false });
       ctx.drawImage(img, 0, 0, w, h);
 
+      // ✅ padroniza JPEG (leve e consistente com a API)
       const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY);
-      // retorna só a parte base64 (sem "data:image/...;base64,")
-      return dataUrl.split(",")[1];
+
+      return {
+        base64: dataUrl.split(",")[1],
+        mimeType: "image/jpeg"
+      };
     }
 
     async function gerar() {
@@ -180,27 +183,41 @@
       }
 
       btn.disabled = true;
+      const oldText = btn.textContent;
+      btn.textContent = "Gerando...";
       loader.style.display = "block";
 
       try {
-        // ✅ base64 comprimido
-        const imageBase64 = await fileToBase64Compressed(file);
+        const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
+
+        // ✅ trava por segurança (mesmo após compressão)
+        if (imageBase64.length > MAX_BASE64_LEN) {
+          throw new Error("Imagem ainda ficou pesada após compressão. Tente uma foto mais próxima/menor.");
+        }
+
+        // ✅ timeout na requisição
+        const controller = new AbortController();
+        const t = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
 
         const res = await fetch("/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
           body: JSON.stringify({
             imageBase64,
+            mimeType,
             style,
-            // prompt é opcional — se sua API não usa, pode remover sem problema
             prompt
           })
         });
 
+        clearTimeout(t);
+
         const data = await res.json().catch(() => ({}));
 
         if (!res.ok || !data.imageBase64) {
-          throw new Error(data.error || `Erro ao gerar imagem (status ${res.status})`);
+          const msg = data?.error ? String(data.error) : `Erro ao gerar imagem (status ${res.status})`;
+          throw new Error(msg);
         }
 
         const img = document.createElement("img");
@@ -208,10 +225,12 @@
         resultado.appendChild(img);
 
       } catch (err) {
-        showError("Erro: " + (err?.message || String(err)));
+        const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
+        showError("Erro: " + (isTimeout ? "Tempo excedido na geração. Tente novamente." : (err?.message || String(err))));
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
+        btn.textContent = oldText;
       }
     }
 
