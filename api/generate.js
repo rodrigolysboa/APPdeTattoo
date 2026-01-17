@@ -118,35 +118,44 @@ SAÍDA FINAL:
 `,
 
       clean: `
-OBJETIVO (MODO CLEAN / TATUAGEM → DESENHO LIMPO):
-Você receberá uma FOTO de uma tatuagem real na PELE. Sua tarefa é IDENTIFICAR com precisão a tatuagem e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, como se fosse a arte original desenhada em papel, mantendo sombras/pinturas do tattoo quando existirem.
+OBJETIVO (MODO CLEAN / TATUAGEM → DESENHO IDÊNTICO):
+Você receberá uma FOTO de uma tatuagem real aplicada na PELE.
+Sua tarefa é TRANSFORMAR essa tatuagem no MESMO DESENHO, exatamente como ela é,
+apenas corrigindo a deformação do corpo e trazendo a arte para uma FOLHA A4 BRANCA.
 
-PASSO A PASSO:
-1) EXTRAÇÃO PRECISA DA TATUAGEM:
-   - Separe rigorosamente o que é tatuagem do que é pele/foto.
-   - Ignore completamente: pele, pelos, textura, reflexos, fundo, roupa, ambiente.
+REGRA PRINCIPAL (MUITO IMPORTANTE):
+- O DESENHO FINAL DEVE SER VISUALMENTE IGUAL À TATUAGEM ORIGINAL.
+- Mesmas linhas, mesmas sombras, mesmas luzes, mesmo peso de preto, mesmo estilo.
+- NÃO estilize, NÃO interprete, NÃO simplifique, NÃO embeleze.
 
-2) CORREÇÃO PARA PAPEL (PLANO 2D):
-   - Remova deformação da pele (curvatura/perspectiva).
-   - Reprojete o desenho com proporções naturais e alinhamento correto.
+O QUE VOCÊ DEVE FAZER:
+1) EXTRAÇÃO PRECISA:
+   - Separe somente a tatuagem.
+   - Ignore completamente pele, pelos, textura da pele, reflexos, fundo, roupa e ambiente.
 
-3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
-   - Complete partes faltantes/ocultas/cortadas usando continuidade do desenho e simetria.
-   - Proibido criar elementos novos fora do que a tatuagem indica.
+2) CORREÇÃO INVISÍVEL (PLANO 2D):
+   - Corrija curvatura do braço/perna e perspectiva.
+   - Ajuste proporções apenas o necessário para que o desenho fique plano em papel.
+   - A correção NÃO pode alterar o visual da arte.
 
-4) LETTERING OBRIGATÓRIO (SE EXISTIR):
-   - Decifre as palavras.
-   - Recrie o lettering com clareza total, alinhado, espaçamento e estilo fiéis ao original.
+3) RECONSTRUÇÃO FIEL (SEM INVENTAR):
+   - Complete partes que não aparecem na foto usando continuidade real do desenho.
+   - É PROIBIDO criar novos elementos ou mudar o estilo original.
+
+4) LETTERING (SE EXISTIR):
+   - Recrie o texto exatamente como na tatuagem.
+   - Mesmo estilo, mesma espessura, mesmo espaçamento.
 
 REGRAS DE ESTILO (CLEAN):
-- Manter LINHAS + SOMBRAS + PINTURAS do desenho original (se existirem), mas de forma LIMPA.
-- Sombras suaves, sem sujeira e sem textura de pele.
-- Alto nível de acabamento: desenho “de estúdio”, pronto para imprimir como referência.
+- Manter TODAS as sombras, volumes, contrastes e áreas pretas do desenho original.
+- Sombras suaves e naturais, sem textura de pele.
+- Alto nível de fidelidade, como um decalque perfeito do tattoo para o papel.
 
-SAÍDA FINAL (VISUAL):
-- Uma folha A4 branca realista, deitada sobre uma mesa de madeira clara discreta, vista de cima.
-- Arte centralizada na folha, com margens naturais.
-- Fundo limpo, sem objetos extras, sem mãos, sem prancheta, sem watermark, sem interface.
+SAÍDA FINAL:
+- Uma folha A4 branca limpa, vista de cima.
+- Arte centralizada, com margens naturais.
+- Fundo branco real, sem objetos extras, sem mãos, sem marcas d’água, sem interface.
+- Entregar SOMENTE a imagem final.
 `
     };
 
