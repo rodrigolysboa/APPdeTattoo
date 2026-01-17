@@ -28,179 +28,99 @@ export default async function handler(req, res) {
 
 const prompts = {
   line: `
-TAREFA (OBRIGATÓRIA): Você recebeu uma FOTO de uma tatuagem aplicada em pele humana. Sua missão NÃO é editar a foto. Sua missão é FAZER UMA NOVA ARTE em PAPEL BRANCO, recriando o desenho intencional da tatuagem com ALTÍSSIMA FIDELIDADE.
+OBJETIVO (MODO LINE / DECALQUE DE LINHAS):
+Você receberá uma FOTO de uma tatuagem aplicada na PELE (com curvatura, sombras, reflexos, textura, pelos, perspectiva e possíveis partes cortadas).
+Sua tarefa é IDENTIFICAR com precisão a tatuagem e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, vista de cima, pronto para impressão de estêncil.
 
-RESULTADO ESPERADO (LINE ART PURO):
-- A saída final deve ser um DESENHO NOVO em uma folha plana, com FUNDO BRANCO sólido (#FFFFFF).
-- O desenho deve conter SOMENTE LINHAS (contornos e traços). ZERO sombra. ZERO pintura. ZERO preenchimento. ZERO textura.
-- O objetivo é gerar um estêncil/decalque PROFISSIONAL: linhas nítidas, limpas, consistentes e completas.
+O QUE VOCÊ DEVE FAZER (PASSO A PASSO):
+1) ISOLAR A TATUAGEM:
+   - Detecte exatamente quais traços pertencem à tatuagem.
+   - Ignore COMPLETAMENTE: pele, poros, pelos, brilho, reflexos, fundo, roupas, ambiente, sombras da foto, bordas do corpo.
 
-ENTENDA A IMAGEM (ANTES DE DESENHAR):
-A imagem é uma tatuagem em pele e pode conter: curvatura do corpo, perspectiva, sombra do ambiente, reflexos, brilho, poros, pelos, ruído, partes cortadas, falhas de tatuagem, envelhecimento de tinta e áreas desfocadas.
-Você DEVE:
-1) Identificar exatamente o que é TINTA/TRAÇO da tatuagem.
-2) Ignorar 100% o que é pele/ambiente.
+2) “DESENROLAR” A TATUAGEM (PLANO 2D):
+   - Corrija rotação, perspectiva e deformações da pele.
+   - Reprojete a tatuagem como se estivesse perfeitamente plana em papel.
 
-REGRAS UNIVERSAIS (NÃO NEGOCIÁVEIS):
-1) DESVINCULAÇÃO TOTAL DA PELE/AMBIENTE
-- Remover completamente: pele, textura, poros, pelos, brilho, reflexos, sombras fotográficas, fundo, objetos, roupas, marca d’água, manchas, tonalidades da pele.
-- Não pode sobrar nenhum vestígio fotográfico.
-- Não pode parecer “foto recortada” nem “filtro”.
+3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
+   - Se houver partes escondidas, cortadas, borradas ou fora do enquadramento: reconstrua fielmente usando simetria, continuidade e o padrão do próprio desenho.
+   - É PROIBIDO criar elementos novos que não existam na tatuagem original.
 
-2) PLANIFICAÇÃO (DESENROLAR EM 2D)
-- Corrija rotação, perspectiva e deformação da pele.
-- Reprojete o desenho como se tivesse sido originalmente criado em papel plano.
-- Centralize e alinhe o desenho vertical e horizontalmente (composição limpa).
+4) LETTERING / TEXTO (OBRIGATÓRIO SE EXISTIR):
+   - Decifre as letras mesmo que estejam borradas.
+   - Reescreva com alinhamento correto, espaçamento consistente e forma fiel ao estilo do lettering.
 
-3) RECONSTRUÇÃO INTELIGENTE (OBRIGATÓRIA)
-- Se houver partes ausentes/cortadas/ocultas/apagadas/desfocadas, você DEVE completar.
-- Você NÃO pode inventar elementos novos.
-- Você só pode reconstruir o que claramente pertence ao desenho original (mesma lógica visual, estilo e continuidade).
-- Se houver simetria/ornamentos repetidos, use isso como base para reconstruir com fidelidade.
-
-4) PERFEIÇÃO TÉCNICA (PRO)
-- Linhas retas devem ser realmente retas.
-- Círculos devem ser perfeitamente circulares.
-- Simetrias devem ser corrigidas quando a pele distorceu.
-- Corrija tremidos e falhas do tatuador SEM alterar o conceito.
-
-5) LETTERING / TEXTOS (SE EXISTIR)
-- Identifique o texto mesmo que esteja borrado.
-- Recrie o lettering com clareza e alinhamento perfeitos.
-- Corrija espaçamento (kerning), curvatura e nivelamento mantendo o estilo original.
-- NÃO invente palavras novas. Se houver letras ambíguas, deduza pelo contexto visual do lettering.
-
-MODO LINE ART (OBRIGATÓRIO):
-- Somente contornos e traços.
-- Sem hachuras, sem pontilhismo, sem gradiente, sem preenchimento sólido, sem sombreamento.
-- Traço preto uniforme, limpo e consistente.
-- Feche contornos onde fizer sentido para estêncil (sem “vazamentos” ou linhas quebradas).
-
-CHECKLIST FINAL (ANTES DE ENTREGAR):
-[ ] Fundo 100% branco (#FFFFFF)
-[ ] Zero pele / zero foto / zero sombras do ambiente
-[ ] Zero sombreamento / zero preenchimento
-[ ] Linhas limpas e completas
-[ ] Partes faltantes reconstruídas com fidelidade
-[ ] Textos alinhados e legíveis (se existirem)
-
-ENTREGUE SOMENTE A IMAGEM FINAL, SEM TEXTO.
+SAÍDA FINAL (MUITO IMPORTANTE):
+- Resultado deve ser APENAS LINE ART: SOMENTE LINHAS pretas.
+- PROIBIDO: sombras, degradês, cinza, preenchimentos, manchas, textura, pontilhismo, realismo, efeito pele.
+- Linhas nítidas, contínuas, bem definidas, com espessura coerente ao desenho original.
+- Fundo: FOLHA A4 BRANCA limpa (#FFFFFF), sobre uma mesa de madeira clara muito discreta (visual “folha em cima da mesa”).
+- Sem marcas d’água, sem molduras, sem UI, sem celular, sem texto extra.
 `,
 
   shadow: `
-TAREFA (OBRIGATÓRIA): Você recebeu uma FOTO de uma tatuagem aplicada em pele humana. Sua missão NÃO é editar a foto. Sua missão é CRIAR UMA NOVA ARTE em PAPEL BRANCO, recriando o desenho intencional da tatuagem com ALTÍSSIMA FIDELIDADE.
+OBJETIVO (MODO SHADOW / LINHAS + SOMBRA LEVE):
+Você receberá uma FOTO de uma tatuagem na PELE. Sua tarefa é IDENTIFICAR a tatuagem com precisão e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, vista de cima, pronto para imprimir.
 
-RESULTADO ESPERADO (LINHAS + SOMBRA LEVE):
-- A saída final deve ser um DESENHO NOVO em folha plana com FUNDO BRANCO sólido (#FFFFFF).
-- Prioridade máxima: LINHAS nítidas, limpas, consistentes e completas (estilo decalque profissional).
-- Sombras: APENAS LEVES e CONTROLADAS (mínimas), usadas somente para sugerir volume.
-- Permitido: pequenas áreas de preenchimento sólido APENAS quando fizer parte do design original (ex.: preto chapado típico), sem exagero.
+PASSO A PASSO:
+1) ISOLAR A TATUAGEM:
+   - Extraia somente o que é tinta da tatuagem.
+   - Ignore pele, reflexos, fundo, ambiente e qualquer ruído.
 
-ENTENDA A IMAGEM (ANTES DE DESENHAR):
-A imagem é uma tatuagem em pele e pode conter: curvatura do corpo, perspectiva, sombra do ambiente, reflexos, brilho, poros, pelos, ruído, partes cortadas, falhas, envelhecimento de tinta e áreas desfocadas.
-Você DEVE:
-1) Identificar com precisão o que é desenho/tinta da tatuagem.
-2) Ignorar completamente qualquer elemento fotográfico.
+2) PLANO 2D:
+   - Corrija curvatura do braço/perna e perspectiva.
+   - Recrie a tatuagem totalmente plana, proporções corretas.
 
-REGRAS UNIVERSAIS (NÃO NEGOCIÁVEIS):
-1) DESVINCULAÇÃO TOTAL DA PELE/AMBIENTE
-- Remover completamente: pele, poros, pelos, brilho, reflexos, sombras do ambiente, fundo, objetos, marca d’água.
-- Não pode sobrar vestígio fotográfico.
+3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
+   - Complete partes ocultas/cortadas mantendo fidelidade total.
+   - NÃO adicione novos símbolos, ornamentos ou detalhes inexistentes.
 
-2) PLANIFICAÇÃO (DESENROLAR EM 2D)
-- Corrija rotação, perspectiva e deformação da pele.
-- Reprojete como desenho em papel plano.
-- Centralize e alinhe o desenho.
+4) LETTERING (SE EXISTIR):
+   - Decifre e reescreva com alinhamento perfeito e traço consistente.
 
-3) RECONSTRUÇÃO INTELIGENTE (OBRIGATÓRIA)
-- Complete partes cortadas/ocultas/desfocadas/apagadas.
-- Não invente elementos novos.
-- Reconstrua apenas o que pertence claramente ao desenho, preservando estilo, lógica e continuidade.
+REGRAS DE ESTILO (DIFERENÇA DO LINE):
+- Prioridade máxima: LINHAS.
+- SOMBRA: permitir SOMENTE sombra LEVE e CONTROLADA para sugerir volume.
+- A sombra deve ser minimalista (bem próxima do “line”), sem “realismo pesado”.
+- Permitido preenchimento sólido APENAS quando claramente fizer parte do desenho original (ex: áreas pretas sólidas do próprio tattoo).
+- Proibido: textura de pele, manchas, cinza sujo, degradê excessivo, sombreado fotográfico.
 
-4) PERFEIÇÃO TÉCNICA (PRO)
-- Geometria perfeita (círculos, retas, simetrias).
-- Corrija tremidos e falhas sem alterar o design.
-- Linhas com espessura consistente.
-
-5) LETTERING / TEXTOS (SE EXISTIR)
-- Decifre o texto e refaça com clareza total.
-- Alinhe, nivele e ajuste espaçamento mantendo o estilo original.
-- Não invente palavras.
-
-MODO LINHAS + SOMBRA (OBRIGATÓRIO):
-- Linhas são 80–90% do resultado.
-- Sombras são 10–20% no máximo: leves, limpas, sem ruído e sem textura de pele.
-- Proibido: sombra pesada, manchas, blur fotográfico, textura de pele, “pintura” exagerada.
-- Se usar sombra: use sombreamento suave e controlado, com transições limpas (nada sujo).
-
-CHECKLIST FINAL:
-[ ] Fundo branco absoluto (#FFFFFF)
-[ ] Zero pele / zero foto / zero sombra do ambiente
-[ ] Linhas nítidas e completas
-[ ] Sombra mínima e controlada (ou preenchimento sólido só quando for claramente do desenho)
-[ ] Partes faltantes reconstruídas com fidelidade
-[ ] Lettering decifrado e alinhado (se existir)
-
-ENTREGUE SOMENTE A IMAGEM FINAL, SEM TEXTO.
+SAÍDA FINAL:
+- Folha A4 branca (#FFFFFF), sobre mesa de madeira clara discreta, vista de cima.
+- Arte centralizada, limpa, alto contraste, pronta para decalque refinado.
+- Sem marca d’água, sem molduras, sem UI, sem texto fora da tatuagem.
 `,
 
   clean: `
-TAREFA (OBRIGATÓRIA): Você recebeu uma FOTO de uma tatuagem aplicada em pele humana. Sua missão NÃO é editar a foto. Sua missão é CRIAR UMA NOVA ARTE em PAPEL BRANCO, recriando o desenho intencional da tatuagem com ALTÍSSIMA FIDELIDADE e acabamento profissional.
+OBJETIVO (MODO CLEAN / TATUAGEM → DESENHO LIMPO):
+Você receberá uma FOTO de uma tatuagem real na PELE. Sua tarefa é IDENTIFICAR com precisão a tatuagem e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, como se fosse a arte original desenhada em papel, mantendo sombras/pinturas do tattoo quando existirem.
 
-RESULTADO ESPERADO (CLEAN — DESENHO COMPLETO):
-- A saída final deve ser uma ILUSTRAÇÃO NOVA em folha plana com FUNDO BRANCO sólido (#FFFFFF).
-- Deve manter: linhas, volumes, sombras e pintura do desenho original (quando existirem) — porém LIMPOS, organizados e sem qualquer resquício fotográfico.
-- Objetivo: referência final perfeita para impressão.
+PASSO A PASSO:
+1) EXTRAÇÃO PRECISA DA TATUAGEM:
+   - Separe rigorosamente o que é tatuagem do que é pele/foto.
+   - Ignore completamente: pele, pelos, textura, reflexos, fundo, roupa, ambiente.
 
-ENTENDA A IMAGEM (ANTES DE DESENHAR):
-A imagem é uma tatuagem em pele e pode conter: curvatura do corpo, perspectiva, sombras do ambiente, reflexos, brilho, poros, pelos, ruído, partes cortadas, falhas do tatuador e tinta envelhecida.
-Você DEVE:
-1) Identificar com precisão o desenho/tinta da tatuagem.
-2) Ignorar totalmente a pele e o ambiente.
-3) Reconstruir o desenho em papel como se tivesse sido originalmente desenhado assim.
+2) CORREÇÃO PARA PAPEL (PLANO 2D):
+   - Remova deformação da pele (curvatura/perspectiva).
+   - Reprojete o desenho com proporções naturais e alinhamento correto.
 
-REGRAS UNIVERSAIS (NÃO NEGOCIÁVEIS):
-1) DESVINCULAÇÃO TOTAL DA PELE/AMBIENTE
-- Remover completamente: pele, poros, pelos, textura, brilho, reflexos, sombras do ambiente, fundo, objetos, marca d’água.
-- Não pode parecer foto nem “recorte”.
+3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
+   - Complete partes faltantes/ocultas/cortadas usando continuidade do desenho e simetria.
+   - Proibido criar elementos novos fora do que a tatuagem indica.
 
-2) PLANIFICAÇÃO (DESENROLAR EM 2D)
-- Corrija rotação, perspectiva e deformações da pele.
-- Reprojete como arte em papel plano.
-- Centralize e alinhe.
+4) LETTERING OBRIGATÓRIO (SE EXISTIR):
+   - Decifre as palavras.
+   - Recrie o lettering com clareza total, alinhado, espaçamento e estilo fiéis ao original.
 
-3) RECONSTRUÇÃO INTELIGENTE (OBRIGATÓRIA)
-- Complete partes ausentes/cortadas/ocultas/desfocadas.
-- Não invente elementos novos.
-- Preserve fielmente o estilo artístico, ornamentos, geometria, proporções e a intenção original.
+REGRAS DE ESTILO (CLEAN):
+- Manter LINHAS + SOMBRAS + PINTURAS do desenho original (se existirem), mas de forma LIMPA.
+- Sombras suaves, sem sujeira e sem textura de pele.
+- Alto nível de acabamento: desenho “de estúdio”, pronto para imprimir como referência.
 
-4) APERFEIÇOAMENTO PROFISSIONAL (SEM MUDAR O CONCEITO)
-- Corrija erros do tatuador (tremidos, falhas, assimetrias acidentais).
-- Geometria perfeita: relógios/círculos/mandalas devem ficar tecnicamente corretos.
-- Proporção e composição harmônicas mantendo o design.
-
-5) SOMBRAS / PINTURA / VOLUME (PERMITIDO E DESEJADO NO CLEAN)
-- Preserve os volumes e sombreamentos do desenho, mas LIMPOS e controlados.
-- Sem textura de pele.
-- Sem ruído fotográfico.
-- Sem manchas do ambiente.
-- Deve parecer desenho/ilustração em papel, não “foto editada”.
-
-6) LETTERING / TEXTOS (SE EXISTIR)
-- Decifre letras borradas ou falhas.
-- Recrie com clareza total, alinhamento perfeito e espaçamento correto mantendo o estilo.
-- Não invente palavras.
-
-CHECKLIST FINAL:
-[ ] Fundo branco absoluto (#FFFFFF)
-[ ] Zero vestígio de pele/ambiente
-[ ] Desenho completo e fiel (sem invenções)
-[ ] Partes faltantes reconstruídas com lógica e continuidade
-[ ] Linhas + sombras + pintura limpas (sem ruído)
-[ ] Lettering claro e alinhado (se existir)
-[ ] Pronto para impressão como referência final
-
-ENTREGUE SOMENTE A IMAGEM FINAL, SEM TEXTO.
+SAÍDA FINAL (VISUAL):
+- Uma folha A4 branca realista, deitada sobre uma mesa de madeira clara discreta, vista de cima.
+- Arte centralizada na folha, com margens naturais.
+- Fundo limpo, sem objetos extras, sem mãos, sem prancheta, sem watermark, sem interface.
+- Entregar SOMENTE a imagem final.
 `
 };
 
@@ -225,7 +145,7 @@ ENTREGUE SOMENTE A IMAGEM FINAL, SEM TEXTO.
         },
         {
           inlineData: {
-            mimeType: "image/png",
+            mimeType: "image/jpeg",
             data: imageBase64
           }
         }
