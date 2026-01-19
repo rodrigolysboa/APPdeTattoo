@@ -1,8 +1,20 @@
+import crypto from "crypto";
+import { createClient } from "@supabase/supabase-js";
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "7mb",
+    },
+  },
+  maxDuration: 60,
+};
+
 export default async function handler(req, res) {
   // ✅ CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Device-Id");
 
   // ✅ Preflight
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -30,7 +42,6 @@ export default async function handler(req, res) {
     }
 
     // ✅ limita tamanho do payload (base64 é grande)
-    // Ajuste se necessário, mas isso evita travar/vercel memory spike
     const MAX_BASE64_LEN = 4_500_000;
     if (imageBase64.length > MAX_BASE64_LEN) {
       return res.status(413).json({
@@ -52,6 +63,62 @@ export default async function handler(req, res) {
         ? `\n\nOBSERVAÇÕES DO TATUADOR (use apenas se fizer sentido e sem quebrar as regras): ${prompt.trim()}`
         : "";
 
+    // =========================
+    // ✅ RATE LIMIT (Supabase)
+    // 20 sucessos por hora
+    // ao exceder: 40min * nível (1=40m, 2=80m, 3=120m...)
+    // =========================
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !serviceKey) {
+      return res.status(500).json({ error: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY" });
+    }
+
+    const supabase = createClient(supabaseUrl, serviceKey, {
+      auth: { persistSession: false },
+    });
+
+    const now = Date.now();
+    const hourKey = Math.floor(now / 3600000);
+
+    // ✅ identifica cliente (prioridade: header X-Device-Id)
+    const headerDeviceId = (req.headers["x-device-id"] || "").toString().trim();
+    const ipRaw = (req.headers["x-forwarded-for"] || "").toString();
+    const ip = ipRaw.split(",")[0].trim() || "0.0.0.0";
+    const ua = (req.headers["user-agent"] || "").toString();
+
+    // fallback estável (mesmo sem device id)
+    const fallbackId = crypto
+      .createHash("sha256")
+      .update(ip + "|" + ua)
+      .digest("hex")
+      .slice(0, 24);
+
+    const clientId = headerDeviceId ? headerDeviceId : fallbackId;
+
+    // 1) checa se pode gerar
+    const { data: rlCheck, error: rlErr } = await supabase.rpc("tattoo_rl_check", {
+      p_client_id: clientId,
+      p_hour_key: hourKey,
+      p_now_ms: now
+    });
+
+    if (rlErr) {
+      return res.status(500).json({ error: "Rate limit check failed", details: rlErr.message });
+    }
+
+    if (!rlCheck?.allowed) {
+      res.setHeader("Cache-Control", "no-store");
+      return res.status(429).json({
+        error: "Rate limit exceeded",
+        retryAfterSec: Number(rlCheck?.retryAfterSec || 0)
+      });
+    }
+
+    // =========================
+    // ✅ PROMPTS (seus 3 modos)
+    // =========================
     const prompts = {
       line: `
 OBJETIVO (MODO LINE / DECALQUE DE LINHAS):
@@ -224,6 +291,14 @@ SAÍDA FINAL:
         raw: json
       });
     }
+
+    // ✅ incrementa APENAS se gerou com sucesso
+    const { error: incErr } = await supabase.rpc("tattoo_rl_increment_success", {
+      p_client_id: clientId,
+      p_hour_key: hourKey
+    });
+    // Se falhar, não quebra o usuário (só evita travar o app)
+    if (incErr) {}
 
     // ✅ evita cachear respostas
     res.setHeader("Cache-Control", "no-store");
