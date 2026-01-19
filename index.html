@@ -57,30 +57,6 @@
       border-radius: 10px;
       background: #fff;
     }
-    .hint {
-      max-width: 420px;
-      margin: 6px auto 0;
-      font-size: 12px;
-      opacity: 0.75;
-    }
-    .row {
-      max-width: 420px;
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    select {
-      width: 100%;
-      max-width: 420px;
-      margin: 10px auto;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -110,12 +86,11 @@
     const erroBox = document.getElementById("erro");
     const resultado = document.getElementById("resultado");
 
-    // ✅ limites (ajuste se quiser)
-    const MAX_FILE_MB = 6;            // limite do arquivo original (mais seguro pro usuário)
-    const MAX_W = 1200;               // melhor detalhamento sem explodir payload
-    const JPEG_QUALITY = 0.86;        // compressão boa p/ tattoo
-    const MAX_BASE64_LEN = 4_500_000; // limite aproximado do base64 (evita travas)
-    const API_TIMEOUT_MS = 60_000;    // timeout da chamada da API
+    const MAX_FILE_MB = 6;
+    const MAX_W = 1200;
+    const JPEG_QUALITY = 0.86;
+    const MAX_BASE64_LEN = 4_500_000;
+    const API_TIMEOUT_MS = 60_000;
 
     function showError(msg) {
       erroBox.style.display = "block";
@@ -126,14 +101,6 @@
       erroBox.textContent = "";
     }
 
-    function formatWait(seconds) {
-      const s = Math.max(0, Number(seconds || 0));
-      const m = Math.ceil(s / 60);
-      if (m <= 1) return "1 minuto";
-      return `${m} minutos`;
-    }
-
-    // ✅ Converte e comprime antes de base64 (evita payload gigante)
     async function fileToBase64Compressed(file) {
       const img = await new Promise((resolve, reject) => {
         const url = URL.createObjectURL(file);
@@ -145,7 +112,6 @@
 
       let w = img.naturalWidth || img.width;
       let h = img.naturalHeight || img.height;
-      if (!w || !h) throw new Error("Imagem inválida.");
 
       if (w > MAX_W) {
         const ratio = MAX_W / w;
@@ -157,10 +123,9 @@
       canvas.width = w;
       canvas.height = h;
 
-      const ctx = canvas.getContext("2d", { willReadFrequently: false });
+      const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0, w, h);
 
-      // ✅ padroniza JPEG (leve e consistente com a API)
       const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY);
 
       return {
@@ -182,7 +147,6 @@
         return;
       }
 
-      // ✅ Limite do arquivo original
       const mb = file.size / (1024 * 1024);
       if (mb > MAX_FILE_MB) {
         showError(`Arquivo muito grande (${mb.toFixed(2)}MB). Use até ${MAX_FILE_MB}MB.`);
@@ -197,12 +161,10 @@
       try {
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
-        // ✅ trava por segurança (mesmo após compressão)
         if (imageBase64.length > MAX_BASE64_LEN) {
-          throw new Error("Imagem ainda ficou pesada após compressão. Tente uma foto mais próxima/menor.");
+          throw new Error("Imagem ainda ficou pesada após compressão.");
         }
 
-        // ✅ timeout na requisição
         const controller = new AbortController();
         const t = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
 
@@ -210,27 +172,25 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           signal: controller.signal,
-          body: JSON.stringify({
-            imageBase64,
-            mimeType,
-            style,
-            prompt
-          })
+          body: JSON.stringify({ imageBase64, mimeType, style, prompt })
         });
 
         clearTimeout(t);
 
         const data = await res.json().catch(() => ({}));
 
-        // ✅ RATE LIMIT: 429 com retryAfterSec
+        // 🚫 RATE LIMIT (Supabase)
         if (res.status === 429) {
-          const waitMsg = formatWait(data && data.retryAfterSec ? data.retryAfterSec : 0);
-          throw new Error(`Limite de geração atingido. Aguarde ${waitMsg} e tente novamente.`);
+          const wait = data?.retryAfterSec
+            ? Math.ceil(data.retryAfterSec / 60)
+            : 40;
+
+          showError(`Limite de geração atingido. Aguarde ${wait} minutos para continuar.`);
+          return;
         }
 
         if (!res.ok || !data.imageBase64) {
-          const msg = data?.error ? String(data.error) : `Erro ao gerar imagem (status ${res.status})`;
-          throw new Error(msg);
+          throw new Error(data?.error || "Erro ao gerar imagem.");
         }
 
         const img = document.createElement("img");
@@ -238,8 +198,8 @@
         resultado.appendChild(img);
 
       } catch (err) {
-        const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
-        showError("Erro: " + (isTimeout ? "Tempo excedido na geração. Tente novamente." : (err?.message || String(err))));
+        const isTimeout = err?.name === "AbortError";
+        showError(isTimeout ? "Tempo excedido na geração." : err.message);
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
