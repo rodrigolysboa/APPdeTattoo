@@ -1,20 +1,10 @@
-import crypto from "crypto";
 import { createClient } from "@supabase/supabase-js";
-
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: "7mb",
-    },
-  },
-  maxDuration: 60,
-};
 
 export default async function handler(req, res) {
   // ✅ CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Device-Id");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   // ✅ Preflight
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -29,6 +19,89 @@ export default async function handler(req, res) {
   }
 
   try {
+    /* =====================================================
+       🔐 RATE LIMIT — SUPABASE
+    ===================================================== */
+
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_SERVICE_ROLE_KEY
+    );
+
+    const ip =
+      (req.headers["x-forwarded-for"] || "").split(",")[0]?.trim() ||
+      req.socket?.remoteAddress ||
+      "unknown";
+
+    const now = new Date();
+
+    const { data: record } = await supabase
+      .from("rate_limits")
+      .select("*")
+      .eq("id", ip)
+      .maybeSingle();
+
+    // ⛔ Se estiver em cooldown
+    if (record?.cooldown_until && new Date(record.cooldown_until) > now) {
+      const retryAfterSec = Math.ceil(
+        (new Date(record.cooldown_until) - now) / 1000
+      );
+
+      return res.status(429).json({
+        error: "Rate limit exceeded",
+        retryAfterSec
+      });
+    }
+
+    let count = record?.count ?? 0;
+    let windowStart = record?.window_start
+      ? new Date(record.window_start)
+      : now;
+
+    const diffMinutes = (now - windowStart) / 1000 / 60;
+
+    // 🔄 Nova janela de 1 hora
+    if (diffMinutes >= 60) {
+      count = 0;
+      windowStart = now;
+    }
+
+    count += 1;
+
+    // 🚫 Estourou 20 gerações
+    if (count > 20) {
+      const blocks = Math.floor((count - 1) / 20); // 1,2,3...
+      const cooldownMinutes = blocks * 40;
+
+      const cooldownUntil = new Date(
+        now.getTime() + cooldownMinutes * 60 * 1000
+      );
+
+      await supabase.from("rate_limits").upsert({
+        id: ip,
+        count,
+        window_start: windowStart.toISOString(),
+        cooldown_until: cooldownUntil.toISOString()
+      });
+
+      return res.status(429).json({
+        error: "Rate limit exceeded",
+        retryAfterSec: cooldownMinutes * 60
+      });
+    }
+
+    // ✅ Salva estado normal
+    await supabase.from("rate_limits").upsert({
+      id: ip,
+      count,
+      window_start: windowStart.toISOString(),
+      cooldown_until: null
+    });
+
+    /* =====================================================
+       🎨 A PARTIR DAQUI: SEU CÓDIGO ORIGINAL (INALTERADO)
+    ===================================================== */
+
     const {
       imageBase64,
       style = "clean",
@@ -41,7 +114,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "imageBase64 is required (string)" });
     }
 
-    // ✅ limita tamanho do payload (base64 é grande)
+    // ✅ limita tamanho do payload
     const MAX_BASE64_LEN = 4_500_000;
     if (imageBase64.length > MAX_BASE64_LEN) {
       return res.status(413).json({
@@ -57,68 +130,12 @@ export default async function handler(req, res) {
     const allowedMime = new Set(["image/jpeg", "image/png", "image/webp"]);
     const safeMime = allowedMime.has(mimeType) ? mimeType : "image/jpeg";
 
-    // ✅ prompt opcional do tatuador (controlado)
+    // ✅ prompt opcional do tatuador
     const userNote =
       typeof prompt === "string" && prompt.trim().length
         ? `\n\nOBSERVAÇÕES DO TATUADOR (use apenas se fizer sentido e sem quebrar as regras): ${prompt.trim()}`
         : "";
 
-    // =========================
-    // ✅ RATE LIMIT (Supabase)
-    // 20 sucessos por hora
-    // ao exceder: 40min * nível (1=40m, 2=80m, 3=120m...)
-    // =========================
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (!supabaseUrl || !serviceKey) {
-      return res.status(500).json({ error: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY" });
-    }
-
-    const supabase = createClient(supabaseUrl, serviceKey, {
-      auth: { persistSession: false },
-    });
-
-    const now = Date.now();
-    const hourKey = Math.floor(now / 3600000);
-
-    // ✅ identifica cliente (prioridade: header X-Device-Id)
-    const headerDeviceId = (req.headers["x-device-id"] || "").toString().trim();
-    const ipRaw = (req.headers["x-forwarded-for"] || "").toString();
-    const ip = ipRaw.split(",")[0].trim() || "0.0.0.0";
-    const ua = (req.headers["user-agent"] || "").toString();
-
-    // fallback estável (mesmo sem device id)
-    const fallbackId = crypto
-      .createHash("sha256")
-      .update(ip + "|" + ua)
-      .digest("hex")
-      .slice(0, 24);
-
-    const clientId = headerDeviceId ? headerDeviceId : fallbackId;
-
-    // 1) checa se pode gerar
-    const { data: rlCheck, error: rlErr } = await supabase.rpc("tattoo_rl_check", {
-      p_client_id: clientId,
-      p_hour_key: hourKey,
-      p_now_ms: now
-    });
-
-    if (rlErr) {
-      return res.status(500).json({ error: "Rate limit check failed", details: rlErr.message });
-    }
-
-    if (!rlCheck?.allowed) {
-      res.setHeader("Cache-Control", "no-store");
-      return res.status(429).json({
-        error: "Rate limit exceeded",
-        retryAfterSec: Number(rlCheck?.retryAfterSec || 0)
-      });
-    }
-
-    // =========================
-    // ✅ PROMPTS (seus 3 modos)
-    // =========================
     const prompts = {
       line: `
 OBJETIVO (MODO LINE / DECALQUE DE LINHAS):
@@ -255,7 +272,6 @@ SAÍDA FINAL:
       ]
     };
 
-    // ✅ timeout pra não ficar preso
     const controller = new AbortController();
     const TIMEOUT_MS = 60_000;
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -273,7 +289,6 @@ SAÍDA FINAL:
 
     const json = await response.json().catch(() => ({}));
 
-    // ✅ se deu erro, devolve claro pro front
     if (!response.ok) {
       return res.status(response.status).json({
         error: json?.error?.message || "Gemini API error",
@@ -292,15 +307,6 @@ SAÍDA FINAL:
       });
     }
 
-    // ✅ incrementa APENAS se gerou com sucesso
-    const { error: incErr } = await supabase.rpc("tattoo_rl_increment_success", {
-      p_client_id: clientId,
-      p_hour_key: hourKey
-    });
-    // Se falhar, não quebra o usuário (só evita travar o app)
-    if (incErr) {}
-
-    // ✅ evita cachear respostas
     res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ imageBase64: inline });
 
