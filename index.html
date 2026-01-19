@@ -126,6 +126,13 @@
       erroBox.textContent = "";
     }
 
+    function formatWait(seconds) {
+      const s = Math.max(0, Number(seconds || 0));
+      const m = Math.ceil(s / 60);
+      if (m <= 1) return "1 minuto";
+      return `${m} minutos`;
+    }
+
     // ✅ Converte e comprime antes de base64 (evita payload gigante)
     async function fileToBase64Compressed(file) {
       const img = await new Promise((resolve, reject) => {
@@ -214,6 +221,12 @@
         clearTimeout(t);
 
         const data = await res.json().catch(() => ({}));
+
+        // ✅ RATE LIMIT: 429 com retryAfterSec
+        if (res.status === 429) {
+          const waitMsg = formatWait(data && data.retryAfterSec ? data.retryAfterSec : 0);
+          throw new Error(`Limite de geração atingido. Aguarde ${waitMsg} e tente novamente.`);
+        }
 
         if (!res.ok || !data.imageBase64) {
           const msg = data?.error ? String(data.error) : `Erro ao gerar imagem (status ${res.status})`;
