@@ -158,15 +158,32 @@ export default async function handler(req, res) {
 
     const prompts = {
       line: `
-OBJETIVO (MODO LINE / DECALQUE DE LINHAS):
-Você receberá uma FOTO de uma tatuagem aplicada na PELE.
-Sua tarefa é IDENTIFICAR e RECRIAR a MESMA ARTE como LINE ART em uma FOLHA A4 BRANCA, vista de cima.
+OBJETIVO (MODO LINE / DECALQUE DE LINHAS PURO):
 
-REGRAS:
-- APENAS linhas pretas (sem sombras, sem cinza, sem textura, sem pele).
-- Corrigir perspectiva/curvatura e deixar plano em papel.
-- Completar partes faltantes SEM inventar elementos novos.
-- Se houver texto/lettering, reescrever fielmente.
+Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Sua tarefa é extrair e recriar EXCLUSIVAMENTE os TRAÇOS ORIGINAIS da tatuagem, transformando-os em LINE ART puro sobre uma folha A4 branca, vista de cima.
+
+INTERPRETAÇÃO OBRIGATÓRIA:
+- Considere apenas os contornos e linhas reais do desenho.
+- Ignore completamente a pele, sombras, cores, preenchimentos, texturas, luz, reflexos e qualquer efeito visual.
+- O resultado deve parecer um desenho técnico de linhas, pronto para decalque profissional.
+
+REGRAS ABSOLUTAS (NÃO PODEM SER QUEBRADAS):
+1. Usar SOMENTE linhas pretas (#000000).
+2. NÃO aplicar sombra, cinza, degradê, pintura, preenchimento, pontilhismo, hachura ou qualquer efeito gráfico.
+3. NÃO estilizar, embelezar ou reinterpretar o desenho.
+4. NÃO adicionar elementos que não existam na tatuagem original.
+5. Corrigir distorções causadas pela curvatura do corpo, deixando o desenho plano.
+6. Reconstruir partes ocultas ou deformadas apenas quando necessário, mantendo fidelidade ao traço original.
+7. Se houver lettering ou texto, reproduzir fielmente o formato, espessura e estilo das letras.
+8. O fundo deve ser completamente branco, simulando uma folha A4 real, sem objetos, sem sombras, sem molduras e sem interface.
+
+RESULTADO FINAL:
+- Um decalque em line art puro, limpo, preciso e técnico.
+- Aparência de desenho vetorial ou stencil profissional.
+- Pronto para impressão e aplicação de estêncil.
+- Nenhum elemento além das linhas do desenho.
+
 
 SAÍDA:
 - Fundo branco puro, estilo folha A4, sem objetos, sem UI.
