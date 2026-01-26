@@ -186,7 +186,10 @@ RESULTADO FINAL:
 
 
 SAÍDA:
-- Fundo branco puro, estilo folha A4, sem objetos, sem UI.
+- Fundo totalmente branco (#FFFFFF), uniforme e sem textura.
+- Nenhuma aparência de papel, folha, mesa ou superfície física.
+- Nenhum objeto, sombra, moldura, interface ou elemento extra.
+- Apenas o desenho em linhas pretas sobre o fundo branco.
 `,
       shadow: `
 OBJETIVO (MODO SHADOW / LINHAS + SOMBRA LEVE):
