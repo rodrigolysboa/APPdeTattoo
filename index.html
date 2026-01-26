@@ -2,81 +2,52 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>APP de Tatuagem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gerador de Decalque — OrienteTattooApp</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 40px;
+    body { font-family: Arial, sans-serif; background:#111; color:#fff; text-align:center; padding:32px; }
+    input, textarea, button, select {
+      width:100%; max-width:420px; margin:10px auto; padding:12px;
+      border-radius:8px; border:none; font-size:16px; display:block;
     }
-    input, textarea, button {
-      width: 100%;
-      max-width: 420px;
-      margin: 10px auto;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-      display: block;
-    }
-    button {
-      background: #ff0055;
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    #loader {
-      display: none;
-      margin: 12px auto 0;
-      max-width: 420px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    #erro {
-      display: none;
-      margin: 12px auto 0;
-      max-width: 420px;
-      background: rgba(255,0,85,0.15);
-      border: 1px solid rgba(255,0,85,0.4);
-      padding: 10px;
-      border-radius: 8px;
-      text-align: left;
-      font-size: 14px;
-      white-space: pre-wrap;
-    }
-    img {
-      max-width: 420px;
-      width: 100%;
-      margin-top: 18px;
-      border-radius: 10px;
-      background: #fff;
+    button { background:#25D366; color:#0b1a12; cursor:pointer; font-weight:bold; }
+    button:disabled { opacity:.6; cursor:not-allowed; }
+    #loader { display:none; margin:12px auto 0; max-width:420px; font-size:14px; opacity:.9; }
+    #erro { display:none; margin:12px auto 0; max-width:420px; background:rgba(255,0,85,.15);
+      border:1px solid rgba(255,0,85,.4); padding:10px; border-radius:10px; text-align:left; font-size:14px; white-space:pre-wrap; }
+    img { max-width:420px; width:100%; margin-top:18px; border-radius:12px; background:#fff; }
+    .hint { max-width:420px; margin:6px auto 0; font-size:12px; opacity:.75; }
+
+    /* Caixa cooldown */
+    #cooldownBox{
+      display:none; margin:14px auto 0; max-width:420px;
+      background:rgba(255, 210, 0, .12);
+      border:1px solid rgba(255, 210, 0, .35);
+      padding:12px; border-radius:12px; text-align:left;
     }
   </style>
 </head>
 <body>
 
-  <h1>Gerador de Arte para Tatuagem</h1>
+  <h1>Gerador de Decalque</h1>
+  <div class="hint">Limite de uso: <b>20 gerações</b>. Ao atingir, aguarde <b>40 minutos</b> e libera novamente.</div>
 
   <input type="file" id="image" accept="image/*" />
 
   <select id="style">
     <option value="line">Modo 1 — Decalque linhas (line art puro)</option>
     <option value="shadow">Modo 2 — Linhas + sombra leve</option>
-    <option value="clean">Modo 3 — Tatuagem → desenho limpo</option>
+    <option value="clean" selected>Modo 3 — Tatuagem → desenho clean</option>
   </select>
 
-  <textarea id="prompt" placeholder="(Opcional) Observações: ex: traço fino, line art, completar partes escondidas..."></textarea>
+  <textarea id="prompt" placeholder="(Opcional) Observações: ex: traço fino, completar parte escondida..."></textarea>
 
-  <button id="btnGerar">Gerar Arte</button>
+  <button id="btnGerar">Gerar Decalque</button>
 
   <div id="loader">⏳ Gerando... (não feche a página)</div>
   <div id="erro"></div>
+
+  <div id="cooldownBox"></div>
 
   <div id="resultado"></div>
 
@@ -85,12 +56,16 @@
     const loader = document.getElementById("loader");
     const erroBox = document.getElementById("erro");
     const resultado = document.getElementById("resultado");
+    const cooldownBox = document.getElementById("cooldownBox");
 
+    // Config
     const MAX_FILE_MB = 6;
     const MAX_W = 1200;
     const JPEG_QUALITY = 0.86;
-    const MAX_BASE64_LEN = 4_500_000;
-    const API_TIMEOUT_MS = 60_000;
+    const API_TIMEOUT_MS = 60000;
+
+    // Endpoint (mesmo projeto Vercel)
+    const API_URL = "/api/generate";
 
     function showError(msg) {
       erroBox.style.display = "block";
@@ -100,18 +75,53 @@
       erroBox.style.display = "none";
       erroBox.textContent = "";
     }
+    function showCooldown(msgHtml){
+      cooldownBox.style.display = "block";
+      cooldownBox.innerHTML = msgHtml;
+    }
+    function hideCooldown(){
+      cooldownBox.style.display = "none";
+      cooldownBox.innerHTML = "";
+    }
+
+    function getDeviceId() {
+      const key = "__ot_device_id__";
+      let id = localStorage.getItem(key);
+      if (!id) {
+        id = (crypto?.randomUUID?.() || ("dev_" + Math.random().toString(16).slice(2) + Date.now()));
+        localStorage.setItem(key, id);
+      }
+      return id;
+    }
+
+    // Opcional: se você usar ?uid= no link, trava por conta em qualquer dispositivo
+    function getUserId() {
+      const key = "__ot_user_id__";
+      const params = new URLSearchParams(location.search);
+      const uidFromUrl = (params.get("uid") || "").trim();
+
+      if (uidFromUrl) {
+        localStorage.setItem(key, uidFromUrl);
+        return uidFromUrl;
+      }
+      return (localStorage.getItem(key) || "").trim();
+    }
 
     async function fileToBase64Compressed(file) {
       const img = await new Promise((resolve, reject) => {
         const url = URL.createObjectURL(file);
         const i = new Image();
         i.onload = () => { URL.revokeObjectURL(url); resolve(i); };
-        i.onerror = () => { URL.revokeObjectURL(url); reject(new Error("Não consegui ler a imagem.")); };
+        i.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error("Não consegui ler a imagem. Se for iPhone (HEIC), converta para JPG e tente novamente."));
+        };
         i.src = url;
       });
 
       let w = img.naturalWidth || img.width;
       let h = img.naturalHeight || img.height;
+      if (!w || !h) throw new Error("Imagem inválida.");
 
       if (w > MAX_W) {
         const ratio = MAX_W / w;
@@ -127,15 +137,18 @@
       ctx.drawImage(img, 0, 0, w, h);
 
       const dataUrl = canvas.toDataURL("image/jpeg", JPEG_QUALITY);
+      return { base64: dataUrl.split(",")[1], mimeType: "image/jpeg" };
+    }
 
-      return {
-        base64: dataUrl.split(",")[1],
-        mimeType: "image/jpeg"
-      };
+    function secondsToMinSec(s){
+      const m = Math.floor(s/60);
+      const r = s % 60;
+      return `${m}m ${String(r).padStart(2,"0")}s`;
     }
 
     async function gerar() {
       clearError();
+      hideCooldown();
       resultado.innerHTML = "";
 
       const file = document.getElementById("image").files[0];
@@ -161,36 +174,40 @@
       try {
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
-        if (imageBase64.length > MAX_BASE64_LEN) {
-          throw new Error("Imagem ainda ficou pesada após compressão.");
-        }
+        const deviceId = getDeviceId();
+        const userId = getUserId();
 
         const controller = new AbortController();
         const t = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
 
-        const res = await fetch("/api/generate", {
+        const headers = {
+          "Content-Type": "application/json",
+          "X-Device-Id": deviceId
+        };
+        if (userId) headers["X-User-Id"] = userId;
+
+        const res = await fetch(API_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers,
           signal: controller.signal,
           body: JSON.stringify({ imageBase64, mimeType, style, prompt })
         });
 
         clearTimeout(t);
-
         const data = await res.json().catch(() => ({}));
 
-        // 🚫 RATE LIMIT (Supabase)
-        if (res.status === 429) {
-          const wait = data?.retryAfterSec
-            ? Math.ceil(data.retryAfterSec / 60)
-            : 40;
-
-          showError(`Limite de geração atingido. Aguarde ${wait} minutos para continuar.`);
+        if (res.status === 429 && data?.code === "COOLDOWN") {
+          const retry = Number(data.retry_after_seconds || 0);
+          showCooldown(
+            `<b>Limite temporário atingido.</b><br><br>` +
+            `Aguarde <b>${secondsToMinSec(retry)}</b> e tente novamente.<br>` +
+            `Você usou <b>${data.used ?? 20}/${data.limit ?? 20}</b> neste lote.`
+          );
           return;
         }
 
         if (!res.ok || !data.imageBase64) {
-          throw new Error(data?.error || "Erro ao gerar imagem.");
+          throw new Error(data?.error || `Erro ao gerar (status ${res.status})`);
         }
 
         const img = document.createElement("img");
@@ -198,8 +215,8 @@
         resultado.appendChild(img);
 
       } catch (err) {
-        const isTimeout = err?.name === "AbortError";
-        showError(isTimeout ? "Tempo excedido na geração." : err.message);
+        const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
+        showError("Erro: " + (isTimeout ? "Tempo excedido. Tente novamente." : (err?.message || String(err))));
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
