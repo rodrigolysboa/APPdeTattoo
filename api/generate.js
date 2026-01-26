@@ -1,17 +1,27 @@
-import { createClient } from "@supabase/supabase-js";
+import { kv } from "@vercel/kv";
 
 export default async function handler(req, res) {
-  // ✅ CORS
+  // =========================
+  // CORS + NO CACHE
+  // =========================
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Accept, X-Device-Id, X-User-Id"
+  );
+  res.setHeader("Cache-Control", "no-store");
 
-  // ✅ Preflight
   if (req.method === "OPTIONS") return res.status(200).end();
 
-  // ✅ Healthcheck
+  // Healthcheck
   if (req.method === "GET") {
-    return res.status(200).json({ ok: true, message: "API online. Use POST em /api/generate" });
+    return res.status(200).json({
+      ok: true,
+      message: "API online. Use POST em /api/generate",
+      mode: "FULL",
+      limit: { perBatch: 20, cooldownMinutes: 40 },
+    });
   }
 
   if (req.method !== "POST") {
@@ -19,232 +29,171 @@ export default async function handler(req, res) {
   }
 
   try {
-    /* =====================================================
-       🔐 RATE LIMIT — SUPABASE
-    ===================================================== */
+    // =========================
+    // IDENTIFICAÇÃO (Device obrigatório, User opcional)
+    // =========================
+    const deviceRaw = req.headers["x-device-id"];
+    const deviceId = typeof deviceRaw === "string" ? deviceRaw.trim() : "";
 
-    const supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY
-    );
+    const userRaw = req.headers["x-user-id"];
+    const userId =
+      typeof userRaw === "string" ? userRaw.trim().slice(0, 128) : "";
 
-    const ip =
-      (req.headers["x-forwarded-for"] || "").split(",")[0]?.trim() ||
-      req.socket?.remoteAddress ||
-      "unknown";
+    if (!deviceId || deviceId.length < 8) {
+      return res.status(401).json({ error: "Missing or invalid device id" });
+    }
 
-    const now = new Date();
+    // Se houver X-User-Id, o controle fica por conta (em qualquer dispositivo).
+    // Senão, fica por device.
+    const scopeType = userId ? "user" : "device";
+    const scopeId = userId || deviceId;
 
-    const { data: record } = await supabase
-      .from("rate_limits")
-      .select("*")
-      .eq("id", ip)
-      .maybeSingle();
+    // =========================
+    // BLOQUEIO TEMPORÁRIO (20 -> 40min -> libera 20)
+    // =========================
+    const LIMIT_PER_BATCH = 20;
+    const COOLDOWN_SECONDS = 40 * 60;
 
-    // ⛔ Se estiver em cooldown
-    if (record?.cooldown_until && new Date(record.cooldown_until) > now) {
-      const retryAfterSec = Math.ceil(
-        (new Date(record.cooldown_until) - now) / 1000
-      );
+    const quotaKey = `quota:${scopeType}:${scopeId}`; // JSON { used, block_until }
+    const quotaTtlSeconds = 60 * 60 * 24 * 30; // 30 dias
+
+    let quota = { used: 0, block_until: 0 };
+
+    const quotaJson = await kv.get(quotaKey);
+    if (quotaJson) {
+      try {
+        quota =
+          typeof quotaJson === "string"
+            ? JSON.parse(quotaJson)
+            : quotaJson || quota;
+      } catch {
+        quota = { used: 0, block_until: 0 };
+      }
+    }
+
+    const now = Date.now();
+
+    // Se ainda está bloqueado, retorna 429 com retry_after
+    if (quota.block_until && Number(quota.block_until) > now) {
+      const retryAfterSeconds = Math.ceil((Number(quota.block_until) - now) / 1000);
 
       return res.status(429).json({
-        error: "Rate limit exceeded",
-        retryAfterSec
+        error: "Temporarily blocked. Cooldown active.",
+        code: "COOLDOWN",
+        scope: scopeType, // "user" ou "device"
+        used: quota.used ?? LIMIT_PER_BATCH,
+        limit: LIMIT_PER_BATCH,
+        retry_after_seconds: retryAfterSeconds,
       });
     }
 
-    let count = record?.count ?? 0;
-    let windowStart = record?.window_start
-      ? new Date(record.window_start)
-      : now;
-
-    const diffMinutes = (now - windowStart) / 1000 / 60;
-
-    // 🔄 Nova janela de 1 hora
-    if (diffMinutes >= 60) {
-      count = 0;
-      windowStart = now;
+    // Se o cooldown já passou, reseta lote
+    if (quota.block_until && Number(quota.block_until) <= now) {
+      quota.used = 0;
+      quota.block_until = 0;
     }
 
-    count += 1;
+    // Se já atingiu o limite do lote, ativa cooldown e bloqueia
+    if ((quota.used ?? 0) >= LIMIT_PER_BATCH) {
+      quota.used = LIMIT_PER_BATCH;
+      quota.block_until = now + COOLDOWN_SECONDS * 1000;
 
-    // 🚫 Estourou 20 gerações
-    if (count > 20) {
-      const blocks = Math.floor((count - 1) / 20); // 1,2,3...
-      const cooldownMinutes = blocks * 40;
-
-      const cooldownUntil = new Date(
-        now.getTime() + cooldownMinutes * 60 * 1000
-      );
-
-      await supabase.from("rate_limits").upsert({
-        id: ip,
-        count,
-        window_start: windowStart.toISOString(),
-        cooldown_until: cooldownUntil.toISOString()
-      });
+      await kv.set(quotaKey, JSON.stringify(quota));
+      await kv.expire(quotaKey, quotaTtlSeconds);
 
       return res.status(429).json({
-        error: "Rate limit exceeded",
-        retryAfterSec: cooldownMinutes * 60
+        error: "Limit reached. Cooldown started.",
+        code: "COOLDOWN",
+        scope: scopeType,
+        used: LIMIT_PER_BATCH,
+        limit: LIMIT_PER_BATCH,
+        retry_after_seconds: COOLDOWN_SECONDS,
       });
     }
 
-    // ✅ Salva estado normal
-    await supabase.from("rate_limits").upsert({
-      id: ip,
-      count,
-      window_start: windowStart.toISOString(),
-      cooldown_until: null
-    });
+    // Conta tentativa ANTES de chamar o Gemini (pra evitar spam/custo)
+    quota.used = (quota.used ?? 0) + 1;
 
-    /* =====================================================
-       🎨 A PARTIR DAQUI: SEU CÓDIGO ORIGINAL (INALTERADO)
-    ===================================================== */
+    await kv.set(quotaKey, JSON.stringify(quota));
+    await kv.expire(quotaKey, quotaTtlSeconds);
 
+    // (Opcional) registrar devices usados por conta (auditoria)
+    if (userId) {
+      const userDevicesKey = `userdevices:${userId}`;
+      await kv.sadd(userDevicesKey, deviceId);
+      await kv.expire(userDevicesKey, 60 * 60 * 24 * 365);
+    }
+
+    // =========================
+    // INPUT / VALIDAÇÕES
+    // =========================
     const {
       imageBase64,
       style = "clean",
       mimeType = "image/jpeg",
-      prompt = ""
+      prompt = "",
     } = req.body || {};
 
-    // ✅ valida base64
-    if (!imageBase64 || typeof imageBase64 !== "string") {
-      return res.status(400).json({ error: "imageBase64 is required (string)" });
+    if (!imageBase64) {
+      return res.status(400).json({ error: "imageBase64 is required" });
     }
 
-    // ✅ limita tamanho do payload
     const MAX_BASE64_LEN = 4_500_000;
-    if (imageBase64.length > MAX_BASE64_LEN) {
+    if (typeof imageBase64 !== "string" || imageBase64.length > MAX_BASE64_LEN) {
       return res.status(413).json({
-        error: "Image payload too large. Please compress the image and try again."
+        error: "Image payload too large. Compress and try again.",
       });
     }
 
-    // ✅ whitelist style
     const allowedStyles = new Set(["line", "shadow", "clean"]);
     const safeStyle = allowedStyles.has(style) ? style : "clean";
 
-    // ✅ whitelist mime
     const allowedMime = new Set(["image/jpeg", "image/png", "image/webp"]);
     const safeMime = allowedMime.has(mimeType) ? mimeType : "image/jpeg";
 
-    // ✅ prompt opcional do tatuador
     const userNote =
       typeof prompt === "string" && prompt.trim().length
-        ? `\n\nOBSERVAÇÕES DO TATUADOR (use apenas se fizer sentido e sem quebrar as regras): ${prompt.trim()}`
+        ? `\n\nOBSERVAÇÕES DO TATUADOR (use apenas se fizer sentido): ${prompt.trim()}`
         : "";
 
     const prompts = {
       line: `
 OBJETIVO (MODO LINE / DECALQUE DE LINHAS):
-Você receberá uma FOTO de uma tatuagem aplicada na PELE (com curvatura, sombras, reflexos, textura, pelos, perspectiva e possíveis partes cortadas).
-Sua tarefa é IDENTIFICAR com precisão a tatuagem e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, vista de cima, pronto para impressão de estêncil.
+Você receberá uma FOTO de uma tatuagem aplicada na PELE.
+Sua tarefa é IDENTIFICAR e RECRIAR a MESMA ARTE como LINE ART em uma FOLHA A4 BRANCA, vista de cima.
 
-O QUE VOCÊ DEVE FAZER (PASSO A PASSO):
-1) ISOLAR A TATUAGEM:
-   - Detecte exatamente quais traços pertencem à tatuagem.
-   - Ignore COMPLETAMENTE: pele, poros, pelos, brilho, reflexos, fundo, roupas, ambiente, sombras da foto, bordas do corpo.
+REGRAS:
+- APENAS linhas pretas (sem sombras, sem cinza, sem textura, sem pele).
+- Corrigir perspectiva/curvatura e deixar plano em papel.
+- Completar partes faltantes SEM inventar elementos novos.
+- Se houver texto/lettering, reescrever fielmente.
 
-2) “DESENROLAR” A TATUAGEM (PLANO 2D):
-   - Corrija rotação, perspectiva e deformações da pele.
-   - Reprojete a tatuagem como se estivesse perfeitamente plana em papel.
-
-3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
-   - Se houver partes escondidas, cortadas, borradas ou fora do enquadramento: reconstrua fielmente usando simetria, continuidade e o padrão do próprio desenho.
-   - É PROIBIDO criar elementos novos que não existam na tatuagem original.
-
-4) LETTERING / TEXTO (OBRIGATÓRIO SE EXISTIR):
-   - Decifre as letras mesmo que estejam borradas.
-   - Reescreva com alinhamento correto, espaçamento consistente e forma fiel ao estilo do lettering.
-
-SAÍDA FINAL (MUITO IMPORTANTE):
-- Resultado deve ser APENAS LINE ART: SOMENTE LINHAS pretas.
-- PROIBIDO: sombras, degradês, cinza, preenchimentos, manchas, textura, pontilhismo, realismo, efeito pele.
-- Linhas nítidas, contínuas, bem definidas, com espessura coerente ao desenho original.
-- Fundo: branco puro (#FFFFFF), sem mesa, sem sombras, sem textura (apenas papel branco).
-- Aparência de “folha A4” apenas por proporção e margens (sem cenário).
-- Sem marcas d’água, sem molduras, sem UI, sem celular, sem texto extra.
+SAÍDA:
+- Fundo branco puro, estilo folha A4, sem objetos, sem UI.
 `,
-
       shadow: `
 OBJETIVO (MODO SHADOW / LINHAS + SOMBRA LEVE):
-Você receberá uma FOTO de uma tatuagem na PELE. Sua tarefa é IDENTIFICAR a tatuagem com precisão e RECRIAR a MESMA ARTE como um DESENHO NOVO em uma FOLHA A4 BRANCA, vista de cima, pronto para imprimir.
-
-PASSO A PASSO:
-1) ISOLAR A TATUAGEM:
-   - Extraia somente o que é tinta da tatuagem.
-   - Ignore pele, reflexos, fundo, ambiente e qualquer ruído.
-
-2) PLANO 2D:
-   - Corrija curvatura do braço/perna e perspectiva.
-   - Recrie a tatuagem totalmente plana, proporções corretas.
-
-3) RECONSTRUÇÃO OBRIGATÓRIA (SEM INVENTAR):
-   - Complete partes ocultas/cortadas mantendo fidelidade total.
-   - NÃO adicione novos símbolos, ornamentos ou detalhes inexistentes.
-
-4) LETTERING (SE EXISTIR):
-   - Decifre e reescreva com alinhamento perfeito e traço consistente.
-
-REGRAS DE ESTILO (DIFERENÇA DO LINE):
-- Prioridade máxima: LINHAS.
-- SOMBRA: permitir SOMENTE sombra LEVE e CONTROLADA para sugerir volume.
-- A sombra deve ser minimalista, sem “realismo pesado”.
-- Permitido preenchimento sólido APENAS quando fizer parte do desenho original (áreas pretas sólidas do tattoo).
-- Proibido: textura de pele, manchas, cinza sujo, degradê excessivo, sombreado fotográfico.
-
-SAÍDA FINAL:
-- Folha A4 branca (#FFFFFF), sobre mesa de madeira clara discreta, vista de cima.
-- Arte centralizada, limpa, alto contraste.
-- Sem marca d’água, sem molduras, sem UI, sem texto fora da tatuagem.
+Transformar foto de tattoo em desenho em folha A4 branca.
+- Prioridade máxima: linhas.
+- Permitir sombra LEVE e CONTROLADA, sem textura de pele.
+- Completar partes faltantes sem inventar.
+- Lettering fiel se existir.
+- Folha A4 branca vista de cima, mesa de madeira clara discreta.
 `,
-
       clean: `
 OBJETIVO (MODO CLEAN / TATUAGEM → DESENHO IDÊNTICO):
-Você receberá uma FOTO de uma tatuagem real aplicada na PELE.
-Sua tarefa é TRANSFORMAR essa tatuagem no MESMO DESENHO, exatamente como ela é,
-apenas corrigindo a deformação do corpo e trazendo a arte para uma FOLHA A4 BRANCA.
-
-REGRA PRINCIPAL (MUITO IMPORTANTE):
-- O DESENHO FINAL DEVE SER VISUALMENTE IGUAL À TATUAGEM ORIGINAL.
-- Mesmas linhas, mesmas sombras, mesmas luzes, mesmo peso de preto, mesmo estilo.
-- NÃO estilize, NÃO interprete, NÃO simplifique, NÃO embeleze.
-
-O QUE VOCÊ DEVE FAZER:
-1) EXTRAÇÃO PRECISA:
-   - Separe somente a tatuagem.
-   - Ignore completamente pele, pelos, textura da pele, reflexos, fundo, roupa e ambiente.
-
-2) CORREÇÃO INVISÍVEL (PLANO 2D):
-   - Corrija curvatura do braço/perna e perspectiva.
-   - Ajuste proporções apenas o necessário para que o desenho fique plano em papel.
-   - A correção NÃO pode alterar o visual da arte.
-
-3) RECONSTRUÇÃO FIEL (SEM INVENTAR):
-   - Complete partes que não aparecem na foto usando continuidade real do desenho.
-   - É PROIBIDO criar novos elementos ou mudar o estilo original.
-
-4) LETTERING (SE EXISTIR):
-   - Recrie o texto exatamente como na tatuagem.
-   - Mesmo estilo, mesma espessura, mesmo espaçamento.
-
-REGRAS DE ESTILO (CLEAN):
-- Manter TODAS as sombras, volumes, contrastes e áreas pretas do desenho original.
-- Sombras suaves e naturais, sem textura de pele.
-- Alto nível de fidelidade, como um decalque perfeito do tattoo para o papel.
-
-SAÍDA FINAL:
-- Uma folha A4 branca limpa, vista de cima.
-- Arte centralizada, com margens naturais.
-- Fundo branco real, sem objetos extras, sem mãos, sem marcas d’água, sem interface.
-- Entregar SOMENTE a imagem final.
-`
+Transformar a tatuagem da foto no MESMO desenho, corrigindo apenas deformação do corpo.
+- Visualmente igual à tattoo original.
+- Não estilizar, não simplificar, não “embelezar”.
+- Completar partes faltantes sem inventar.
+- Folha A4 branca realista, vista de cima, fundo limpo.
+`,
     };
 
     const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) return res.status(500).json({ error: "Missing GEMINI_API_KEY" });
+    if (!apiKey) {
+      return res.status(500).json({ error: "Missing GEMINI_API_KEY" });
+    }
 
     const url =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=" +
@@ -259,30 +208,22 @@ SAÍDA FINAL:
               text:
                 (prompts[safeStyle] || prompts.clean) +
                 userNote +
-                "\n\nIMPORTANTE: Gere SOMENTE a imagem final. Não explique nada. Não retorne texto."
+                "\n\nIMPORTANTE: Gere SOMENTE a imagem final. Não retorne texto.",
             },
-            {
-              inlineData: {
-                mimeType: safeMime,
-                data: imageBase64
-              }
-            }
-          ]
-        }
-      ]
+            { inlineData: { mimeType: safeMime, data: imageBase64 } },
+          ],
+        },
+      ],
     };
 
     const controller = new AbortController();
-    const TIMEOUT_MS = 60_000;
-    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    const timer = setTimeout(() => controller.abort(), 60000);
 
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: controller.signal
-    }).catch((e) => {
-      throw new Error(e?.name === "AbortError" ? "Gemini timeout" : (e?.message || "Fetch failed"));
+      signal: controller.signal,
     });
 
     clearTimeout(timer);
@@ -292,7 +233,7 @@ SAÍDA FINAL:
     if (!response.ok) {
       return res.status(response.status).json({
         error: json?.error?.message || "Gemini API error",
-        raw: json
+        raw: json,
       });
     }
 
@@ -300,21 +241,23 @@ SAÍDA FINAL:
     const inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
 
     if (!inline) {
-      const blockReason = json?.promptFeedback?.blockReason;
-      return res.status(500).json({
-        error: blockReason ? `Blocked: ${blockReason}` : "No image returned",
-        raw: json
-      });
+      return res.status(500).json({ error: "No image returned", raw: json });
     }
 
-    res.setHeader("Cache-Control", "no-store");
-    return res.status(200).json({ imageBase64: inline });
-
+    return res.status(200).json({
+      imageBase64: inline,
+      quota: {
+        used: quota.used,
+        limit: LIMIT_PER_BATCH,
+        cooldown_seconds: COOLDOWN_SECONDS,
+        scope: scopeType,
+      },
+    });
   } catch (err) {
     const msg =
       err?.name === "AbortError"
         ? "Timeout generating image"
-        : (err?.message || "Unexpected error");
+        : err?.message || "Unexpected error";
     return res.status(500).json({ error: msg });
   }
 }
