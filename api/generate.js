@@ -158,38 +158,37 @@ export default async function handler(req, res) {
 
     const prompts = {
       line: `
-OBJETIVO (MODO LINE / DECALQUE DE LINHAS PURO):
+OBJETIVO (MODO LINE / EXTRAÇÃO DE LINHAS PURAS):
 
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
-Sua tarefa é extrair e recriar EXCLUSIVAMENTE os TRAÇOS ORIGINAIS da tatuagem, transformando-os em LINE ART puro sobre uma folha A4 branca, vista de cima.
+Sua tarefa é extrair e reconstruir EXCLUSIVAMENTE os TRAÇOS ORIGINAIS do desenho, convertendo-os em LINE ART puro, preciso e alinhado.
 
-INTERPRETAÇÃO OBRIGATÓRIA:
-- Considere apenas os contornos e linhas reais do desenho.
+PRINCÍPIO CENTRAL:
+- Considere apenas os contornos reais do desenho.
 - Ignore completamente a pele, sombras, cores, preenchimentos, texturas, luz, reflexos e qualquer efeito visual.
-- O resultado deve parecer um desenho técnico de linhas, pronto para decalque profissional.
+- O resultado deve ser um desenho técnico de linhas finas, pronto para decalque profissional.
 
-REGRAS ABSOLUTAS (NÃO PODEM SER QUEBRADAS):
-1. Usar SOMENTE linhas pretas (#000000).
-2. NÃO aplicar sombra, cinza, degradê, pintura, preenchimento, pontilhismo, hachura ou qualquer efeito gráfico.
-3. NÃO estilizar, embelezar ou reinterpretar o desenho.
-4. NÃO adicionar elementos que não existam na tatuagem original.
-5. Corrigir distorções causadas pela curvatura do corpo, deixando o desenho plano.
-6. Reconstruir partes ocultas ou deformadas apenas quando necessário, mantendo fidelidade ao traço original.
-7. Se houver lettering ou texto, reproduzir fielmente o formato, espessura e estilo das letras.
-8. O fundo deve ser completamente branco, simulando uma folha A4 real, sem objetos, sem sombras, sem molduras e sem interface.
+REGRAS ABSOLUTAS (OBRIGATÓRIAS):
+1. Usar SOMENTE linhas pretas finas (#000000).
+2. Proibir qualquer sombra, cinza, degradê, pintura, preenchimento, pontilhismo, hachura ou espessamento de linha.
+3. Não estilizar, não embelezar e não reinterpretar o desenho.
+4. Não adicionar elementos inexistentes na tatuagem original.
+5. Corrigir completamente distorções de perspectiva e curvatura do corpo, deixando o desenho plano, simétrico e alinhado.
+6. Alinhar rigorosamente todas as linhas, principalmente em textos, letras e números.
+7. Se houver lettering, corrigir inclinações, irregularidades e deformações, mantendo o estilo original.
+8. Reconstruir partes ocultas apenas quando necessário, sem alterar o traço original.
+9. Não preencher áreas internas: apenas contornos e linhas estruturais.
+
+SAÍDA VISUAL:
+- Fundo totalmente branco (#FFFFFF), uniforme, sem textura e sem aparência de papel.
+- Nenhum objeto, sombra, moldura, interface ou elemento extra.
+- Apenas o desenho em linhas pretas finas sobre o fundo branco.
 
 RESULTADO FINAL:
-- Um decalque em line art puro, limpo, preciso e técnico.
-- Aparência de desenho vetorial ou stencil profissional.
-- Pronto para impressão e aplicação de estêncil.
+- Decalque em line art puro, limpo, preciso e técnico.
+- Aparência de desenho vetorial e stencil profissional.
+- Linhas finas, contínuas, bem definidas e perfeitamente alinhadas.
 - Nenhum elemento além das linhas do desenho.
-
-
-SAÍDA:
-- Fundo totalmente branco (#FFFFFF), uniforme e sem textura.
-- Nenhuma aparência de papel, folha, mesa ou superfície física.
-- Nenhum objeto, sombra, moldura, interface ou elemento extra.
-- Apenas o desenho em linhas pretas sobre o fundo branco.
 `,
       shadow: `
 OBJETIVO (MODO SHADOW / LINHAS + SOMBRA LEVE):
