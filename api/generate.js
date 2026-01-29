@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       ok: true,
       message: "API online. Use POST em /api/generate",
       mode: "FULL",
-      limit: { perBatch: 20, cooldownMinutes: 40 },
+      limit: { perBatch: 20, cooldownMinutes: 15 },
     });
   }
 
@@ -49,10 +49,10 @@ export default async function handler(req, res) {
     const scopeId = userId || deviceId;
 
     // =========================
-    // BLOQUEIO TEMPORÁRIO (20 -> 40min -> libera 20)
+    // BLOQUEIO TEMPORÁRIO (20 -> 15min -> libera 20)
     // =========================
     const LIMIT_PER_BATCH = 20;
-    const COOLDOWN_SECONDS = 40 * 60;
+    const COOLDOWN_SECONDS = 40 * 15;
 
     const quotaKey = `quota:${scopeType}:${scopeId}`; // JSON { used, block_until }
     const quotaTtlSeconds = 60 * 60 * 24 * 30; // 30 dias
