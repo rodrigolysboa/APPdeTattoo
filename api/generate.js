@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     const scopeId = userId || deviceId;
 
     // =========================
-    // BLOQUEIO TEMPORÁRIO (20 -> 40min -> libera 20)
+    // BLOQUEIO TEMPORÁRIO (20 -> 15min -> libera 20)
     // =========================
     const LIMIT_PER_BATCH = 20;
     const COOLDOWN_SECONDS = 15 * 60;
