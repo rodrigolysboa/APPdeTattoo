@@ -1,10 +1,6 @@
 {
   "name": "appdetattoo",
   "private": true,
-  "type": "module",
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "@vercel/kv": "^1.0.0"
   }
