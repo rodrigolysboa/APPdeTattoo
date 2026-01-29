@@ -20,7 +20,7 @@ export default async function handler(req, res) {
       ok: true,
       message: "API online. Use POST em /api/generate",
       mode: "FULL",
-      limit: { perBatch: 20, cooldownMinutes: 15 },
+      limit: { perBatch: 20, cooldownMinutes: 40 },
     });
   }
 
@@ -29,18 +29,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // =========================
-    // GARANTE BODY JSON
-    // =========================
-    let body = req.body || {};
-    if (typeof body === "string") {
-      try {
-        body = JSON.parse(body);
-      } catch {
-        body = {};
-      }
-    }
-
     // =========================
     // IDENTIFICAÇÃO (Device obrigatório, User opcional)
     // =========================
@@ -61,28 +49,17 @@ export default async function handler(req, res) {
     const scopeId = userId || deviceId;
 
     // =========================
-    // BLOQUEIO TEMPORÁRIO (20 -> 15min -> libera 20)
+    // BLOQUEIO TEMPORÁRIO (20 -> 40min -> libera 20)
     // =========================
     const LIMIT_PER_BATCH = 20;
-    const COOLDOWN_SECONDS = 15 * 60;
+    const COOLDOWN_SECONDS = 40 * 60;
 
     const quotaKey = `quota:${scopeType}:${scopeId}`; // JSON { used, block_until }
     const quotaTtlSeconds = 60 * 60 * 24 * 30; // 30 dias
 
     let quota = { used: 0, block_until: 0 };
 
-    // KV: se não estiver configurado, isso pode dar erro — tratamos para retornar erro claro
-    let quotaJson = null;
-    try {
-      quotaJson = await kv.get(quotaKey);
-    } catch (e) {
-      return res.status(500).json({
-        error:
-          "KV não configurado no Vercel. Verifique KV_REST_API_URL / KV_REST_API_TOKEN / KV_REST_API_READ_ONLY_TOKEN.",
-        details: e?.message || String(e),
-      });
-    }
-
+    const quotaJson = await kv.get(quotaKey);
     if (quotaJson) {
       try {
         quota =
@@ -98,14 +75,12 @@ export default async function handler(req, res) {
 
     // Se ainda está bloqueado, retorna 429 com retry_after
     if (quota.block_until && Number(quota.block_until) > now) {
-      const retryAfterSeconds = Math.ceil(
-        (Number(quota.block_until) - now) / 1000
-      );
+      const retryAfterSeconds = Math.ceil((Number(quota.block_until) - now) / 1000);
 
       return res.status(429).json({
         error: "Temporarily blocked. Cooldown active.",
         code: "COOLDOWN",
-        scope: scopeType,
+        scope: scopeType, // "user" ou "device"
         used: quota.used ?? LIMIT_PER_BATCH,
         limit: LIMIT_PER_BATCH,
         retry_after_seconds: retryAfterSeconds,
@@ -136,7 +111,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // Conta tentativa ANTES de chamar o Gemini
+    // Conta tentativa ANTES de chamar o Gemini (pra evitar spam/custo)
     quota.used = (quota.used ?? 0) + 1;
 
     await kv.set(quotaKey, JSON.stringify(quota));
@@ -157,7 +132,7 @@ export default async function handler(req, res) {
       style = "clean",
       mimeType = "image/jpeg",
       prompt = "",
-    } = body || {};
+    } = req.body || {};
 
     if (!imageBase64) {
       return res.status(400).json({ error: "imageBase64 is required" });
@@ -263,17 +238,14 @@ Transformar a tatuagem da foto no MESMO desenho, corrigindo apenas deformação 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 60000);
 
-    let response;
-    try {
-      response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
-    } finally {
-      clearTimeout(timer);
-    }
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timer);
 
     const json = await response.json().catch(() => ({}));
 
