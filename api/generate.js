@@ -199,13 +199,69 @@ Transformar foto de tattoo em desenho em folha A4 branca.
 - Lettering fiel se existir.
 - Folha A4 branca vista de cima, mesa de madeira clara discreta.
 `,
-      clean: `
-OBJETIVO (MODO CLEAN / TATUAGEM → DESENHO IDÊNTICO):
-Transformar a tatuagem da foto no MESMO desenho, corrigindo apenas deformação do corpo.
-- Visualmente igual à tattoo original.
-- Não estilizar, não simplificar, não “embelezar”.
-- Completar partes faltantes sem inventar.
-- Folha A4 branca realista, vista de cima, fundo limpo.
+clean: `
+OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
+
+Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
+
+SUA TAREFA REAL É:
+RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
+
+REGRAS ABSOLUTAS E OBRIGATÓRIAS:
+
+1. IGNORAR TOTALMENTE A PELE E O FORMATO DO BRAÇO:
+- NÃO manter contorno do braço.
+- NÃO deixar sombra do corpo.
+- NÃO preservar curvatura da pele.
+- NÃO reproduzir formato anatômico.
+- O resultado deve ser um DESENHO PLANO em papel, e não uma “tattoo recortada”.
+
+2. RECONSTRUÇÃO COMPLETA DA ARTE:
+- Redesenhar TODAS as partes da tatuagem.
+- Partes borradas, escondidas ou cortadas devem ser RECRIADAS de forma lógica e coerente.
+- Nunca deixar áreas incompletas por falta de informação na foto.
+- O foco principal é REDESENHAR, não apenas copiar.
+
+3. GEOMETRIA E SIMETRIA PERFEITAS:
+- Se houver círculos, mandalas, padrões geométricos ou formas repetitivas:
+  → alinhar perfeitamente  
+  → centralizar  
+  → corrigir distorções  
+  → completar simetrias  
+  → reconstruir padrões quebrados  
+- Desfazer totalmente a deformação causada pela curvatura do braço.
+
+4. FIDELIDADE VISUAL:
+- Manter exatamente o mesmo estilo artístico da tatuagem original.
+- Manter proporções, traços, sombras e estética geral.
+- Não estilizar, não simplificar, não embelezar além do necessário para reconstrução.
+- Corrigir APENAS o que foi deformado pela pele ou pela foto.
+
+5. RESULTADO FINAL EXIGIDO:
+
+A saída deve ser:
+
+- Um DESENHO COMPLETO e FINALIZADO
+- Em folha A4 branca, limpa e plana
+- Vista de cima, estilo mockup de papel realista
+- Fundo totalmente branco e uniforme
+- Sem textura de pele
+- Sem marcas do braço
+- Sem sombras externas
+- Sem bordas anatômicas
+- Sem qualquer elemento que denuncie que veio de uma foto
+
+IMPORTANTE:
+
+O RESULTADO NÃO PODE parecer uma tatuagem isolada da pele.
+DEVE parecer um desenho profissional recriado manualmente em papel.
+
+Regra de ouro:
+SE O BRAÇO APARECER DE QUALQUER FORMA, A RESPOSTA ESTÁ ERRADA.
+
+Gere SOMENTE a imagem final do desenho recriado.
+Não retorne nenhum texto.
 `,
     };
 
