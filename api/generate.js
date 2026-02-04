@@ -208,57 +208,161 @@ Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
 SUA TAREFA REAL É:
 RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
 
+---
+
+ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
+
+MUITO IMPORTANTE:
+A imagem de referência pode estar em um braço, perna, costas ou qualquer parte do corpo.
+
+ISSO NÃO IMPORTA.
+
+VOCÊ NUNCA DEVE:
+- Manter formato do membro
+- Respeitar limites da pele
+- Criar um desenho com contorno de braço ou perna
+- Deixar laterais “cortadas” porque a foto acabou ali
+
+REGRA ABSOLUTA:
+
+SE O DESENHO FINAL TIVER FORMATO DE BRAÇO, ANTEBRAÇO, PERNA OU QUALQUER PARTE DO CORPO:
+A RESPOSTA ESTÁ ERRADA.
+
+---
+
 REGRAS ABSOLUTAS E OBRIGATÓRIAS:
 
-1. IGNORAR TOTALMENTE A PELE E O FORMATO DO BRAÇO:
-- NÃO manter contorno do braço.
-- NÃO deixar sombra do corpo.
-- NÃO preservar curvatura da pele.
-- NÃO reproduzir formato anatômico.
-- O resultado deve ser um DESENHO PLANO em papel, e não uma “tattoo recortada”.
+1. IGNORAR TOTALMENTE A PELE E A ANATOMIA:
 
-2. RECONSTRUÇÃO COMPLETA DA ARTE:
-- Redesenhar TODAS as partes da tatuagem.
-- Partes borradas, escondidas ou cortadas devem ser RECRIADAS de forma lógica e coerente.
-- Nunca deixar áreas incompletas por falta de informação na foto.
-- O foco principal é REDESENHAR, não apenas copiar.
+É PROIBIDO:
+- Manter contorno do braço, perna ou corpo
+- Preservar curvatura da pele
+- Deixar laterais com formato anatômico
+- Copiar a “silhueta” da foto original
+- Manter sombras externas da pele
+- Criar bordas baseadas no corpo
 
-3. GEOMETRIA E SIMETRIA PERFEITAS:
-- Se houver círculos, mandalas, padrões geométricos ou formas repetitivas:
-  → alinhar perfeitamente  
-  → centralizar  
-  → corrigir distorções  
-  → completar simetrias  
-  → reconstruir padrões quebrados  
-- Desfazer totalmente a deformação causada pela curvatura do braço.
+O RESULTADO FINAL DEVE SER:
+Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
 
-4. FIDELIDADE VISUAL:
-- Manter exatamente o mesmo estilo artístico da tatuagem original.
-- Manter proporções, traços, sombras e estética geral.
-- Não estilizar, não simplificar, não embelezar além do necessário para reconstrução.
-- Corrigir APENAS o que foi deformado pela pele ou pela foto.
+---
 
-5. RESULTADO FINAL EXIGIDO:
+2. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS:
 
-A saída deve ser:
+Se a tatuagem original estiver:
 
-- Um DESENHO COMPLETO e FINALIZADO
-- Em folha A4 branca, limpa e plana
-- Vista de cima, estilo mockup de papel realista
-- Fundo totalmente branco e uniforme
-- Sem textura de pele
-- Sem marcas do braço
-- Sem sombras externas
-- Sem bordas anatômicas
-- Sem qualquer elemento que denuncie que veio de uma foto
+- Cortada nas bordas  
+- Parcialmente fora da foto  
+- Limitada pelo formato do membro  
+- Incompleta nas extremidades  
 
-IMPORTANTE:
+ENTÃO VOCÊ DEVE:
 
-O RESULTADO NÃO PODE parecer uma tatuagem isolada da pele.
-DEVE parecer um desenho profissional recriado manualmente em papel.
+- EXPANDIR o desenho para os lados  
+- RECRIAR partes faltantes  
+- COMPLETAR elementos interrompidos  
+- CONTINUAR padrões visuais de forma lógica  
+- INVENTAR coerentemente o que não aparece  
 
-Regra de ouro:
-SE O BRAÇO APARECER DE QUALQUER FORMA, A RESPOSTA ESTÁ ERRADA.
+A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,
+mesmo que a foto original não mostre tudo.
+
+---
+
+3. RECONSTRUÇÃO TOTAL DA ARTE:
+
+Você deve:
+
+- Redesenhar TODAS as partes da tatuagem
+- Reconstruir áreas borradas
+- Recriar partes escondidas por ângulo ou pele
+- Completar detalhes incompletos
+- Substituir imperfeições da foto por traços limpos
+
+FOCO PRINCIPAL:
+REDESENHAR – não apenas copiar.
+
+---
+
+4. GEOMETRIA E SIMETRIA PERFEITAS:
+
+Sempre que houver:
+
+- Círculos  
+- Mandalas  
+- Padrões repetitivos  
+- Geometria  
+- Elementos simétricos  
+
+Você deve:
+
+→ alinhar perfeitamente  
+→ centralizar  
+→ corrigir distorções  
+→ reconstruir partes deformadas  
+→ desfazer completamente a deformação causada pela curvatura do corpo  
+
+---
+
+5. FIDELIDADE AO ESTILO ORIGINAL:
+
+É obrigatório:
+
+- Manter exatamente o mesmo estilo artístico
+- Manter proporções reais entre elementos
+- Manter tipo de traço e estética
+- Preservar sombras e detalhes originais
+
+Você NÃO deve:
+
+- Mudar estilo
+- Embelezar excessivamente
+- Simplificar demais
+- Transformar em outro tipo de arte
+
+Corrija APENAS o que foi deformado pela pele e pela fotografia.
+
+---
+
+6. RESULTADO FINAL EXIGIDO:
+
+A saída deve ser exatamente:
+
+- Um DESENHO COMPLETO e FINALIZADO  
+- Em folha A4 branca  
+- Plano e frontal  
+- Fundo totalmente branco  
+- Sem textura de pele  
+- Sem formato de membro  
+- Sem sombras externas  
+- Sem marcas do corpo  
+- Sem cortes laterais  
+- Sem qualquer elemento que denuncie que veio de uma foto  
+
+---
+
+REGRA DE OURO DEFINITIVA:
+
+A IMAGEM FINAL DEVE PARECER:
+
+“Um desenho profissional criado do zero em papel”
+
+e NUNCA:
+
+“uma tatuagem recortada do corpo”.
+
+---
+
+Se em qualquer parte do resultado for possível perceber:
+
+- curvatura de braço  
+- formato de antebraço  
+- silhueta de perna  
+- limites anatômicos  
+
+ENTÃO O RESULTADO ESTÁ INCORRETO.
+
+---
 
 Gere SOMENTE a imagem final do desenho recriado.
 Não retorne nenhum texto.
