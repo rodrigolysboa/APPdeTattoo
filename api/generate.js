@@ -206,183 +206,141 @@ Você receberá a imagem de uma tatuagem aplicada na pele humana.
 Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
 
 SUA TAREFA REAL É:
-
-RECRIAR O DESENHO COMPLETO como se fosse um ARQUIVO ORIGINAL criado do zero em papel, pronto para impressão profissional e uso como stencil ou arte final.
+RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
 
 ---
 
-ERRO CRÍTICO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
+ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
 
 MUITO IMPORTANTE:
-
-A imagem de referência pode estar em um braço, perna, costas, peito ou qualquer parte do corpo.
+A imagem de referência pode estar em um braço, perna, costas ou qualquer parte do corpo.
 
 ISSO NÃO IMPORTA.
 
-REGRA ABSOLUTA E INEGOCIÁVEL:
-
 VOCÊ NUNCA DEVE:
 
-- Manter formato do membro  
-- Respeitar limites da pele  
-- Criar um desenho com contorno de braço, perna ou corpo  
-- Deixar laterais “cortadas” porque a foto acabou ali  
-- Reproduzir silhueta anatômica  
-- Seguir a curvatura original da pele  
+- Manter formato do membro
+- Respeitar limites da pele
+- Criar um desenho com contorno de braço ou perna
+- Deixar laterais “cortadas” porque a foto acabou ali
 
-SE O DESENHO FINAL TIVER QUALQUER FORMATO QUE LEMBRE UM MEMBRO HUMANO:
+REGRA ABSOLUTA:
 
+SE O DESENHO FINAL TIVER FORMATO DE BRAÇO, ANTEBRAÇO, PERNA OU QUALQUER PARTE DO CORPO:
 A RESPOSTA ESTÁ ERRADA.
 
 ---
 
-REGRA CENTRAL DE COMPOSIÇÃO:
-
-O RESULTADO FINAL DEVE SER TRATADO COMO:
-
-UM DESENHO AUTÔNOMO EM PAPEL
-
-Isso significa:
-
-- A arte deve ser CENTRALIZADA na folha  
-- Deve ter margens equilibradas  
-- Deve ocupar o espaço de forma harmônica  
-- Não pode parecer “esticada verticalmente como um braço”  
-- Não pode manter proporções baseadas no corpo original  
-
-VOCÊ DEVE REORGANIZAR A COMPOSIÇÃO para que faça sentido como desenho independente.
-
----
+REGRAS ABSOLUTAS E OBRIGATÓRIAS:
 
 1. IGNORAR TOTALMENTE A PELE E A ANATOMIA:
 
 É PROIBIDO:
 
-- Manter contorno do braço, perna ou corpo  
-- Preservar curvatura da pele  
-- Deixar laterais com formato anatômico  
-- Copiar a “silhueta” da foto original  
-- Manter sombras externas da pele  
-- Criar bordas baseadas no membro tatuado  
+- Manter contorno do braço, perna ou corpo
+- Preservar curvatura da pele
+- Deixar laterais com formato anatômico
+- Copiar a “silhueta” da foto original
+- Manter sombras externas da pele
+- Criar bordas baseadas no corpo
 
 O RESULTADO FINAL DEVE SER:
 
-Um desenho plano, limpo e independente, como se NUNCA tivesse sido tatuagem.
+Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
 
 ---
 
-2. EXPANSÃO OBRIGATÓRIA DAS LATERAIS:
+2. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS:
 
 Se a tatuagem original estiver:
 
-- Cortada nas bordas  
-- Parcialmente fora da foto  
-- Limitada pelo formato do membro  
-- Incompleta nas extremidades  
+- Cortada nas bordas
+- Parcialmente fora da foto
+- Limitada pelo formato do membro
+- Incompleta nas extremidades
 
-ENTÃO VOCÊ DEVE OBRIGATORIAMENTE:
+ENTÃO VOCÊ DEVE:
 
-- EXPANDIR o desenho para os lados  
-- RECRIAR partes faltantes  
-- COMPLETAR elementos interrompidos  
-- CONTINUAR padrões visuais de forma lógica  
-- PROJETAR extensões coerentes  
-- RECONSTRUIR áreas invisíveis  
+- EXPANDIR o desenho para os lados
+- RECRIAR partes faltantes
+- COMPLETAR elementos interrompidos
+- CONTINUAR padrões visuais de forma lógica
+- INVENTAR coerentemente o que não aparece
 
-A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,  
+A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,
 mesmo que a foto original não mostre tudo.
 
 ---
 
-3. RECONSTRUÇÃO REAL, NÃO CÓPIA:
+3. RECONSTRUÇÃO TOTAL DA ARTE:
 
 Você deve:
 
-- Redesenhar TODAS as partes da tatuagem  
-- Reconstruir áreas borradas  
-- Recriar partes escondidas por ângulo ou pele  
-- Completar detalhes incompletos  
-- Substituir imperfeições da foto por traços limpos  
+- Redesenhar TODAS as partes da tatuagem
+- Reconstruir áreas borradas
+- Recriar partes escondidas por ângulo ou pele
+- Completar detalhes incompletos
+- Substituir imperfeições da foto por traços limpos
 
 FOCO PRINCIPAL:
-
-REDESENHAR DO ZERO  
-e NÃO apenas replicar pixels da foto.
+REDESENHAR – não apenas copiar.
 
 ---
 
-4. CORREÇÃO DE PROPORÇÕES E ESCALA:
-
-Você deve:
-
-- Ajustar proporções para um formato de desenho em papel  
-- Equilibrar o tamanho dos elementos  
-- Redistribuir componentes se necessário  
-- Corrigir distorções de perspectiva  
-- Padronizar espessuras de traço  
-
-O desenho final deve ser:
-
-VISUALMENTE COERENTE como arte independente,
-e não preso às proporções do membro original.
-
----
-
-5. GEOMETRIA E SIMETRIA PERFEITAS:
+4. GEOMETRIA E SIMETRIA PERFEITAS:
 
 Sempre que houver:
 
-- Círculos  
-- Mandalas  
-- Padrões repetitivos  
-- Geometria  
-- Elementos simétricos  
+- Círculos
+- Mandalas
+- Padrões repetitivos
+- Geometria
+- Elementos simétricos
 
 Você deve:
 
-→ alinhar perfeitamente  
-→ centralizar  
-→ corrigir distorções  
-→ reconstruir partes deformadas  
-→ eliminar deformação causada pela pele  
+→ alinhar perfeitamente
+→ centralizar
+→ corrigir distorções
+→ reconstruir partes deformadas
+→ desfazer completamente a deformação causada pela curvatura do corpo
 
 ---
 
-6. FIDELIDADE ARTÍSTICA OBRIGATÓRIA:
+5. FIDELIDADE AO ESTILO ORIGINAL:
 
 É obrigatório:
 
-- Manter exatamente o mesmo estilo artístico  
-- Preservar tipo de traço  
-- Manter estética geral  
-- Respeitar sombras e detalhes originais  
-- Conservar identidade visual da arte  
+- Manter exatamente o mesmo estilo artístico
+- Manter proporções reais entre elementos
+- Manter tipo de traço e estética
+- Preservar sombras e detalhes originais
 
 Você NÃO deve:
 
-- Mudar o estilo  
-- Embelezar demais  
-- Simplificar excessivamente  
-- Transformar em outro tipo de ilustração  
+- Mudar estilo
+- Embelezar excessivamente
+- Simplificar demais
+- Transformar em outro tipo de arte
 
-Apenas corrija o que foi deformado pela pele e pela foto.
+Corrija APENAS o que foi deformado pela pele e pela fotografia.
 
 ---
 
-7. RESULTADO FINAL EXIGIDO:
+6. RESULTADO FINAL EXIGIDO:
 
 A saída deve ser exatamente:
 
-- Um DESENHO COMPLETO e FINALIZADO  
-- Em folha A4 branca  
-- Plano e frontal  
-- Fundo totalmente branco  
-- Sem textura de pele  
-- Sem formato de membro  
-- Sem sombras externas  
-- Sem marcas do corpo  
-- Sem cortes laterais  
-- Sem qualquer elemento que denuncie origem fotográfica  
+- Um DESENHO COMPLETO e FINALIZADO
+- Em folha A4 branca
+- Plano e frontal
+- Fundo totalmente branco
+- Sem textura de pele
+- Sem formato de membro
+- Sem sombras externas
+- Sem marcas do corpo
+- Sem cortes laterais
+- Sem qualquer elemento que denuncie que veio de uma foto
 
 ---
 
@@ -390,25 +348,22 @@ REGRA DE OURO DEFINITIVA:
 
 A IMAGEM FINAL DEVE PARECER:
 
-“um desenho profissional criado manualmente em papel”
+“Um desenho profissional criado do zero em papel”
 
-e JAMAIS:
+e NUNCA:
 
-“uma tatuagem recortada de um corpo”.
+“uma tatuagem recortada do corpo”.
 
 ---
 
-TESTE FINAL DE QUALIDADE:
+Se em qualquer parte do resultado for possível perceber:
 
-Se for possível identificar no resultado qualquer sinal de:
+- curvatura de braço
+- formato de antebraço
+- silhueta de perna
+- limites anatômicos
 
-- curvatura de braço  
-- formato de antebraço  
-- silhueta de perna  
-- limites anatômicos  
-- proporção alongada de membro  
-
-ENTÃO O RESULTADO DEVE SER CONSIDERADO INCORRETO.
+ENTÃO O RESULTADO ESTÁ INCORRETO.
 
 ---
 
