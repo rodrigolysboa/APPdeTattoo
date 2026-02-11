@@ -191,46 +191,116 @@ RESULTADO FINAL:
 - Nenhum elemento além das linhas do desenho.
 `,
       shadow: `
-OBJETIVO (MODO SHADOW / LINE + SOMBRA ULTRA SUAVE — COM FOLHA NA MESA):
+OBJETIVO (MODO SHADOW – TRAÇOS + PREENCHIMENTO SÓLIDO, SEM SOMBRAS):
 
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
-Sua tarefa é RECONSTRUIR a arte em uma FOLHA BRANCA (plano/frontal), posicionada sobre uma MESA DE MADEIRA ESCURA, com:
 
-1) LINHAS pretas nítidas e limpas como prioridade absoluta;
-2) SOMBRA MUITO LEVE (quase imperceptível) apenas para sugerir volume — sem parecer “desenho finalizado”.
+SUA MISSÃO AGORA É:
 
-PRINCÍPIO CENTRAL:
-- 90–95% do resultado deve ser LINE ART (linhas).
-- A sombra existe só como apoio de leitura: CLARA, suave e mínima.
-- O cenário (folha + mesa) é apenas para CONTEXTO VISUAL e para diferenciar do clean.
+Transformar a tatuagem em um DECALQUE ESTILO STENCIL COM:
+- APENAS TRAÇOS
+- E PREENCHIMENTOS SÓLIDOS
+- SEM NENHUM TIPO DE SOMBRA
 
-REGRAS ABSOLUTAS (OBRIGATÓRIAS):
-1) Linhas principais: preto puro (#000000), finas, contínuas e bem definidas.
-2) Sombra permitida APENAS em cinza muito claro (ex.: #DADADA a #EEEEEE).
-3) A sombra deve ser SUAVE e CONTROLADA:
-   - Sem textura, sem granulação, sem hachura, sem pontilhismo.
-   - Sem “renderização” e sem aparência de ilustração realista.
-4) Proibido preencher áreas grandes: a sombra deve ocupar no máximo 10–15% das áreas internas do desenho.
-5) Proibido qualquer elemento da foto original:
-   - nada de pele, poros, reflexos, manchas, luz do ambiente, fundo recortado.
-6) Corrigir completamente curvatura/perspectiva da pele: arte plana e alinhada.
-7) Fidelidade total ao desenho original:
-   - não inventar, não embelezar, não mudar estilo, não “reinterpretar”.
-8) Lettering (se houver):
-   - alinhar, corrigir deformações e manter o estilo original.
+REGRA CENTRAL DEFINITIVA:
+ELIMINAR 100% DAS SOMBRAS.
 
-SAÍDA VISUAL (OBRIGATÓRIA):
-- O desenho deve estar CENTRALIZADO em uma folha branca lisa (#FFFFFF).
-- A folha deve estar SOBRE uma mesa de MADEIRA ESCURA (marrom escuro), vista de cima (top-down).
-- A mesa deve ser DISCRETA e sem chamar atenção: apenas textura leve de madeira, sem objetos, sem sombras fortes.
-- Sem moldura, sem interface, sem elementos extras além de: (mesa escura + folha branca + desenho).
+NÃO É PARA SUAVIZAR SOMBRA.
+NÃO É PARA CLAREAR SOMBRA.
+É PARA REMOVER COMPLETAMENTE QUALQUER SOMBRA OU DEGRADÊ.
 
-RESULTADO FINAL:
-- Um decalque profissional com linhas dominantes e sombra quase apagada.
-- Se a sombra estiver chamando atenção, está ERRADO.
-- Se aparecer pele ou parecer recorte do corpo, está ERRADO.
+---
 
-Gere SOMENTE a imagem final. Não retorne texto.
+O QUE DEVE EXISTIR NO RESULTADO:
+
+APENAS DOIS ELEMENTOS:
+
+1) LINHAS PRETAS PURAS (#000000)
+2) PREENCHIMENTOS SÓLIDOS PRETOS QUANDO O DESENHO EXIGIR
+
+---
+
+PROIBIDO NO RESULTADO FINAL:
+
+- Qualquer tipo de degradê  
+- Qualquer tipo de sombreamento  
+- Cinzas  
+- Meios-tons  
+- Texturas  
+- Hachuras  
+- Pontilhismo  
+- Efeitos de volume  
+- Suavizações  
+- Esfumados  
+- Sombreados realistas  
+
+SE PARECER UM DESENHO REALISTA, ESTÁ ERRADO.
+
+---
+
+INTERPRETAÇÃO CORRETA:
+
+Converta o desenho para um estilo como se fosse:
+
+- Tattoo tradicional em alto contraste  
+- Desenho vetorial preto e branco  
+- Stencil para transferência  
+- Arte chapada pronta para decalque  
+
+---
+
+REGRAS TÉCNICAS:
+
+1. Usar SOMENTE:
+   - Preto puro (#000000)
+   - Branco puro (#FFFFFF)
+
+2. Transformar áreas sombreadas em:
+   - Ou contorno preto
+   - Ou preenchimento sólido preto
+   - Mas NUNCA degradê
+
+3. Corrigir totalmente:
+   - deformações da pele  
+   - curvatura do corpo  
+   - perspectiva  
+   - desalinhamentos  
+
+4. Se houver lettering:
+   - alinhar
+   - corrigir inclinações
+   - manter estilo original
+
+5. Se partes estiverem ocultas:
+   - reconstruir de forma lógica
+   - sem inventar estilo novo
+
+---
+
+SAÍDA VISUAL OBRIGATÓRIA:
+
+- Fundo totalmente branco (#FFFFFF)
+- Sem textura de papel
+- Sem mesa
+- Sem moldura
+- Sem objetos
+- Sem sombra externa
+
+APENAS:
+DESENHO EM PRETO E BRANCO CHAPADO.
+
+---
+
+RESULTADO FINAL ESPERADO:
+
+Um decalque técnico composto SOMENTE de:
+
+TRAÇOS PRETOS + PREENCHIMENTOS SÓLIDOS
+
+Se existir QUALQUER tipo de sombra, o resultado está ERRADO.
+
+Gere SOMENTE a imagem final.  
+Não retorne nenhum texto.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
