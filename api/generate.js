@@ -191,116 +191,102 @@ RESULTADO FINAL:
 - Nenhum elemento além das linhas do desenho.
 `,
       shadow: `
-OBJETIVO (MODO SHADOW – TRAÇOS + PREENCHIMENTO SÓLIDO, SEM SOMBRAS):
+OBJETIVO (MODO SHADOW – PRIORIDADE TOTAL AOS TRAÇOS):
 
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Sua tarefa é transformar essa imagem em um DECALQUE TÉCNICO, priorizando totalmente as LINHAS e eliminando praticamente todas as sombras.
 
-SUA MISSÃO AGORA É:
+REGRA PRINCIPAL DE DECISÃO:
 
-Transformar a tatuagem em um DECALQUE ESTILO STENCIL COM:
-- APENAS TRAÇOS
-- E PREENCHIMENTOS SÓLIDOS
-- SEM NENHUM TIPO DE SOMBRA
+ANTES DE QUALQUER COISA, ANALISE:
 
-REGRA CENTRAL DEFINITIVA:
-ELIMINAR 100% DAS SOMBRAS.
+– Esta área é um PREENCHIMENTO REAL do desenho?
+OU  
+– É apenas SOMBRA ARTÍSTICA / degradê / volume?
 
-NÃO É PARA SUAVIZAR SOMBRA.
-NÃO É PARA CLAREAR SOMBRA.
-É PARA REMOVER COMPLETAMENTE QUALQUER SOMBRA OU DEGRADÊ.
+APLIQUE ESTA LÓGICA:
 
----
+1) SE FOR PREENCHIMENTO SÓLIDO INTENCIONAL  
+   (exemplo: área realmente toda preta no design original)
+   → MANTER o preenchimento como preto sólido.
 
-O QUE DEVE EXISTIR NO RESULTADO:
+2) SE FOR SOMBRA, VOLUME, DEGRADÊ OU TEXTURA  
+   → REMOVER COMPLETAMENTE e deixar APENAS OS TRAÇOS.
 
-APENAS DOIS ELEMENTOS:
+PRINCÍPIO CENTRAL:
+- O resultado deve ser 95% LINE ART.
+- Apenas pretos sólidos originais podem permanecer.
+- QUALQUER SOMBRA artística deve desaparecer.
 
-1) LINHAS PRETAS PURAS (#000000)
-2) PREENCHIMENTOS SÓLIDOS PRETOS QUANDO O DESENHO EXIGIR
+REGRAS ABSOLUTAS (OBRIGATÓRIAS):
 
----
+1. Prioridade máxima às LINHAS:
+   - linhas pretas, nítidas, contínuas e bem definidas.
 
-PROIBIDO NO RESULTADO FINAL:
+2. ELIMINAR TOTALMENTE:
+   - sombras suaves  
+   - degradês  
+   - volumes  
+   - texturas  
+   - hachuras  
+   - pontilhismos  
+   - cinzas  
+   - grafite  
+   - qualquer efeito de iluminação
 
-- Qualquer tipo de degradê  
-- Qualquer tipo de sombreamento  
-- Cinzas  
-- Meios-tons  
-- Texturas  
-- Hachuras  
-- Pontilhismo  
-- Efeitos de volume  
-- Suavizações  
-- Esfumados  
-- Sombreados realistas  
+3. Manter SOMENTE:
+   - contornos reais do desenho  
+   - preenchimentos sólidos que já fazem parte da arte original
 
-SE PARECER UM DESENHO REALISTA, ESTÁ ERRADO.
+4. Proibido:
+   - transformar sombra em preenchimento  
+   - escurecer áreas para “embelezar”  
+   - adicionar contraste artificial  
+   - criar áreas pretas que não existiam
 
----
-
-INTERPRETAÇÃO CORRETA:
-
-Converta o desenho para um estilo como se fosse:
-
-- Tattoo tradicional em alto contraste  
-- Desenho vetorial preto e branco  
-- Stencil para transferência  
-- Arte chapada pronta para decalque  
-
----
-
-REGRAS TÉCNICAS:
-
-1. Usar SOMENTE:
-   - Preto puro (#000000)
-   - Branco puro (#FFFFFF)
-
-2. Transformar áreas sombreadas em:
-   - Ou contorno preto
-   - Ou preenchimento sólido preto
-   - Mas NUNCA degradê
-
-3. Corrigir totalmente:
-   - deformações da pele  
+5. Ignorar completamente:
+   - pele  
+   - poros  
+   - reflexos  
+   - fundo  
    - curvatura do corpo  
-   - perspectiva  
-   - desalinhamentos  
+   - qualquer elemento fotográfico
 
-4. Se houver lettering:
-   - alinhar
-   - corrigir inclinações
-   - manter estilo original
+6. Corrigir distorções:
+   - alinhar perspectiva  
+   - endireitar textos  
+   - corrigir simetria  
+   - deixar o desenho totalmente plano e frontal
 
-5. Se partes estiverem ocultas:
-   - reconstruir de forma lógica
-   - sem inventar estilo novo
-
----
+7. Se houver lettering:
+   - alinhar letras  
+   - remover sombras do texto  
+   - manter apenas o contorno fiel
 
 SAÍDA VISUAL OBRIGATÓRIA:
 
-- Fundo totalmente branco (#FFFFFF)
-- Sem textura de papel
-- Sem mesa
-- Sem moldura
-- Sem objetos
-- Sem sombra externa
+- Fundo totalmente branco (#FFFFFF), liso e limpo  
+- Desenho centralizado  
+- Apenas:
+  • linhas pretas  
+  • preenchimentos sólidos reais  
 
-APENAS:
-DESENHO EM PRETO E BRANCO CHAPADO.
-
----
+NÃO PERMITIDO NA SAÍDA:
+- mesa  
+- folha A4 visível  
+- sombra externa  
+- moldura  
+- textura  
+- qualquer elemento além do próprio desenho
 
 RESULTADO FINAL ESPERADO:
 
-Um decalque técnico composto SOMENTE de:
+Um decalque profissional técnico, parecido com stencil:
 
-TRAÇOS PRETOS + PREENCHIMENTOS SÓLIDOS
+– Se não for linha ou preto sólido real → NÃO DEVE EXISTIR.
 
-Se existir QUALQUER tipo de sombra, o resultado está ERRADO.
-
-Gere SOMENTE a imagem final.  
-Não retorne nenhum texto.
+Gere SOMENTE a imagem final.
+Não retorne texto.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
