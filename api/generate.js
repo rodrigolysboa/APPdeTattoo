@@ -191,172 +191,55 @@ RESULTADO FINAL:
 - Nenhum elemento além das linhas do desenho.
 `,
       shadow: `
-OBJETIVO (MODO SHADOW – LINHAS + SOMBREAMENTO CONTROLADO):
+OBJETIVO (MODO SHADOW / LINHAS + SOMBRA ULTRA SUAVE):
 
-Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Você receberá uma foto de tatuagem aplicada na pele humana.
+Sua tarefa é RECONSTRUIR o desenho em um decalque profissional com:
 
-Sua tarefa é gerar um DESENHO PROFISSIONAL PARA DECALQUE que combine:
+- FOCO TOTAL NOS TRAÇOS (linhas nítidas e fiéis)
+- SOMBRA QUASE ZERO (apenas um tom muito claro, opcional e controlado)
 
-- FIDELIDADE VISUAL do modo CLEAN  
-- PRECISÃO DE TRAÇOS do modo LINE  
-- com SOMBREAMENTO SUAVE E ORGANIZADO
+A SOMBRA EXISTE SÓ PARA SUGERIR VOLUME, NÃO PARA "PINTAR" A ARTE.
 
-Este modo deve funcionar como um “meio termo técnico” entre:
-LINE (apenas linhas)  
-e  
-CLEAN (desenho completo com preenchimentos).
+PRINCÍPIO CENTRAL:
+1) Primeiro, extraia e redesenhe as LINHAS/CONTORNOS originais com máxima fidelidade.
+2) Depois, adicione SOMBRA MINIMALISTA e MUITO CLARA apenas onde for indispensável para leitura.
+3) Se a sombra começar a competir com as linhas, REMOVA A SOMBRA.
 
----
+REGRAS ABSOLUTAS (OBRIGATÓRIAS):
+1. Prioridade máxima: LINHAS. Elas devem ser mais fortes e mais definidas que qualquer sombra.
+2. Proibido textura de pele, poros, reflexos, manchas, brilho, granulação, “carne”, fundo recortado, ou qualquer ruído.
+3. Proibido sombreado pesado, degradê forte, preto sólido de sombra, hachura marcada ou pontilhismo evidente.
+4. A sombra (quando existir) deve ser:
+   - cinza MUITO CLARO (aprox. 5% a 12% de intensidade)
+   - suave, lisa, sem textura
+   - aplicada só em áreas internas do desenho (nunca ao redor como halo)
+5. NÃO criar contorno de braço/perna nem preservar o formato do membro.
+   Se parecer que foi “recortado do corpo”, está errado.
+6. Corrigir completamente deformações da curvatura do corpo:
+   - alinhar simetria
+   - corrigir perspectiva
+   - endireitar textos e letras
+7. Geometria perfeita:
+   - círculos e mandalas devem ficar perfeitamente redondos e centrados
+   - padrões repetitivos devem ser completados e alinhados
+8. Completar partes faltantes quando a foto estiver cortada/oculta:
+   - continue o padrão de forma lógica
+   - reconstrua o que falta sem inventar estilo novo
+   - mantenha o MESMO traço e estética do original
 
-REGRA PRINCIPAL:
+SAÍDA VISUAL (OBRIGATÓRIA):
+- Fundo totalmente branco (#FFFFFF), liso, uniforme (SEM textura de papel e SEM mesa).
+- Apenas o desenho no centro.
+- Linhas predominantemente pretas ou quase pretas (nítidas).
+- Sombra muito clara e discreta (se usada), parecendo “cinza lavado”.
+- Sem moldura, sem interface, sem objetos, sem sombra externa.
 
-O resultado deve ser um desenho técnico pronto para stencil,  
-mas que mantenha INDICAÇÕES DE SOMBRA de forma LEVE, LIMPA e PROFISSIONAL.
-
----
-
-REGRAS ABSOLUTAS:
-
-1. ELIMINAÇÃO TOTAL DA PELE
-
-É PROIBIDO:
-
-- Manter qualquer textura de pele
-- Manter formato de braço, perna ou corpo
-- Preservar curvatura anatômica
-- Deixar marcas de iluminação da foto
-- Mostrar bordas baseadas no membro
-
-O desenho final deve ser PLANO e independente do corpo.
-
----
-
-2. LINHAS COMO PRIORIDADE MÁXIMA
-
-Você deve:
-
-- Identificar e reforçar todos os contornos reais da tatuagem
-- Transformar o desenho em arte limpa e organizada
-- Corrigir distorções de perspectiva
-- Alinhar textos e letterings
-- Endireitar formas deformadas pela pele
-
-As linhas devem ser:
-
-- Pretas e bem definidas
-- Contínuas e profissionais
-- Coerentes com o estilo original
-
----
-
-3. SOMBRA PERMITIDA – MAS CONTROLADA
-
-Diferente do modo LINE, aqui É PERMITIDO sombra.
-
-Porém SOMENTE se obedecer estas regras:
-
-A sombra deve ser:
-
-- Suave e limpa  
-- Em tons de cinza organizados  
-- Sem textura de pele  
-- Sem granulação fotográfica  
-- Sem ruído visual  
-- Sem aspecto borrado  
-- Sem manchas irregulares  
-
-TIPOS DE SOMBRA ACEITOS:
-
-- Gradientes leves  
-- Indicação de volume  
-- Hachuras organizadas  
-- Sombras artísticas já existentes na tatuagem  
-
-TIPOS DE SOMBRA PROIBIDOS:
-
-- Sombras realistas da pele  
-- Brilho da foto  
-- Reflexos  
-- Granulação  
-- Marcas de iluminação  
-- Textura orgânica da fotografia  
-
----
-
-4. RECONSTRUÇÃO INTELIGENTE
-
-Você deve:
-
-- Completar partes faltantes do desenho  
-- Reconstruir áreas escondidas  
-- Continuar padrões interrompidos  
-- Finalizar elementos cortados pela foto  
-
-Sem inventar estilo novo, mas recriando logicamente o que não aparece.
-
----
-
-5. GEOMETRIA E SIMETRIA
-
-Sempre que houver:
-
-- Mandalas  
-- Círculos  
-- Geometria  
-- Padrões repetitivos  
-
-Você DEVE:
-
-- Corrigir deformações  
-- Centralizar formas  
-- Alinhar perfeitamente  
-- Desfazer a distorção do corpo  
-
----
-
-6. LETTERING
-
-Se houver textos:
-
-- Endireitar letras  
-- Corrigir inclinações  
-- Melhorar legibilidade  
-- Manter exatamente a mesma tipografia original  
-
----
-
-SAÍDA VISUAL OBRIGATÓRIA:
-
-- Fundo totalmente branco (#FFFFFF)
-- Desenho plano e frontal
-- Sem qualquer formato de membro
-- Sem textura de pele
-- Sem aparência de foto
-- Aparência de arte final profissional
-
----
-
-RESULTADO FINAL ESPERADO:
-
-Um decalque profissional que:
-
-- mantenha o visual original da tatuagem  
-- apresente linhas limpas e definidas  
-- traga sombras suaves e organizadas  
-- esteja pronto para impressão e transferência  
-- pareça um desenho artístico técnico, e NÃO uma foto editada
-
----
-
-REGRA DE OURO DO SHADOW MODE:
-
-LINHAS SÃO A BASE.  
-SOMBRAS SÃO APENAS UM COMPLEMENTO.
-
----
-
-Gere SOMENTE a imagem final.
-Não retorne nenhum texto.
+RESULTADO FINAL:
+- Decalque com linhas limpas e dominantes.
+- Sombra quase imperceptível, só para sugerir volume.
+- Aparência profissional, pronto para stencil e impressão.
+Gere SOMENTE a imagem final. Não retorne texto.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
