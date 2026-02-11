@@ -191,54 +191,45 @@ RESULTADO FINAL:
 - Nenhum elemento além das linhas do desenho.
 `,
       shadow: `
-OBJETIVO (MODO SHADOW / LINHAS + SOMBRA ULTRA SUAVE):
+OBJETIVO (MODO SHADOW / LINE + SOMBRA ULTRA SUAVE — COM FOLHA NA MESA):
 
-Você receberá uma foto de tatuagem aplicada na pele humana.
-Sua tarefa é RECONSTRUIR o desenho em um decalque profissional com:
+Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Sua tarefa é RECONSTRUIR a arte em uma FOLHA BRANCA (plano/frontal), posicionada sobre uma MESA DE MADEIRA ESCURA, com:
 
-- FOCO TOTAL NOS TRAÇOS (linhas nítidas e fiéis)
-- SOMBRA QUASE ZERO (apenas um tom muito claro, opcional e controlado)
-
-A SOMBRA EXISTE SÓ PARA SUGERIR VOLUME, NÃO PARA "PINTAR" A ARTE.
+1) LINHAS pretas nítidas e limpas como prioridade absoluta;
+2) SOMBRA MUITO LEVE (quase imperceptível) apenas para sugerir volume — sem parecer “desenho finalizado”.
 
 PRINCÍPIO CENTRAL:
-1) Primeiro, extraia e redesenhe as LINHAS/CONTORNOS originais com máxima fidelidade.
-2) Depois, adicione SOMBRA MINIMALISTA e MUITO CLARA apenas onde for indispensável para leitura.
-3) Se a sombra começar a competir com as linhas, REMOVA A SOMBRA.
+- 90–95% do resultado deve ser LINE ART (linhas).
+- A sombra existe só como apoio de leitura: CLARA, suave e mínima.
+- O cenário (folha + mesa) é apenas para CONTEXTO VISUAL e para diferenciar do clean.
 
 REGRAS ABSOLUTAS (OBRIGATÓRIAS):
-1. Prioridade máxima: LINHAS. Elas devem ser mais fortes e mais definidas que qualquer sombra.
-2. Proibido textura de pele, poros, reflexos, manchas, brilho, granulação, “carne”, fundo recortado, ou qualquer ruído.
-3. Proibido sombreado pesado, degradê forte, preto sólido de sombra, hachura marcada ou pontilhismo evidente.
-4. A sombra (quando existir) deve ser:
-   - cinza MUITO CLARO (aprox. 5% a 12% de intensidade)
-   - suave, lisa, sem textura
-   - aplicada só em áreas internas do desenho (nunca ao redor como halo)
-5. NÃO criar contorno de braço/perna nem preservar o formato do membro.
-   Se parecer que foi “recortado do corpo”, está errado.
-6. Corrigir completamente deformações da curvatura do corpo:
-   - alinhar simetria
-   - corrigir perspectiva
-   - endireitar textos e letras
-7. Geometria perfeita:
-   - círculos e mandalas devem ficar perfeitamente redondos e centrados
-   - padrões repetitivos devem ser completados e alinhados
-8. Completar partes faltantes quando a foto estiver cortada/oculta:
-   - continue o padrão de forma lógica
-   - reconstrua o que falta sem inventar estilo novo
-   - mantenha o MESMO traço e estética do original
+1) Linhas principais: preto puro (#000000), finas, contínuas e bem definidas.
+2) Sombra permitida APENAS em cinza muito claro (ex.: #DADADA a #EEEEEE).
+3) A sombra deve ser SUAVE e CONTROLADA:
+   - Sem textura, sem granulação, sem hachura, sem pontilhismo.
+   - Sem “renderização” e sem aparência de ilustração realista.
+4) Proibido preencher áreas grandes: a sombra deve ocupar no máximo 10–15% das áreas internas do desenho.
+5) Proibido qualquer elemento da foto original:
+   - nada de pele, poros, reflexos, manchas, luz do ambiente, fundo recortado.
+6) Corrigir completamente curvatura/perspectiva da pele: arte plana e alinhada.
+7) Fidelidade total ao desenho original:
+   - não inventar, não embelezar, não mudar estilo, não “reinterpretar”.
+8) Lettering (se houver):
+   - alinhar, corrigir deformações e manter o estilo original.
 
 SAÍDA VISUAL (OBRIGATÓRIA):
-- Fundo totalmente branco (#FFFFFF), liso, uniforme (SEM textura de papel e SEM mesa).
-- Apenas o desenho no centro.
-- Linhas predominantemente pretas ou quase pretas (nítidas).
-- Sombra muito clara e discreta (se usada), parecendo “cinza lavado”.
-- Sem moldura, sem interface, sem objetos, sem sombra externa.
+- O desenho deve estar CENTRALIZADO em uma folha branca lisa (#FFFFFF).
+- A folha deve estar SOBRE uma mesa de MADEIRA ESCURA (marrom escuro), vista de cima (top-down).
+- A mesa deve ser DISCRETA e sem chamar atenção: apenas textura leve de madeira, sem objetos, sem sombras fortes.
+- Sem moldura, sem interface, sem elementos extras além de: (mesa escura + folha branca + desenho).
 
 RESULTADO FINAL:
-- Decalque com linhas limpas e dominantes.
-- Sombra quase imperceptível, só para sugerir volume.
-- Aparência profissional, pronto para stencil e impressão.
+- Um decalque profissional com linhas dominantes e sombra quase apagada.
+- Se a sombra estiver chamando atenção, está ERRADO.
+- Se aparecer pele ou parecer recorte do corpo, está ERRADO.
+
 Gere SOMENTE a imagem final. Não retorne texto.
 `,
 clean: `
