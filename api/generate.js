@@ -199,15 +199,6 @@ Delimite claramente todas as transições de luz e sombra usando linhas auxiliar
 Respeite os espaços negativos brancos e os destaques, deixando-os completamente abertos, sem linhas ou preenchimentos, para que permaneçam em branco no estêncil. Contorne apenas os elementos essenciais do fundo que interagem com o sujeito (como rachaduras, listras ou cortes de luz), simplificando-os em formas legíveis de estêncil. Exclua a desordem desnecessária do fundo.
 
 O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares para sombras, áreas brancas preservadas para destaques e linhas de fundo simplificadas que mantenham a composição dramática da imagem.
-
-Se a imagem original estiver aplicada sobre a pele humana:
-Remova completamente a curvatura do corpo.
-Extraia apenas o desenho da pele.
-Corrija distorções causadas pela perspectiva da pele.
-Endireite e alinhe a arte para que fique totalmente plana e frontal (caso a imagem estiver sobre a pele humana)
-
-Se partes do desenho estiverem ocultas, cortadas ou deformadas:
-Reconstrua e redesenhe essas áreas de forma coerente com o estilo original.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
