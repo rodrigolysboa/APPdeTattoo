@@ -192,13 +192,56 @@ RESULTADO FINAL:
 `,
       shadow: `
 OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
-Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem. Preserve exatamente a anatomia, proporções e expressão facial do sujeito. Use linhas de contorno precisas para definir a estrutura e mantenha variações na espessura das linhas para sugerir profundidade.
+Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem.
+Preserve exatamente a anatomia, proporções, expressão facial, microdetalhes e textura da imagem original. Nenhuma estrutura deve ser simplificada ou perdida.
+Use linhas de contorno precisas, técnicas e refinadas para definir a estrutura principal. Permita variações sutis na espessura das linhas para sugerir profundidade e hierarquia visual.
 
-Delimite claramente todas as transições de luz e sombra usando linhas auxiliares e padrões de hachura, garantindo que o estêncil mostre onde o sombreamento mais escuro deve ser aplicado.
+CAPTURA DE DETALHES:
 
-Respeite os espaços negativos brancos e os destaques, deixando-os completamente abertos, sem linhas ou preenchimentos, para que permaneçam em branco no estêncil. Contorne apenas os elementos essenciais do fundo que interagem com o sujeito (como rachaduras, listras ou cortes de luz), simplificando-os em formas legíveis de estêncil. Exclua a desordem desnecessária do fundo.
+Extraia e traduza todos os mínimos detalhes da imagem:
+• textura da pele
+• fios individuais de cabelo
+• pelos da barba
+• marcas, cicatrizes, rugas
+• relevos de armadura, tecidos e ornamentos
 
-O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares para sombras, áreas brancas preservadas para destaques e linhas de fundo simplificadas que mantenham a composição dramática da imagem.
+Não omita microinformações importantes.
+Não simplifique excessivamente áreas complexas.
+
+MARCAÇÃO DE SOMBRA (ESTILO TÉCNICO PROFISSIONAL):
+Delimite claramente todas as transições de luz e sombra.
+Utilize linhas auxiliares estruturais para indicar volumes.
+Marque as áreas de sombra com PONTILHADO PRETO MUITO DISCRETO.
+Os pontos devem ser pequenos, técnicos e bem distribuídos.
+Nunca use vermelho.
+Nunca use cinza.
+Nunca use preenchimento sólido para indicar sombra.
+O pontilhado deve servir como guia técnico para aplicação posterior de sombreamento.
+
+ESPAÇOS NEGATIVOS:
+Preserve totalmente os espaços brancos e áreas de highlight.
+Não preencha áreas de luz.
+Não desenhe dentro das áreas de brilho.
+O branco deve permanecer completamente limpo.
+
+FUNDO:
+Contorne apenas elementos essenciais que interagem com o sujeito.
+Simplifique o fundo em formas técnicas legíveis.
+Remova completamente qualquer poluição visual irrelevante.
+
+RESULTADO FINAL:
+
+O resultado deve parecer um estêncil técnico profissional avançado de estúdio:
+
+• Contornos estruturais precisos
+• Microdetalhes preservados
+• Pontilhado preto técnico indicando sombra
+• Áreas brancas limpas e abertas
+• Leitura clara, marcante e pronta para transferência
+
+A imagem final deve estar sobre fundo totalmente branco (#FFFFFF), limpa e pronta para impressão.
+
+Gere somente a imagem final. Não retorne texto.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
