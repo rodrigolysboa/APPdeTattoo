@@ -193,100 +193,13 @@ RESULTADO FINAL:
       shadow: `
 OBJETIVO (MODO SHADOW – PRIORIDADE TOTAL AOS TRAÇOS):
 
-Você receberá a imagem de uma tatuagem aplicada na pele humana.
-Sua tarefa é transformar essa imagem em um DECALQUE TÉCNICO, priorizando totalmente as LINHAS e eliminando praticamente todas as sombras.
+Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem. Preserve exatamente a anatomia, proporções e expressão facial do sujeito. Use linhas de contorno precisas para definir a estrutura e mantenha variações na espessura das linhas para sugerir profundidade.
 
-REGRA PRINCIPAL DE DECISÃO:
+Delimite claramente todas as transições de luz e sombra usando linhas auxiliares e padrões de hachura, garantindo que o estêncil mostre onde o sombreamento mais escuro deve ser aplicado.
 
-ANTES DE QUALQUER COISA, ANALISE:
+Respeite os espaços negativos brancos e os destaques, deixando-os completamente abertos, sem linhas ou preenchimentos, para que permaneçam em branco no estêncil. Contorne apenas os elementos essenciais do fundo que interagem com o sujeito (como rachaduras, listras ou cortes de luz), simplificando-os em formas legíveis de estêncil. Exclua a desordem desnecessária do fundo.
 
-– Esta área é um PREENCHIMENTO REAL do desenho?
-OU  
-– É apenas SOMBRA ARTÍSTICA / degradê / volume?
-
-APLIQUE ESTA LÓGICA:
-
-1) SE FOR PREENCHIMENTO SÓLIDO INTENCIONAL  
-   (exemplo: área realmente toda preta no design original)
-   → MANTER o preenchimento como preto sólido.
-
-2) SE FOR SOMBRA, VOLUME, DEGRADÊ OU TEXTURA  
-   → REMOVER COMPLETAMENTE e deixar APENAS OS TRAÇOS.
-
-PRINCÍPIO CENTRAL:
-- O resultado deve ser 95% LINE ART.
-- Apenas pretos sólidos originais podem permanecer.
-- QUALQUER SOMBRA artística deve desaparecer.
-
-REGRAS ABSOLUTAS (OBRIGATÓRIAS):
-
-1. Prioridade máxima às LINHAS:
-   - linhas pretas, nítidas, contínuas e bem definidas.
-
-2. ELIMINAR TOTALMENTE:
-   - sombras suaves  
-   - degradês  
-   - volumes  
-   - texturas  
-   - hachuras  
-   - pontilhismos  
-   - cinzas  
-   - grafite  
-   - qualquer efeito de iluminação
-
-3. Manter SOMENTE:
-   - contornos reais do desenho  
-   - preenchimentos sólidos que já fazem parte da arte original
-
-4. Proibido:
-   - transformar sombra em preenchimento  
-   - escurecer áreas para “embelezar”  
-   - adicionar contraste artificial  
-   - criar áreas pretas que não existiam
-
-5. Ignorar completamente:
-   - pele  
-   - poros  
-   - reflexos  
-   - fundo  
-   - curvatura do corpo  
-   - qualquer elemento fotográfico
-
-6. Corrigir distorções:
-   - alinhar perspectiva  
-   - endireitar textos  
-   - corrigir simetria  
-   - deixar o desenho totalmente plano e frontal
-
-7. Se houver lettering:
-   - alinhar letras  
-   - remover sombras do texto  
-   - manter apenas o contorno fiel
-
-SAÍDA VISUAL OBRIGATÓRIA:
-
-- Fundo totalmente branco (#FFFFFF), liso e limpo  
-- Desenho centralizado  
-- Apenas:
-  • linhas pretas  
-  • preenchimentos sólidos reais  
-
-NÃO PERMITIDO NA SAÍDA:
-- mesa  
-- folha A4 visível  
-- sombra externa  
-- moldura  
-- textura  
-- qualquer elemento além do próprio desenho
-
-RESULTADO FINAL ESPERADO:
-
-Um decalque profissional técnico, parecido com stencil:
-
-– Se não for linha ou preto sólido real → NÃO DEVE EXISTIR.
-
-Gere SOMENTE a imagem final.
-Não retorne texto.
+O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares para sombras, áreas brancas preservadas para destaques e linhas de fundo simplificadas que mantenham a composição dramática da imagem.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
