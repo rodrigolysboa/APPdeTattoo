@@ -191,15 +191,160 @@ RESULTADO FINAL:
 - Nenhum elemento além das linhas do desenho.
 `,
       shadow: `
-OBJETIVO (MODO SHADOW – PRIORIDADE TOTAL AOS TRAÇOS):
+OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
 
-Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem. Preserve exatamente a anatomia, proporções e expressão facial do sujeito. Use linhas de contorno precisas para definir a estrutura e mantenha variações na espessura das linhas para sugerir profundidade.
+Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Sua tarefa é converter essa imagem em um DECALQUE TÉCNICO PROFISSIONAL (STENCIL).
 
-Delimite claramente todas as transições de luz e sombra usando linhas auxiliares e padrões de hachura, garantindo que o estêncil mostre onde o sombreamento mais escuro deve ser aplicado.
+O resultado deve parecer um estêncil limpo, estruturado e pronto para impressão.
 
-Respeite os espaços negativos brancos e os destaques, deixando-os completamente abertos, sem linhas ou preenchimentos, para que permaneçam em branco no estêncil. Contorne apenas os elementos essenciais do fundo que interagem com o sujeito (como rachaduras, listras ou cortes de luz), simplificando-os em formas legíveis de estêncil. Exclua a desordem desnecessária do fundo.
+REGRA PRINCIPAL DE DECISÃO (OBRIGATÓRIA)
 
-O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares para sombras, áreas brancas preservadas para destaques e linhas de fundo simplificadas que mantenham a composição dramática da imagem.
+ANTES DE QUALQUER COISA, ANALISE CADA ÁREA:
+
+– Esta área é um PREENCHIMENTO SÓLIDO INTENCIONAL do design original?
+OU
+– É apenas SOMBRA ARTÍSTICA, degradê, volume, textura ou renderização?
+
+APLIQUE ESTA LÓGICA:
+
+Se for preenchimento sólido real do desenho original
+→ MANTER como preto sólido (#000000).
+
+Se for sombra, volume, degradê, textura ou efeito de iluminação
+→ REMOVER COMPLETAMENTE.
+→ NÃO substituir por preto.
+→ NÃO converter em preenchimento.
+→ Manter apenas as linhas estruturais.
+
+PRINCÍPIO CENTRAL
+
+O resultado deve ser aproximadamente 95% LINE ART.
+
+Apenas pretos sólidos originais podem permanecer.
+
+Nenhuma sombra artística deve existir.
+
+DIRETRIZES TÉCNICAS DO ESTÊNCIL
+
+Preservar exatamente:
+
+anatomia
+
+proporções
+
+expressão
+
+estrutura original do desenho
+
+Usar linhas de contorno precisas para:
+
+definir estrutura
+
+manter legibilidade
+
+variar levemente a espessura das linhas quando necessário para sugerir profundidade estrutural (sem sombreamento)
+
+Respeitar totalmente:
+
+espaços negativos
+
+áreas de luz
+→ Devem permanecer completamente brancas, sem linhas ou preenchimentos.
+
+Delimitar apenas as transições essenciais de forma com linha auxiliar estrutural quando necessário —
+sem hachura, sem textura, sem renderização realista.
+
+ELIMINAR TOTALMENTE
+
+sombras suaves
+
+degradês
+
+volumes
+
+texturas
+
+hachuras
+
+pontilhismo
+
+cinzas
+
+grafite
+
+iluminação fotográfica
+
+ruído de fundo
+
+IGNORAR COMPLETAMENTE
+
+pele
+
+poros
+
+curvatura do corpo
+
+reflexos
+
+fundo
+
+qualquer elemento fotográfico
+
+CORREÇÕES OBRIGATÓRIAS
+
+corrigir perspectiva
+
+alinhar simetria
+
+endireitar textos
+
+remover deformações da pele
+
+deixar o desenho totalmente plano e frontal
+
+Se houver lettering:
+
+alinhar letras
+
+remover sombras
+
+manter apenas contorno fiel
+
+SAÍDA VISUAL OBRIGATÓRIA
+
+Fundo totalmente branco (#FFFFFF)
+
+Sem mesa
+
+Sem folha A4
+
+Sem moldura
+
+Sem sombra externa
+
+Sem textura
+
+Desenho centralizado
+
+Apenas:
+• linhas pretas nítidas
+• preenchimentos sólidos reais
+
+RESULTADO FINAL ESPERADO
+
+Um estêncil profissional técnico:
+
+✔ Contornos estruturais limpos
+✔ Preenchimentos sólidos reais preservados
+✔ Espaços negativos respeitados
+✔ Composição dramática mantida
+✔ Máxima legibilidade
+
+Se não for linha estrutural ou preto sólido original → NÃO DEVE EXISTIR.
+
+Gere SOMENTE a imagem final.
+Não retorne texto.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
