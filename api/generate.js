@@ -211,12 +211,12 @@ Não simplifique excessivamente áreas complexas.
 MARCAÇÃO DE SOMBRA (ESTILO TÉCNICO PROFISSIONAL):
 Delimite claramente todas as transições de luz e sombra.
 Utilize linhas auxiliares estruturais para indicar volumes.
-Marque as áreas de sombra com PONTILHADO PRETO MUITO DISCRETO.
-Os pontos devem ser pequenos, técnicos e bem distribuídos.
+Marque as separações de áreas de sombra com tracejado MUITO DISCRETO.
+Os tracejados devem ser pequenos, somente onde apareça separações de tons.
 Nunca use vermelho.
 Nunca use cinza.
 Nunca use preenchimento sólido para indicar sombra.
-O pontilhado deve servir como guia técnico para aplicação posterior de sombreamento.
+Os tracejados devem ser mínimos, somente como complemento.
 
 ESPAÇOS NEGATIVOS:
 Preserve totalmente os espaços brancos e áreas de highlight.
@@ -231,7 +231,7 @@ Remova completamente qualquer poluição visual irrelevante.
 
 RESULTADO FINAL:
 
-O resultado deve parecer um estêncil técnico profissional avançado de estúdio:
+O resultado deve parecer um estêncil técnico profissional avançado de estúdio de tatuagem:
 
 • Contornos estruturais precisos
 • Microdetalhes preservados
