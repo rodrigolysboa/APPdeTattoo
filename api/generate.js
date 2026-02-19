@@ -192,52 +192,22 @@ RESULTADO FINAL:
 `,
       shadow: `
 OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
-
 Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem. Preserve exatamente a anatomia, proporções e expressão facial do sujeito. Use linhas de contorno precisas para definir a estrutura e mantenha variações na espessura das linhas para sugerir profundidade.
 
-Delimite claramente todas as transições de luz e sombra usando linhas auxiliares e padrões de hachura sutis, garantindo que o estêncil mostre onde o sombreamento mais escuro deve ser aplicado. A sombra deve ser leve, técnica e controlada — apenas o suficiente para guiar a aplicação posterior, sem renderização realista.
+Delimite claramente todas as transições de luz e sombra usando linhas auxiliares e padrões de hachura, garantindo que o estêncil mostre onde o sombreamento mais escuro deve ser aplicado.
 
 Respeite os espaços negativos brancos e os destaques, deixando-os completamente abertos, sem linhas ou preenchimentos, para que permaneçam em branco no estêncil. Contorne apenas os elementos essenciais do fundo que interagem com o sujeito (como rachaduras, listras ou cortes de luz), simplificando-os em formas legíveis de estêncil. Exclua a desordem desnecessária do fundo.
 
+O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares para sombras, áreas brancas preservadas para destaques e linhas de fundo simplificadas que mantenham a composição dramática da imagem.
+
 Se a imagem original estiver aplicada sobre a pele humana:
-
 Remova completamente a curvatura do corpo.
-
-Não mantenha silhueta, sombra corporal ou textura de pele.
-
-Extraia apenas o desenho.
-
+Extraia apenas o desenho da pele.
 Corrija distorções causadas pela perspectiva da pele.
-
-Endireite e alinhe a arte para que fique totalmente plana e frontal.
+Endireite e alinhe a arte para que fique totalmente plana e frontal (caso a imagem estiver sobre a pele humana)
 
 Se partes do desenho estiverem ocultas, cortadas ou deformadas:
-
 Reconstrua e redesenhe essas áreas de forma coerente com o estilo original.
-
-Complete volumes e estruturas faltantes mantendo fidelidade ao design.
-
-Se a arte estiver torta ou desalinhada:
-
-Corrija a inclinação.
-
-Ajuste simetria quando necessário.
-
-Entregue a composição equilibrada e centralizada.
-
-O resultado final deve:
-
-Estar totalmente plano.
-
-Estar centralizado.
-
-Estar pronto para impressão.
-
-Ter fundo totalmente branco (#FFFFFF).
-
-Não conter textura, moldura, folha, mesa ou elementos externos.
-
-O resultado final deve parecer limpo, marcante e legível como um estêncil de tatuagem: contornos para estrutura, linhas auxiliares leves para sombras, áreas brancas preservadas para destaques e composição técnica pronta para uso profissional.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
