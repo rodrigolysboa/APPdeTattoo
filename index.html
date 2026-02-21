@@ -25,6 +25,118 @@
       border:1px solid rgba(255, 210, 0, .35);
       padding:12px; border-radius:12px; text-align:left;
     }
+
+    /* ===== Comparador antes/depois (ARRASTÁVEL) ===== */
+    .ot-compare-wrap{
+      width:100%;
+      max-width:420px;
+      margin: 18px auto 0;
+    }
+    .ot-compare{
+      position:relative;
+      width:100%;
+      border-radius:12px;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      user-select:none;
+      touch-action: pan-y; /* permite scroll vertical no mobile */
+    }
+    .ot-compare img{
+      width:100%;
+      height:auto;
+      display:block;
+      -webkit-user-drag:none;
+      user-select:none;
+      pointer-events:none; /* importante: dedo não “pega” a imagem */
+      background:#fff;
+    }
+    .ot-compare .ot-after{
+      position:absolute;
+      inset:0;
+      width:50%;
+      overflow:hidden;
+    }
+    .ot-compare .ot-label{
+      position:absolute;
+      top:10px;
+      z-index:8;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.06em;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      backdrop-filter: blur(6px);
+      pointer-events:none;
+    }
+    .ot-compare .ot-label.before{ left:10px; }
+    .ot-compare .ot-label.after{ right:10px; }
+
+    .ot-compare .ot-line{
+      position:absolute;
+      top:0;
+      left:50%;
+      transform: translateX(-50%);
+      width:4px;
+      height:100%;
+      background:#00ff66;
+      box-shadow: 0 0 14px rgba(0,255,102,.75);
+      border-radius:999px;
+      z-index:6;
+      pointer-events:none;
+    }
+    .ot-compare .ot-slider{
+      position:absolute;
+      top:0;
+      left:50%;
+      transform: translateX(-50%);
+      height:100%;
+      width:52px;
+      z-index:7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor: ew-resize;
+
+      /* trava o comportamento do dedo no puxador */
+      touch-action: none;
+    }
+    .ot-compare .ot-knob{
+      position:relative;
+      background:#00ff66;
+      color:#0b1a12;
+      font-weight:900;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      line-height:1;
+      box-shadow: 0 0 18px rgba(0,255,102,.75);
+    }
+
+    /* Botões de ação (opcional, estilo simples) */
+    .actions{
+      max-width:420px;
+      margin: 10px auto 0;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .actions button{
+      width:auto;
+      max-width:none;
+      padding:10px 14px;
+      border-radius:10px;
+      border:none;
+      background:#2b6cff;
+      color:#fff;
+      font-weight:800;
+    }
+    .actions button.secondary{ background:#444; }
+    .actions button.tertiary{ background:#25D366; color:#0b1a12; }
   </style>
 </head>
 <body>
@@ -146,6 +258,120 @@
       return `${m}m ${String(r).padStart(2,"0")}s`;
     }
 
+    // ===== Comparador antes/depois (helpers) =====
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function mountCompare(beforeSrc, afterSrc){
+      // limpa área e recria
+      resultado.innerHTML = "";
+
+      const wrap = document.createElement("div");
+      wrap.className = "ot-compare-wrap";
+
+      wrap.innerHTML = `
+        <div class="ot-compare" id="otCompare" aria-label="Comparador antes e depois">
+          <span class="ot-label before">ANTES</span>
+          <span class="ot-label after">DEPOIS</span>
+
+          <img id="beforeImg" alt="Antes">
+          <div class="ot-after" id="afterOverlay">
+            <img id="afterImg" alt="Depois">
+          </div>
+
+          <div class="ot-line" id="compareLine"></div>
+          <div class="ot-slider" id="compareSlider" aria-label="Arraste para comparar">
+            <div class="ot-knob">⇆</div>
+          </div>
+        </div>
+      `;
+
+      // Mantém uma img “original” escondida (compatibilidade / download)
+      const hiddenResult = document.createElement("img");
+      hiddenResult.id = "resultImg";
+      hiddenResult.style.display = "none";
+
+      // Botões (download e gerar de novo / reset)
+      const actions = document.createElement("div");
+      actions.className = "actions";
+      actions.innerHTML = `
+        <button id="downloadBtn">Baixar</button>
+        <button id="againBtn" class="secondary">Gerar novamente</button>
+        <button id="resetBtn" class="tertiary">Começar de novo</button>
+      `;
+
+      resultado.appendChild(wrap);
+      resultado.appendChild(hiddenResult);
+      resultado.appendChild(actions);
+
+      const otCompare = document.getElementById("otCompare");
+      const afterOverlay = document.getElementById("afterOverlay");
+      const compareSlider = document.getElementById("compareSlider");
+      const compareLine = document.getElementById("compareLine");
+      const beforeImg = document.getElementById("beforeImg");
+      const afterImg = document.getElementById("afterImg");
+      const resultImg = document.getElementById("resultImg");
+
+      beforeImg.src = beforeSrc;
+      afterImg.src = afterSrc;
+      resultImg.src = afterSrc; // base para download
+
+      function setComparePositionByPercent(pct){
+        const p = clamp(pct, 0, 100);
+        afterOverlay.style.width = p + "%";
+        compareSlider.style.left = p + "%";
+        compareLine.style.left = p + "%";
+      }
+
+      // Arrasto horizontal perfeito: só pelo puxador
+      (function initCompareDrag(){
+        let dragging = false;
+
+        const getPercentFromClientX = (clientX) => {
+          const rect = otCompare.getBoundingClientRect();
+          const x = clamp(clientX - rect.left, 0, rect.width);
+          return (x / rect.width) * 100;
+        };
+
+        compareSlider.addEventListener("pointerdown", (e) => {
+          dragging = true;
+          compareSlider.setPointerCapture(e.pointerId);
+          e.preventDefault();
+          setComparePositionByPercent(getPercentFromClientX(e.clientX));
+        });
+
+        compareSlider.addEventListener("pointermove", (e) => {
+          if (!dragging) return;
+          e.preventDefault();
+          setComparePositionByPercent(getPercentFromClientX(e.clientX));
+        });
+
+        compareSlider.addEventListener("pointerup", (e) => {
+          dragging = false;
+          try { compareSlider.releasePointerCapture(e.pointerId); } catch {}
+        });
+
+        compareSlider.addEventListener("pointercancel", (e) => {
+          dragging = false;
+          try { compareSlider.releasePointerCapture(e.pointerId); } catch {}
+        });
+
+        setComparePositionByPercent(50);
+      })();
+
+      // Ações
+      document.getElementById("downloadBtn").onclick = () => {
+        const a = document.createElement("a");
+        a.href = resultImg.src;
+        a.download = "decalque.png";
+        a.click();
+      };
+      document.getElementById("againBtn").onclick = () => {
+        // só limpa o resultado pra gerar outra sem recarregar a página
+        resultado.innerHTML = "";
+      };
+      document.getElementById("resetBtn").onclick = () => location.reload();
+    }
+
     async function gerar() {
       clearError();
       hideCooldown();
@@ -172,6 +398,9 @@
       loader.style.display = "block";
 
       try {
+        // preview do upload (ANTES) – usa blob local
+        const beforeSrc = URL.createObjectURL(file);
+
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
         const deviceId = getDeviceId();
@@ -210,9 +439,10 @@
           throw new Error(data?.error || `Erro ao gerar (status ${res.status})`);
         }
 
-        const img = document.createElement("img");
-        img.src = "data:image/png;base64," + data.imageBase64;
-        resultado.appendChild(img);
+        const afterSrc = "data:image/png;base64," + data.imageBase64;
+
+        // monta o comparador
+        mountCompare(beforeSrc, afterSrc);
 
       } catch (err) {
         const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
