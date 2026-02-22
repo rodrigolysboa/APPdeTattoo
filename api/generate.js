@@ -276,7 +276,7 @@ REGRAS OBRIGATÓRIAS:
 - Preservar curvatura da pele
 - Copiar silhueta da foto
 - Manter sombras externas da pele
-- Gerar arte com proporção estreita e vertical baseada no membro
+- Gerar arte com proporção estreita vertical baseada no membro
 
 O RESULTADO DEVE SER:
 Um desenho plano, independente e equilibrado horizontalmente, como se nunca tivesse sido tatuagem.
@@ -287,11 +287,11 @@ Se a tatuagem for comprida, vertical ou ocupar braço + antebraço + mão:
 
 VOCÊ DEVE:
 - Quebrar completamente a silhueta alongada do membro
-- Reorganizar a composição para formato plano retangular
+- Reorganizar a composição de forma plana
 - Expandir lateralmente a arte
 - Criar equilíbrio visual nas laterais
 - Completar áreas inexistentes ao redor
-- Redistribuir elementos para que o desenho funcione em papel plano
+- Redistribuir elementos se necessário para funcionar em plano reto
 
 É PROIBIDO manter formato fino e comprido baseado no braço.
 
@@ -365,6 +365,20 @@ A saída deve ser:
 - Sem sombras externas
 - Sem cortes laterais
 - Sem silhueta anatômica
+
+IMPORTANTE SOBRE A4:
+
+A folha A4 é apenas um fundo branco de referência.
+NÃO é necessário ocupar bem o espaço da folha.
+NÃO é necessário ajustar tamanho para preencher a página.
+NÃO é necessário enquadrar artisticamente na A4.
+
+Se o desenho for longo, ele pode ficar pequeno na folha.
+Isso é permitido.
+
+Prioridade absoluta:
+Recriar corretamente a arte plana e expandida.
+O ajuste de tamanho e divisão para impressão será feito posteriormente pelo tatuador.
 
 REGRA DE OURO:
 
