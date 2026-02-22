@@ -284,40 +284,33 @@ Um desenho plano, independente e equilibrado horizontalmente, como se nunca tive
 2. CASO ESPECIAL – TATUAGENS LONGAS (ANTE-BRAÇO, FECHAMENTO, MÃO)
 
 Se a tatuagem for comprida, vertical ou ocupar braço + antebraço + mão:
-
-VOCÊ DEVE:
 - Quebrar completamente a silhueta alongada do membro
-- Reorganizar a composição de forma plana
-- Expandir lateralmente a arte
-- Criar equilíbrio visual nas laterais
-- Completar áreas inexistentes ao redor
-- Redistribuir elementos se necessário para funcionar em plano reto
+- Expandir lateralmente a arte (sem criar elementos novos)
+- Manter a composição plana e reta
+- Não inclinar o desenho para “caber bonito” na folha
 
-É PROIBIDO manter formato fino e comprido baseado no braço.
+3. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS (MODO CONSERVADOR – SEM INVENTAR)
 
-A ARTE FINAL DEVE PARECER UM PROJETO ORIGINAL DE COMPOSIÇÃO, NÃO UMA SILHUETA ESTICADA.
-
-3. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS
-
-Se a tatuagem estiver:
-- Cortada nas bordas
-- Fora da foto parcialmente
-- Limitada pelo membro
-- Incompleta nas extremidades
+Se a tatuagem estiver cortada, fora da foto, limitada pelo membro ou incompleta:
 
 VOCÊ DEVE:
-- Expandir o desenho para os lados
-- Recriar partes faltantes
-- Completar padrões
-- Inventar coerentemente o que não aparece
-- Garantir continuidade natural da composição
+- Reconstruir SOMENTE o que for claramente dedutível pelo próprio desenho
+- Continuar linhas, sombreados e padrões que já existem e estão evidentes
+- Completar trechos interrompidos mantendo o mesmo estilo, traço e lógica visual
 
-A imagem final deve parecer um desenho completo e inteiro.
+VOCÊ NUNCA DEVE:
+- Criar ornamentos, arabescos, asas, molduras, “pontas” ou enfeites que não existam no original
+- Adicionar novos elementos para “decorar” ou “preencher espaço”
+- Alterar o design com partes novas “simétricas” só para ficar bonito
+
+REGRA DE SEGURANÇA:
+Se não for possível ter certeza do que falta, NÃO invente.
+Nesses casos, finalize de forma neutra e limpa (sem adicionar símbolos novos).
 
 4. RECONSTRUÇÃO TOTAL DA ARTE
 
 Você deve:
-- Redesenhar todas as partes
+- Redesenhar todas as partes com traços limpos
 - Reconstruir áreas borradas
 - Recriar partes escondidas
 - Corrigir deformações da pele
@@ -328,23 +321,22 @@ FOCO: REDESENHAR, não copiar.
 5. GEOMETRIA E SIMETRIA
 
 Sempre que houver:
-- Círculos
-- Mandalas
-- Padrões repetitivos
-- Elementos simétricos
+- Círculos, mandalas, padrões repetitivos, elementos simétricos
 
 Você deve:
-- Alinhar perfeitamente
-- Centralizar
-- Corrigir distorções
+- Alinhar, centralizar e corrigir distorções
 - Desfazer deformação causada pela curvatura do corpo
+
+ATENÇÃO:
+Simetria só quando já existir no desenho original.
+Nunca crie simetria nova para “enfeitar”.
 
 6. FIDELIDADE AO ESTILO
 
 É obrigatório:
 - Manter mesmo estilo artístico
 - Manter proporções reais entre elementos
-- Preservar traço e estética original
+- Preservar traço, estética, sombras e detalhes do original
 
 Você NÃO deve:
 - Mudar estilo
@@ -367,18 +359,10 @@ A saída deve ser:
 - Sem silhueta anatômica
 
 IMPORTANTE SOBRE A4:
-
 A folha A4 é apenas um fundo branco de referência.
-NÃO é necessário ocupar bem o espaço da folha.
-NÃO é necessário ajustar tamanho para preencher a página.
-NÃO é necessário enquadrar artisticamente na A4.
-
+Não precisa ocupar bem o espaço.
 Se o desenho for longo, ele pode ficar pequeno na folha.
-Isso é permitido.
-
-Prioridade absoluta:
-Recriar corretamente a arte plana e expandida.
-O ajuste de tamanho e divisão para impressão será feito posteriormente pelo tatuador.
+O ajuste de tamanho/divisão para impressão será feito depois pelo tatuador.
 
 REGRA DE OURO:
 
