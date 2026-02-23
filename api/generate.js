@@ -469,8 +469,7 @@ if (!response.ok) {
 
 if (!response.ok) {
   return res.status(response.status).json({
-    error: json?.error?.message || "Gemini API error",
-    raw: json,
+    error: "Estamos em atualização, isso vai levar apenas uns minutos.",
   });
 }
 
@@ -487,7 +486,7 @@ if (!inline) {
 
 if (!inline) {
   return res.status(500).json({
-    error: "No image returned after retry",
+    error: "Estamos em atualização, isso vai levar apenas uns minutos.",
   });
 }
 
