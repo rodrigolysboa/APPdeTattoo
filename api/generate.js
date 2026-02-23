@@ -353,11 +353,11 @@ Você deve:
 - Manter tipo de traço e estética
 - Preservar sombras e detalhes originais
 
-Você NÃO deve:
+É totalmente PROIBIDO:
 - Mudar estilo
 - Embelezar excessivamente
 - Simplificar demais
-- Transformar em outro tipo de arte parecida
+- Transformar em outro tipo de arte
 - Adicionar símbolos ou elementos novos
 - Espelhar partes do desenho
 - Criar ornamentos inexistentes
