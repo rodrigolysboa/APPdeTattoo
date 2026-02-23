@@ -357,6 +357,8 @@ Você NÃO deve:
 - Embelezar excessivamente
 - Simplificar demais
 - Transformar em outro tipo de arte
+- Adicionar símbolos ou elementos novos
+- Espelhar partes do desenho
 
 Corrija APENAS o que foi deformado pela pele e pela fotografia.
 
