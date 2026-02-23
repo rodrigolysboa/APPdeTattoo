@@ -434,9 +434,11 @@ Não retorne nenhum texto.
       ],
     };
 
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 60000);
+async function callGeminiOnce() {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 60000);
 
+  try {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -448,19 +450,46 @@ Não retorne nenhum texto.
 
     const json = await response.json().catch(() => ({}));
 
-    if (!response.ok) {
-      return res.status(response.status).json({
-        error: json?.error?.message || "Gemini API error",
-        raw: json,
-      });
-    }
+    return { response, json };
+  } catch (err) {
+    clearTimeout(timer);
+    throw err;
+  }
+}
 
-    const parts = json?.candidates?.[0]?.content?.parts || [];
-    const inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+// 🔁 PRIMEIRA TENTATIVA
+let { response, json } = await callGeminiOnce();
 
-    if (!inline) {
-      return res.status(500).json({ error: "No image returned", raw: json });
-    }
+if (!response.ok) {
+  // tenta mais uma vez se erro 5xx
+  if (response.status >= 500) {
+    ({ response, json } = await callGeminiOnce());
+  }
+}
+
+if (!response.ok) {
+  return res.status(response.status).json({
+    error: json?.error?.message || "Gemini API error",
+    raw: json,
+  });
+}
+
+let parts = json?.candidates?.[0]?.content?.parts || [];
+let inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+
+// 🔁 Se não veio imagem, tenta mais uma vez
+if (!inline) {
+  ({ response, json } = await callGeminiOnce());
+
+  parts = json?.candidates?.[0]?.content?.parts || [];
+  inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+}
+
+if (!inline) {
+  return res.status(500).json({
+    error: "No image returned after retry",
+  });
+}
 
     return res.status(200).json({
       imageBase64: inline,
