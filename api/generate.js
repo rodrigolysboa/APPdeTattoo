@@ -347,6 +347,7 @@ Você deve:
 5. FIDELIDADE AO ESTILO ORIGINAL:
 
 É obrigatório:
+- Manter ao máximo a fidelidade a tatuagem original
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
 - Manter tipo de traço e estética
@@ -356,7 +357,7 @@ Você NÃO deve:
 - Mudar estilo
 - Embelezar excessivamente
 - Simplificar demais
-- Transformar em outro tipo de arte
+- Transformar em outro tipo de arte parecida
 - Adicionar símbolos ou elementos novos
 - Espelhar partes do desenho
 - Criar ornamentos inexistentes
