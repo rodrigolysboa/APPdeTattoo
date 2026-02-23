@@ -252,6 +252,19 @@
       return { base64: dataUrl.split(",")[1], mimeType: "image/jpeg" };
     }
 
+    async function fileToImageEl(file){
+      return await new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => resolve({ img, url });
+        img.onerror = () => {
+          try { URL.revokeObjectURL(url); } catch {}
+          reject(new Error("Falha ao carregar imagem do arquivo."));
+        };
+        img.src = url;
+      });
+    }
+    
     function secondsToMinSec(s){
       const m = Math.floor(s/60);
       const r = s % 60;
@@ -559,7 +572,8 @@
       let beforeSrc = "";
       try {
         // preview do upload (ANTES) – usa blob local
-        beforeSrc = URL.createObjectURL(file);
+        const { img: beforeImgEl, url: beforeObjectUrl } = await fileToImageEl(file);
+beforeSrc = beforeObjectUrl; // usado no comparador
 
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
@@ -598,7 +612,7 @@
 
         // ✅ Se a API falhar / não vier imagem => FALLBACK LOCAL (sem erro pro cliente)
         if (!res.ok || !data.imageBase64) {
-          const afterSrc = await generateLocalStencilDataURL(beforeSrc, style);
+          const afterSrc = await generateLocalStencilDataURL(beforeImgEl, style);
           mountCompare(beforeSrc, afterSrc);
           return;
         }
@@ -611,7 +625,7 @@
         try {
           if (beforeSrc) {
             const style = document.getElementById("style").value;
-            const afterSrc = await generateLocalStencilDataURL(beforeSrc, style);
+            const afterSrc = await generateLocalStencilDataURL(beforeImgEl, style);
             mountCompare(beforeSrc, afterSrc);
             return;
           }
@@ -623,10 +637,6 @@
         loader.style.display = "none";
         btn.disabled = false;
         btn.textContent = oldText;
-
-        // limpa blob
-        if (beforeSrc) {
-          try { URL.revokeObjectURL(beforeSrc); } catch {}
         }
       }
     }
