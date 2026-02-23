@@ -315,6 +315,7 @@ mesmo que a foto original não mostre tudo.
 3. RECONSTRUÇÃO TOTAL DA ARTE:
 
 Você deve:
+- Manter a fidelidade do desenho da tatuagem
 - Redesenhar TODAS as partes da tatuagem
 - Reconstruir áreas borradas
 - Recriar partes escondidas por ângulo ou pele
@@ -323,10 +324,6 @@ Você deve:
 
 FOCO PRINCIPAL:
 REDESENHAR – não apenas copiar.
-
-IMPORTANTE:
-Reconstrução aqui significa COMPLETAR A CONTINUIDADE do que já existe.
-Não é “inventar decoração”.
 
 ---
 
@@ -382,17 +379,6 @@ A saída deve ser exatamente:
 
 ---
 
-7. CASO ESPECIAL – TATUAGENS LONGAS E COMPRIDAS
-
-Se a tatuagem for comprida, vertical ou ocupar braço + antebraço + mão:
-- Quebrar completamente a silhueta alongada do membro
-- Expandir lateralmente a arte para virar uma composição plana
-- Identificar significado e redesenhar partes faltantes
-- Manter o desenho reto (sem inclinar)
-- Aceitar que o desenho pode ficar pequeno na folha A4 mesmo sendo comprido
-
----
-
 REGRA DE OURO DEFINITIVA:
 
 A IMAGEM FINAL DEVE PARECER:
@@ -412,6 +398,7 @@ Se em qualquer parte do resultado for possível perceber:
 ENTÃO O RESULTADO ESTÁ INCORRETO.
 
 ---
+
 Gere SOMENTE a imagem final do desenho recriado.
 Não retorne nenhum texto.
 `,
