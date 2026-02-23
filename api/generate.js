@@ -315,7 +315,6 @@ mesmo que a foto original não mostre tudo.
 3. RECONSTRUÇÃO TOTAL DA ARTE:
 
 Você deve:
-- Manter a fidelidade do desenho da tatuagem
 - Redesenhar TODAS as partes da tatuagem
 - Reconstruir áreas borradas
 - Recriar partes escondidas por ângulo ou pele
@@ -348,12 +347,14 @@ Você deve:
 5. FIDELIDADE AO ESTILO ORIGINAL:
 
 É obrigatório:
+- Manter a fidelidade ao máximo do desenho da tatuagem e direcionamento dos elementos
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
 - Manter tipo de traço e estética
 - Preservar sombras e detalhes originais
 
 Você NÃO deve:
+- Inverter o lado do desenho
 - Mudar estilo
 - Embelezar excessivamente
 - Simplificar demais
