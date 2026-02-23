@@ -353,7 +353,7 @@ Você deve:
 - Manter tipo de traço e estética
 - Preservar sombras e detalhes originais
 
-É totalmente PROIBIDO:
+É extremamente PROIBIDO:
 - Mudar estilo
 - Embelezar excessivamente
 - Simplificar demais
