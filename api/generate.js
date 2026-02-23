@@ -359,6 +359,8 @@ Você NÃO deve:
 - Transformar em outro tipo de arte
 - Adicionar símbolos ou elementos novos
 - Espelhar partes do desenho
+- Criar ornamentos inexistentes
+- Inserir molduras, arabescos ou enfeites não presentes
 
 Corrija APENAS o que foi deformado pela pele e pela fotografia.
 
