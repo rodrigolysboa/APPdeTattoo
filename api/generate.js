@@ -344,14 +344,34 @@ Você deve:
 
 ---
 
-5. FIDELIDADE AO ESTILO ORIGINAL:
+5. FIDELIDADE AO ESTILO ORIGINAL E ORIENTAÇÃO ESPACIAL:
 
 É obrigatório:
-- Manter a fidelidade ao máximo do desenho da tatuagem e direcionamento dos elementos
+- Manter a fidelidade máxima ao desenho original
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
 - Manter tipo de traço e estética
 - Preservar sombras e detalhes originais
+- Preservar a ORIENTAÇÃO ORIGINAL de todos os elementos
+
+ORIENTAÇÃO É REGRA ABSOLUTA:
+
+Você NÃO pode:
+- Espelhar horizontalmente o desenho
+- Espelhar verticalmente o desenho
+- Inverter esquerda e direita
+- Girar elementos
+- Alterar direção de rostos, animais, objetos ou lettering
+- Mudar posicionamento relativo entre os elementos
+
+Se um animal olha para a direita no original,
+ele deve continuar olhando para a direita.
+
+Se um elemento está inclinado para um lado,
+ele deve permanecer exatamente com a mesma inclinação.
+
+A composição deve manter a mesma direção espacial do original,
+apenas corrigindo deformações causadas pela curvatura da pele.
 
 Você NÃO deve:
 - Inverter o lado do desenho
