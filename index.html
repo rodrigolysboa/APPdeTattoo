@@ -372,6 +372,165 @@
       document.getElementById("resetBtn").onclick = () => location.reload();
     }
 
+    // ===== FALLBACK LOCAL (quando a API falhar / IA bloquear) =====
+    async function generateLocalStencilDataURL(sourceImgElOrSrc, mode = "line") {
+      const img = await new Promise((resolve, reject) => {
+        if (typeof sourceImgElOrSrc !== "string") {
+          if (sourceImgElOrSrc.complete && sourceImgElOrSrc.naturalWidth) return resolve(sourceImgElOrSrc);
+          sourceImgElOrSrc.onload = () => resolve(sourceImgElOrSrc);
+          sourceImgElOrSrc.onerror = () => reject(new Error("Falha ao carregar imagem (fallback)."));
+          return;
+        }
+        const i = new Image();
+        i.onload = () => resolve(i);
+        i.onerror = () => reject(new Error("Falha ao carregar imagem (fallback)."));
+        i.src = sourceImgElOrSrc;
+      });
+
+      const cfg = {
+        line:   { blur: 1, edgeBoost: 1.35, thresh: 90,  dilate: 0 },
+        shadow: { blur: 2, edgeBoost: 1.10, thresh: 70,  dilate: 0 },
+        clean:  { blur: 2, edgeBoost: 1.25, thresh: 85,  dilate: 1 },
+      }[mode] || { blur: 1, edgeBoost: 1.35, thresh: 90, dilate: 0 };
+
+      // mantém padrão MAX_W
+      let w = img.naturalWidth || img.width;
+      let h = img.naturalHeight || img.height;
+      if (!w || !h) throw new Error("Imagem inválida (fallback).");
+
+      const MAX_W_LOCAL = 1200;
+      if (w > MAX_W_LOCAL) {
+        const r = MAX_W_LOCAL / w;
+        w = Math.round(w * r);
+        h = Math.round(h * r);
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const imageData = ctx.getImageData(0, 0, w, h);
+      const data = imageData.data;
+
+      // grayscale
+      const gray = new Uint8ClampedArray(w * h);
+      for (let i = 0, p = 0; i < data.length; i += 4, p++) {
+        gray[p] = (data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114) | 0;
+      }
+
+      const blurred = (cfg.blur > 0) ? boxBlurGray(gray, w, h, cfg.blur) : gray;
+      const edges = sobelEdges(blurred, w, h, cfg.edgeBoost);
+
+      // threshold -> preto no branco
+      const out = ctx.createImageData(w, h);
+      const outD = out.data;
+      for (let p = 0, i = 0; p < edges.length; p++, i += 4) {
+        const v = edges[p] > cfg.thresh ? 0 : 255;
+        outD[i] = v; outD[i + 1] = v; outD[i + 2] = v; outD[i + 3] = 255;
+      }
+
+      if (cfg.dilate > 0) {
+        dilateBinary(out, w, h, cfg.dilate);
+      }
+
+      ctx.putImageData(out, 0, 0);
+      return canvas.toDataURL("image/png");
+    }
+
+    function boxBlurGray(src, w, h, radius) {
+      const dst = new Uint8ClampedArray(src.length);
+      const r = Math.max(1, radius);
+
+      // horizontal
+      const tmp = new Uint8ClampedArray(src.length);
+      for (let y = 0; y < h; y++) {
+        let sum = 0;
+        const row = y * w;
+        for (let x = -r; x <= r; x++) {
+          const ix = Math.min(w - 1, Math.max(0, x));
+          sum += src[row + ix];
+        }
+        for (let x = 0; x < w; x++) {
+          tmp[row + x] = (sum / (2 * r + 1)) | 0;
+          const xRemove = Math.max(0, x - r);
+          const xAdd = Math.min(w - 1, x + r + 1);
+          sum += src[row + xAdd] - src[row + xRemove];
+        }
+      }
+
+      // vertical
+      for (let x = 0; x < w; x++) {
+        let sum = 0;
+        for (let y = -r; y <= r; y++) {
+          const iy = Math.min(h - 1, Math.max(0, y));
+          sum += tmp[iy * w + x];
+        }
+        for (let y = 0; y < h; y++) {
+          dst[y * w + x] = (sum / (2 * r + 1)) | 0;
+          const yRemove = Math.max(0, y - r);
+          const yAdd = Math.min(h - 1, y + r + 1);
+          sum += tmp[yAdd * w + x] - tmp[yRemove * w + x];
+        }
+      }
+      return dst;
+    }
+
+    function sobelEdges(gray, w, h, boost = 1.0) {
+      const out = new Uint8ClampedArray(gray.length);
+      for (let y = 1; y < h - 1; y++) {
+        for (let x = 1; x < w - 1; x++) {
+          const i = y * w + x;
+
+          const gx =
+            -gray[i - w - 1] + gray[i - w + 1] +
+            -2 * gray[i - 1]   + 2 * gray[i + 1] +
+            -gray[i + w - 1] + gray[i + w + 1];
+
+          const gy =
+            -gray[i - w - 1] - 2 * gray[i - w] - gray[i - w + 1] +
+             gray[i + w - 1] + 2 * gray[i + w] + gray[i + w + 1];
+
+          const mag = Math.min(255, (Math.hypot(gx, gy) * boost) | 0);
+          out[i] = mag;
+        }
+      }
+      return out;
+    }
+
+    function dilateBinary(imageData, w, h, radius = 1) {
+      const d = imageData.data;
+      const copy = new Uint8ClampedArray(d);
+      const r = Math.max(1, radius);
+
+      const isBlack = (idx) => copy[idx] === 0;
+
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const i = (y * w + x) * 4;
+          if (copy[i] === 0) continue;
+
+          let makeBlack = false;
+          for (let dy = -r; dy <= r && !makeBlack; dy++) {
+            const yy = y + dy;
+            if (yy < 0 || yy >= h) continue;
+            for (let dx = -r; dx <= r; dx++) {
+              const xx = x + dx;
+              if (xx < 0 || xx >= w) continue;
+              const j = (yy * w + xx) * 4;
+              if (isBlack(j)) { makeBlack = true; break; }
+            }
+          }
+
+          if (makeBlack) {
+            d[i] = d[i + 1] = d[i + 2] = 0;
+            d[i + 3] = 255;
+          }
+        }
+      }
+    }
+
     async function gerar() {
       clearError();
       hideCooldown();
@@ -397,9 +556,10 @@
       btn.textContent = "Gerando...";
       loader.style.display = "block";
 
+      let beforeSrc = "";
       try {
         // preview do upload (ANTES) – usa blob local
-        const beforeSrc = URL.createObjectURL(file);
+        beforeSrc = URL.createObjectURL(file);
 
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
@@ -425,6 +585,7 @@
         clearTimeout(t);
         const data = await res.json().catch(() => ({}));
 
+        // Cooldown (mantido como está)
         if (res.status === 429 && data?.code === "COOLDOWN") {
           const retry = Number(data.retry_after_seconds || 0);
           showCooldown(
@@ -435,22 +596,38 @@
           return;
         }
 
+        // ✅ Se a API falhar / não vier imagem => FALLBACK LOCAL (sem erro pro cliente)
         if (!res.ok || !data.imageBase64) {
-          throw new Error(data?.error || `Erro ao gerar (status ${res.status})`);
+          const afterSrc = await generateLocalStencilDataURL(beforeSrc, style);
+          mountCompare(beforeSrc, afterSrc);
+          return;
         }
 
         const afterSrc = "data:image/png;base64," + data.imageBase64;
-
-        // monta o comparador
         mountCompare(beforeSrc, afterSrc);
 
       } catch (err) {
+        // ✅ Se a requisição der erro (timeout/500/etc), tenta fallback local antes de mostrar erro
+        try {
+          if (beforeSrc) {
+            const style = document.getElementById("style").value;
+            const afterSrc = await generateLocalStencilDataURL(beforeSrc, style);
+            mountCompare(beforeSrc, afterSrc);
+            return;
+          }
+        } catch {}
+
         const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
         showError("Erro: " + (isTimeout ? "Tempo excedido. Tente novamente." : (err?.message || String(err))));
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
         btn.textContent = oldText;
+
+        // limpa blob
+        if (beforeSrc) {
+          try { URL.revokeObjectURL(beforeSrc); } catch {}
+        }
       }
     }
 
