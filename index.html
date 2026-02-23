@@ -401,10 +401,10 @@
       });
 
       const cfg = {
-        line:   { blur: 1, edgeBoost: 1.35, thresh: 90,  dilate: 0 },
-        shadow: { blur: 2, edgeBoost: 1.10, thresh: 70,  dilate: 0 },
-        clean:  { blur: 2, edgeBoost: 1.25, thresh: 85,  dilate: 1 },
-      }[mode] || { blur: 1, edgeBoost: 1.35, thresh: 90, dilate: 0 };
+  line:   { blur: 1, edgeBoost: 1.55, thrMul: 1.10, dilate: 0 },
+  shadow: { blur: 2, edgeBoost: 1.25, thrMul: 1.05, dilate: 0 },
+  clean:  { blur: 2, edgeBoost: 1.45, thrMul: 1.15, dilate: 0 },
+}[mode] || { blur: 1, edgeBoost: 1.55, thrMul: 1.10, dilate: 0 };
 
       // mantém padrão MAX_W
       let w = img.naturalWidth || img.width;
@@ -435,12 +435,14 @@
 
       const blurred = (cfg.blur > 0) ? boxBlurGray(gray, w, h, cfg.blur) : gray;
       const edges = sobelEdges(blurred, w, h, cfg.edgeBoost);
+      const autoThr = otsuThreshold(edges);
+const thr = Math.max(20, Math.min(220, Math.round(autoThr * (cfg.thrMul || 1.0))));
 
       // threshold -> preto no branco
       const out = ctx.createImageData(w, h);
       const outD = out.data;
       for (let p = 0, i = 0; p < edges.length; p++, i += 4) {
-        const v = edges[p] > cfg.thresh ? 0 : 255;
+        const v = edges[p] > thr ? 0 : 255;
         outD[i] = v; outD[i + 1] = v; outD[i + 2] = v; outD[i + 3] = 255;
       }
 
@@ -453,64 +455,96 @@
     }
 
     function boxBlurGray(src, w, h, radius) {
-      const dst = new Uint8ClampedArray(src.length);
-      const r = Math.max(1, radius);
+  const dst = new Uint8ClampedArray(src.length);
+  const r = Math.max(1, radius);
 
-      // horizontal
-      const tmp = new Uint8ClampedArray(src.length);
-      for (let y = 0; y < h; y++) {
-        let sum = 0;
-        const row = y * w;
-        for (let x = -r; x <= r; x++) {
-          const ix = Math.min(w - 1, Math.max(0, x));
-          sum += src[row + ix];
-        }
-        for (let x = 0; x < w; x++) {
-          tmp[row + x] = (sum / (2 * r + 1)) | 0;
-          const xRemove = Math.max(0, x - r);
-          const xAdd = Math.min(w - 1, x + r + 1);
-          sum += src[row + xAdd] - src[row + xRemove];
-        }
-      }
-
-      // vertical
-      for (let x = 0; x < w; x++) {
-        let sum = 0;
-        for (let y = -r; y <= r; y++) {
-          const iy = Math.min(h - 1, Math.max(0, y));
-          sum += tmp[iy * w + x];
-        }
-        for (let y = 0; y < h; y++) {
-          dst[y * w + x] = (sum / (2 * r + 1)) | 0;
-          const yRemove = Math.max(0, y - r);
-          const yAdd = Math.min(h - 1, y + r + 1);
-          sum += tmp[yAdd * w + x] - tmp[yRemove * w + x];
-        }
-      }
-      return dst;
+  // horizontal
+  const tmp = new Uint8ClampedArray(src.length);
+  for (let y = 0; y < h; y++) {
+    let sum = 0;
+    const row = y * w;
+    for (let x = -r; x <= r; x++) {
+      const ix = Math.min(w - 1, Math.max(0, x));
+      sum += src[row + ix];
     }
-
-    function sobelEdges(gray, w, h, boost = 1.0) {
-      const out = new Uint8ClampedArray(gray.length);
-      for (let y = 1; y < h - 1; y++) {
-        for (let x = 1; x < w - 1; x++) {
-          const i = y * w + x;
-
-          const gx =
-            -gray[i - w - 1] + gray[i - w + 1] +
-            -2 * gray[i - 1]   + 2 * gray[i + 1] +
-            -gray[i + w - 1] + gray[i + w + 1];
-
-          const gy =
-            -gray[i - w - 1] - 2 * gray[i - w] - gray[i - w + 1] +
-             gray[i + w - 1] + 2 * gray[i + w] + gray[i + w + 1];
-
-          const mag = Math.min(255, (Math.hypot(gx, gy) * boost) | 0);
-          out[i] = mag;
-        }
-      }
-      return out;
+    for (let x = 0; x < w; x++) {
+      tmp[row + x] = (sum / (2 * r + 1)) | 0;
+      const xRemove = Math.max(0, x - r);
+      const xAdd = Math.min(w - 1, x + r + 1);
+      sum += src[row + xAdd] - src[row + xRemove];
     }
+  }
+
+  // vertical
+  for (let x = 0; x < w; x++) {
+    let sum = 0;
+    for (let y = -r; y <= r; y++) {
+      const iy = Math.min(h - 1, Math.max(0, y));
+      sum += tmp[iy * w + x];
+    }
+    for (let y = 0; y < h; y++) {
+      dst[y * w + x] = (sum / (2 * r + 1)) | 0;
+      const yRemove = Math.max(0, y - r);
+      const yAdd = Math.min(h - 1, y + r + 1);
+      sum += tmp[yAdd * w + x] - tmp[yRemove * w + x];
+    }
+  }
+  return dst;
+}
+
+// ✅ COLE EXATAMENTE AQUI (ENTRE boxBlurGray e sobelEdges)
+function otsuThreshold(u8) {
+  const hist = new Array(256).fill(0);
+  for (let i = 0; i < u8.length; i++) hist[u8[i]]++;
+
+  const total = u8.length;
+  let sum = 0;
+  for (let t = 0; t < 256; t++) sum += t * hist[t];
+
+  let sumB = 0, wB = 0, wF = 0;
+  let varMax = 0, threshold = 128;
+
+  for (let t = 0; t < 256; t++) {
+    wB += hist[t];
+    if (wB === 0) continue;
+
+    wF = total - wB;
+    if (wF === 0) break;
+
+    sumB += t * hist[t];
+    const mB = sumB / wB;
+    const mF = (sum - sumB) / wF;
+
+    const varBetween = wB * wF * (mB - mF) * (mB - mF);
+    if (varBetween > varMax) {
+      varMax = varBetween;
+      threshold = t;
+    }
+  }
+  return threshold;
+}
+
+function sobelEdges(gray, w, h, boost = 1.0) {
+  const out = new Uint8ClampedArray(gray.length);
+  for (let y = 1; y < h - 1; y++) {
+    for (let x = 1; x < w - 1; x++) {
+      const i = y * w + x;
+
+      const gx =
+        -gray[i - w - 1] + gray[i - w + 1] +
+        -2 * gray[i - 1]   + 2 * gray[i + 1] +
+        -gray[i + w - 1] + gray[i + w + 1];
+
+      const gy =
+        -gray[i - w - 1] - 2 * gray[i - w] - gray[i - w + 1] +
+         gray[i + w - 1] + 2 * gray[i + w] + gray[i + w + 1];
+
+      const mag = Math.min(255, (Math.hypot(gx, gy) * boost) | 0);
+      out[i] = mag;
+    }
+  }
+  return out;
+}
 
     function dilateBinary(imageData, w, h, radius = 1) {
       const d = imageData.data;
