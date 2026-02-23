@@ -359,7 +359,7 @@ Você deve:
 - Simplificar demais
 - Transformar em outro tipo de arte
 - Adicionar símbolos ou elementos novos
-- Espelhar partes do desenho
+- Espelhar o lado tatuagem ou partes da tatuagem
 - Criar ornamentos inexistentes
 - Inserir molduras, arabescos ou enfeites não presentes
 
