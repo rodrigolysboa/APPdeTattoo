@@ -417,7 +417,7 @@ ENTÃO O RESULTADO ESTÁ INCORRETO.
 ---
 
 Gere SOMENTE a imagem final do desenho recriado.
-Não retorne nenhum texto.
+Não retorne nenhum texto, logo ou marca d'agua.
 `,
     };
 
