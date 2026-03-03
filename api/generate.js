@@ -259,8 +259,8 @@ OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
 Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
 
-SUA TAREFA REAL E OBRIGATÓRIA É:
-IDENTIFICAR COM PRECISÃO A TATUAGEM E RECRIAR O MESMO DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
+SUA TAREFA REAL É:
+RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
 
 ---
 
@@ -271,12 +271,11 @@ A imagem de referência pode estar em um braço, perna, costas ou qualquer parte
 
 ISSO NÃO IMPORTA.
 
-É EXTREMAMENTE PROIBIDO:
+VOCÊ NUNCA DEVE:
 - Manter formato do membro
 - Respeitar limites da pele
-- Criar um desenho com contorno de braço, perna ou qualquer parte do corpo
+- Criar um desenho com contorno de braço ou perna
 - Deixar laterais “cortadas” porque a foto acabou ali
-- Criar um desenho diferente da referência enviada
 
 REGRA ABSOLUTA:
 
@@ -290,16 +289,16 @@ REGRAS ABSOLUTAS E OBRIGATÓRIAS:
 1. IGNORAR TOTALMENTE A PELE E A ANATOMIA:
 
 É PROIBIDO:
-- Manter contorno do braço, perna ou partes do corpo
+- Manter contorno do braço, perna ou corpo
 - Preservar curvatura da pele
 - Deixar laterais com formato anatômico
 - Copiar a “silhueta” da foto original
 - Manter sombras externas da pele
 - Criar bordas baseadas no corpo
 
-O RESULTADO FINAL SEMPRE DEVE SER:
+O RESULTADO FINAL DEVE SER:
 
-Um desenho plano, redesenhado e independente, como se NUNCA tivesse sido tatuagem.
+Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
 
 ---
 
@@ -311,11 +310,10 @@ Se a tatuagem original estiver:
 - Limitada pelo formato do membro
 - Incompleta nas extremidades
 
-ENTÃO OBRIGATÓRIAMENTE VOCÊ DEVE:
-- IDENTIFICAR COM PRECISÃO A TATUAGEM E RECRIAR O MESMO DESENHO COMPLETO sem inventar novos elementos além da tatuagem.
-- EXPANDIR o desenho para os lados (Mantendo 100% a lógica do desenho)
-- RECRIAR partes faltantes seguindo a lógica
-- COMPLETAR elementos interrompidos sem inventar elementos que não fazem parte do desenho
+ENTÃO VOCÊ DEVE:
+- EXPANDIR o desenho para os lados
+- RECRIAR partes faltantes
+- COMPLETAR elementos interrompidos
 - CONTINUAR padrões visuais de forma lógica
 - INVENTAR coerentemente o que não aparece
 
@@ -324,16 +322,16 @@ mesmo que a foto original não mostre tudo.
 
 ---
 
-3. RECONSTRUÇÃO TOTAL OBRIGATÓRIA DA ARTE:
+3. RECONSTRUÇÃO TOTAL DA ARTE:
 
-Você sempre deve:
+Você deve:
 - Redesenhar TODAS as partes da tatuagem
 - Reconstruir áreas borradas
 - Recriar partes escondidas por ângulo ou pele
-- Completar detalhes incompletos mantendo a lógica
+- Completar detalhes incompletos
 - Substituir imperfeições da foto por traços limpos
 
-FOCO PRINCIPAL OBRIGATÓRIO:
+FOCO PRINCIPAL:
 REDESENHAR – não apenas copiar.
 
 ---
@@ -358,7 +356,7 @@ Você deve:
 
 5. FIDELIDADE AO ESTILO ORIGINAL:
 
-É EXTREMAMENTE obrigatório:
+É obrigatório:
 - Manter ao máximo a fidelidade a tatuagem original
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
@@ -367,11 +365,10 @@ Você deve:
 
 É extremamente PROIBIDO:
 - Mudar estilo
-- Inventar elementos desnecessários
 - Embelezar excessivamente
 - Simplificar demais
 - Transformar em outro tipo de arte
-- Adicionar símbolos ou elementos novos que não tenham haver com a lógica do desenho
+- Adicionar símbolos ou elementos novos
 - Espelhar o lado tatuagem ou partes da tatuagem
 - Criar ornamentos inexistentes
 - Inserir molduras, arabescos ou enfeites não presentes
@@ -399,7 +396,7 @@ A saída deve ser exatamente:
 REGRA DE OURO DEFINITIVA:
 
 A IMAGEM FINAL DEVE PARECER:
-“Um desenho profissional igual a referência, criado do zero em papel”
+“Um desenho profissional criado do zero em papel”
 
 e NUNCA:
 “uma tatuagem recortada do corpo”.
@@ -417,7 +414,7 @@ ENTÃO O RESULTADO ESTÁ INCORRETO.
 ---
 
 Gere SOMENTE a imagem final do desenho recriado.
-Não retorne nenhum texto, logo ou marca d'agua.
+Não retorne nenhum texto.
 `,
     };
 
