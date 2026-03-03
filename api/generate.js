@@ -259,7 +259,7 @@ OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
 Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
 
-SUA TAREFA REAL É:
+SUA TAREFA REAL E OBRIGATÓRIA É:
 RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
 
 ---
@@ -271,10 +271,10 @@ A imagem de referência pode estar em um braço, perna, costas ou qualquer parte
 
 ISSO NÃO IMPORTA.
 
-VOCÊ NUNCA DEVE:
+É EXTREMAMENTE PROIBIDO:
 - Manter formato do membro
 - Respeitar limites da pele
-- Criar um desenho com contorno de braço ou perna
+- Criar um desenho com contorno de braço, perna ou qualquer parte do corpo
 - Deixar laterais “cortadas” porque a foto acabou ali
 
 REGRA ABSOLUTA:
@@ -289,16 +289,16 @@ REGRAS ABSOLUTAS E OBRIGATÓRIAS:
 1. IGNORAR TOTALMENTE A PELE E A ANATOMIA:
 
 É PROIBIDO:
-- Manter contorno do braço, perna ou corpo
+- Manter contorno do braço, perna ou partes do corpo
 - Preservar curvatura da pele
 - Deixar laterais com formato anatômico
 - Copiar a “silhueta” da foto original
 - Manter sombras externas da pele
 - Criar bordas baseadas no corpo
 
-O RESULTADO FINAL DEVE SER:
+O RESULTADO FINAL SEMPRE DEVE SER:
 
-Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
+Um desenho plano, redesenhado e independente, como se NUNCA tivesse sido tatuagem.
 
 ---
 
@@ -310,10 +310,10 @@ Se a tatuagem original estiver:
 - Limitada pelo formato do membro
 - Incompleta nas extremidades
 
-ENTÃO VOCÊ DEVE:
-- EXPANDIR o desenho para os lados
-- RECRIAR partes faltantes
-- COMPLETAR elementos interrompidos
+ENTÃO OBRIGATÓRIAMENTE VOCÊ DEVE:
+- EXPANDIR o desenho para os lados (Mantendo 100% a lógica do desenho)
+- RECRIAR partes faltantes seguindo a lógica
+- COMPLETAR elementos interrompidos sem inventar elementos que não fazem parte do desenho
 - CONTINUAR padrões visuais de forma lógica
 - INVENTAR coerentemente o que não aparece
 
@@ -322,16 +322,16 @@ mesmo que a foto original não mostre tudo.
 
 ---
 
-3. RECONSTRUÇÃO TOTAL DA ARTE:
+3. RECONSTRUÇÃO TOTAL OBRIGATÓRIA DA ARTE:
 
-Você deve:
+Você sempre deve:
 - Redesenhar TODAS as partes da tatuagem
 - Reconstruir áreas borradas
 - Recriar partes escondidas por ângulo ou pele
-- Completar detalhes incompletos
+- Completar detalhes incompletos mantendo a lógica
 - Substituir imperfeições da foto por traços limpos
 
-FOCO PRINCIPAL:
+FOCO PRINCIPAL OBRIGATÓRIO:
 REDESENHAR – não apenas copiar.
 
 ---
@@ -356,7 +356,7 @@ Você deve:
 
 5. FIDELIDADE AO ESTILO ORIGINAL:
 
-É obrigatório:
+É EXTREMAMENTE obrigatório:
 - Manter ao máximo a fidelidade a tatuagem original
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
@@ -368,7 +368,7 @@ Você deve:
 - Embelezar excessivamente
 - Simplificar demais
 - Transformar em outro tipo de arte
-- Adicionar símbolos ou elementos novos
+- Adicionar símbolos ou elementos novos que não tenham haver com a lógica do desenho
 - Espelhar o lado tatuagem ou partes da tatuagem
 - Criar ornamentos inexistentes
 - Inserir molduras, arabescos ou enfeites não presentes
