@@ -260,7 +260,7 @@ Você receberá a imagem de uma tatuagem aplicada na pele humana.
 Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
 
 SUA TAREFA REAL E OBRIGATÓRIA É:
-RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
+IDENTIFICAR COM PRECISÃO A TATUAGEM E RECRIAR O MESMO DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
 
 ---
 
@@ -276,6 +276,7 @@ ISSO NÃO IMPORTA.
 - Respeitar limites da pele
 - Criar um desenho com contorno de braço, perna ou qualquer parte do corpo
 - Deixar laterais “cortadas” porque a foto acabou ali
+- Criar um desenho diferente da referência enviada
 
 REGRA ABSOLUTA:
 
@@ -311,6 +312,7 @@ Se a tatuagem original estiver:
 - Incompleta nas extremidades
 
 ENTÃO OBRIGATÓRIAMENTE VOCÊ DEVE:
+- IDENTIFICAR COM PRECISÃO A TATUAGEM E RECRIAR O MESMO DESENHO COMPLETO sem inventar novos elementos além da tatuagem.
 - EXPANDIR o desenho para os lados (Mantendo 100% a lógica do desenho)
 - RECRIAR partes faltantes seguindo a lógica
 - COMPLETAR elementos interrompidos sem inventar elementos que não fazem parte do desenho
@@ -365,6 +367,7 @@ Você deve:
 
 É extremamente PROIBIDO:
 - Mudar estilo
+- Inventar elementos desnecessários
 - Embelezar excessivamente
 - Simplificar demais
 - Transformar em outro tipo de arte
@@ -396,7 +399,7 @@ A saída deve ser exatamente:
 REGRA DE OURO DEFINITIVA:
 
 A IMAGEM FINAL DEVE PARECER:
-“Um desenho profissional criado do zero em papel”
+“Um desenho profissional igual a referência, criado do zero em papel”
 
 e NUNCA:
 “uma tatuagem recortada do corpo”.
