@@ -30,7 +30,7 @@ if (!origin || !ALLOWED_ORIGINS.has(origin)) {
       ok: true,
       message: "API online. Use POST em /api/generate",
       mode: "FULL",
-      limit: { perBatch: 20, cooldownMinutes: 15 },
+      limit: { perBatch: 20, cooldownMinutes: 10 },
     });
   }
 
@@ -59,10 +59,10 @@ if (!origin || !ALLOWED_ORIGINS.has(origin)) {
     const scopeId = userId || deviceId;
 
     // =========================
-    // BLOQUEIO TEMPORÁRIO (20 -> 15min -> libera 20)
+    // BLOQUEIO TEMPORÁRIO (20 -> 10min -> libera 20)
     // =========================
     const LIMIT_PER_BATCH = 20;
-    const COOLDOWN_SECONDS = 40 * 15;
+const COOLDOWN_SECONDS = 10 * 60; // 10 minutos (600s)
 
     const quotaKey = `quota:${scopeType}:${scopeId}`; // JSON { used, block_until }
     const quotaTtlSeconds = 60 * 60 * 24 * 30; // 30 dias
@@ -122,10 +122,16 @@ if (!origin || !ALLOWED_ORIGINS.has(origin)) {
     }
 
     // Conta tentativa ANTES de chamar o Gemini (pra evitar spam/custo)
-    quota.used = (quota.used ?? 0) + 1;
+quota.used = (quota.used ?? 0) + 1;
 
-    await kv.set(quotaKey, JSON.stringify(quota));
-    await kv.expire(quotaKey, quotaTtlSeconds);
+// ✅ Se acabou de completar o lote (20), já arma o cooldown para bloquear a PRÓXIMA tentativa
+if (quota.used >= LIMIT_PER_BATCH) {
+  quota.used = LIMIT_PER_BATCH;
+  quota.block_until = now + COOLDOWN_SECONDS * 1000;
+}
+
+await kv.set(quotaKey, JSON.stringify(quota));
+await kv.expire(quotaKey, quotaTtlSeconds);
 
     // (Opcional) registrar devices usados por conta (auditoria)
     if (userId) {
