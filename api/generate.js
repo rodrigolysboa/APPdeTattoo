@@ -351,6 +351,9 @@ Sempre que houver:
 - Geometria
 - Elementos simétricos
 
+Círculos devem ser perfeitamente circulares,
+sem deformação causada pela pele ou perspectiva da foto.
+
 Você deve:
 → alinhar perfeitamente
 → centralizar
@@ -358,6 +361,39 @@ Você deve:
 → reconstruir partes deformadas
 → desfazer completamente a deformação causada pela curvatura do corpo
 
+4.1 CORREÇÃO ABSOLUTA DE LINHAS RETAS:
+
+Sempre que houver linhas que representem:
+- linhas estruturais
+- linhas guias
+- molduras
+- linhas técnicas
+- divisões geométricas
+- elementos arquitetônicos
+- linhas de layout
+- cruzamentos geométricos
+
+Essas linhas DEVEM ser reconstruídas como linhas perfeitamente retas.
+Linhas que funcionam como base de texto devem ser perfeitamente retas,
+como se desenhadas com régua técnica.
+
+REGRAS OBRIGATÓRIAS:
+
+- Linhas horizontais devem ser 100% horizontais.
+- Linhas verticais devem ser 100% verticais.
+- Linhas que deveriam ser paralelas devem permanecer paralelas.
+- Linhas que deveriam formar ângulos de 90° devem formar ângulos de 90°.
+
+NUNCA copie a deformação causada pela pele.
+
+Se a foto estiver levemente inclinada, distorcida ou curva,
+VOCÊ DEVE:
+
+- corrigir a inclinação
+- redesenhar a linha completamente reta
+- reconstruir a geometria correta
+
+O resultado deve parecer desenhado com régua técnica em papel plano.
 ---
 
 5. FIDELIDADE AO ESTILO ORIGINAL:
@@ -381,6 +417,44 @@ Você deve:
 
 Corrija APENAS o que foi deformado pela pele e pela fotografia.
 
+5.1 RECONSTRUÇÃO TIPOGRÁFICA OBRIGATÓRIA:
+
+Sempre que houver TEXTO na tatuagem (palavras, frases, números ou letras isoladas):
+Texto deve parecer tipografia editorial limpa,
+não lettering desenhado à mão.
+
+VOCÊ NÃO DEVE copiar o texto pixel por pixel da imagem.
+
+VOCÊ DEVE:
+
+- ler o texto presente na tatuagem
+- reescrever o texto novamente
+- reconstruir a tipografia de forma limpa e correta
+
+REGRAS PARA TEXTO:
+
+• Letras devem ser redesenhadas como tipografia limpa.
+• Alinhamento deve ser corrigido.
+• Espaçamento entre letras deve ser uniforme.
+• Linhas de texto devem ficar perfeitamente retas.
+• Texto não pode acompanhar curvatura da pele.
+
+Se o estilo parecer semelhante a fontes como:
+
+- serifadas (ex: Times / New Roman)
+- monoespaçadas (ex: Courier)
+- caixa alta geométrica
+- tipografia editorial
+
+VOCÊ DEVE recriar o texto com aparência tipográfica limpa,
+como se tivesse sido digitado novamente em papel.
+
+É proibido:
+
+- copiar distorções da pele
+- manter letras inclinadas por causa da foto
+- manter espaçamento irregular
+- manter deformações da tatuagem na pele
 ---
 
 6. RESULTADO FINAL EXIGIDO:
