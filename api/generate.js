@@ -4,15 +4,17 @@ const ALLOWED_ORIGINS = new Set([
   "https://orientetattoo.app",
   "https://www.orientetattoo.app",
 ]);
+
 export default async function handler(req, res) {
   // =========================
   // CORS + NO CACHE
   // =========================
   const origin = req.headers.origin;
 
-if (origin && ALLOWED_ORIGINS.has(origin)) {
-  res.setHeader("Access-Control-Allow-Origin", origin);
-}
+  if (origin && ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS, GET");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -21,16 +23,22 @@ if (origin && ALLOWED_ORIGINS.has(origin)) {
   res.setHeader("Cache-Control", "no-store");
 
   if (req.method === "OPTIONS") return res.status(200).end();
-if (!origin || !ALLOWED_ORIGINS.has(origin)) {
-  return res.status(403).json({ error: "Origin not allowed" });
-}
+
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return res.status(403).json({ error: "Origin not allowed" });
+  }
+
   // Healthcheck
   if (req.method === "GET") {
     return res.status(200).json({
       ok: true,
       message: "API online. Use POST em /api/generate",
       mode: "FULL",
-      limit: { perBatch: 20, cooldownMinutes: 10 },
+      limit: {
+        perBatch: 20,
+        cooldownMinutes: 10,
+        planTotal: 150,
+      },
     });
   }
 
@@ -59,10 +67,31 @@ if (!origin || !ALLOWED_ORIGINS.has(origin)) {
     const scopeId = userId || deviceId;
 
     // =========================
+    // NOVO: LIMITE TOTAL DO PLANO
+    // 150 imagens totais no plano
+    // =========================
+    const PLAN_TOTAL_LIMIT = 150;
+    const planUsedKey = `planused:${scopeType}:${scopeId}`;
+    const planTtlSeconds = 60 * 60 * 24 * 365; // 1 ano
+
+    const currentPlanUsedRaw = await kv.get(planUsedKey);
+    const currentPlanUsed = Number(currentPlanUsedRaw || 0);
+
+    if (currentPlanUsed >= PLAN_TOTAL_LIMIT) {
+      return res.status(429).json({
+        error: "Plan limit reached. Upgrade required.",
+        code: "PLAN_LIMIT",
+        scope: scopeType,
+        used: currentPlanUsed,
+        limit: PLAN_TOTAL_LIMIT,
+      });
+    }
+
+    // =========================
     // BLOQUEIO TEMPORÁRIO (20 -> 10min -> libera 20)
     // =========================
     const LIMIT_PER_BATCH = 20;
-const COOLDOWN_SECONDS = 10 * 60; // 10 minutos (600s)
+    const COOLDOWN_SECONDS = 10 * 60; // 10 minutos
 
     const quotaKey = `quota:${scopeType}:${scopeId}`; // JSON { used, block_until }
     const quotaTtlSeconds = 60 * 60 * 24 * 30; // 30 dias
@@ -83,27 +112,29 @@ const COOLDOWN_SECONDS = 10 * 60; // 10 minutos (600s)
 
     const now = Date.now();
 
-    // Se ainda está bloqueado, retorna 429 com retry_after
+    // Se ainda está em cooldown
     if (quota.block_until && Number(quota.block_until) > now) {
-      const retryAfterSeconds = Math.ceil((Number(quota.block_until) - now) / 1000);
+      const retryAfterSeconds = Math.ceil(
+        (Number(quota.block_until) - now) / 1000
+      );
 
       return res.status(429).json({
         error: "Temporarily blocked. Cooldown active.",
         code: "COOLDOWN",
-        scope: scopeType, // "user" ou "device"
+        scope: scopeType,
         used: quota.used ?? LIMIT_PER_BATCH,
         limit: LIMIT_PER_BATCH,
         retry_after_seconds: retryAfterSeconds,
       });
     }
 
-    // Se o cooldown já passou, reseta lote
+    // Se o cooldown passou, reseta o lote
     if (quota.block_until && Number(quota.block_until) <= now) {
       quota.used = 0;
       quota.block_until = 0;
     }
 
-    // Se já atingiu o limite do lote, ativa cooldown e bloqueia
+    // Se já atingiu o limite do lote, ativa cooldown
     if ((quota.used ?? 0) >= LIMIT_PER_BATCH) {
       quota.used = LIMIT_PER_BATCH;
       quota.block_until = now + COOLDOWN_SECONDS * 1000;
@@ -121,17 +152,17 @@ const COOLDOWN_SECONDS = 10 * 60; // 10 minutos (600s)
       });
     }
 
-    // Conta tentativa ANTES de chamar o Gemini (pra evitar spam/custo)
-quota.used = (quota.used ?? 0) + 1;
+    // Conta tentativa ANTES de chamar o Gemini (antiabuso/custo)
+    quota.used = (quota.used ?? 0) + 1;
 
-// ✅ Se acabou de completar o lote (20), já arma o cooldown para bloquear a PRÓXIMA tentativa
-if (quota.used >= LIMIT_PER_BATCH) {
-  quota.used = LIMIT_PER_BATCH;
-  quota.block_until = now + COOLDOWN_SECONDS * 1000;
-}
+    // Se acabou de completar o lote, já arma cooldown para a próxima tentativa
+    if (quota.used >= LIMIT_PER_BATCH) {
+      quota.used = LIMIT_PER_BATCH;
+      quota.block_until = now + COOLDOWN_SECONDS * 1000;
+    }
 
-await kv.set(quotaKey, JSON.stringify(quota));
-await kv.expire(quotaKey, quotaTtlSeconds);
+    await kv.set(quotaKey, JSON.stringify(quota));
+    await kv.expire(quotaKey, quotaTtlSeconds);
 
     // (Opcional) registrar devices usados por conta (auditoria)
     if (userId) {
@@ -518,67 +549,73 @@ Não retorne nenhum texto.
                 userNote +
                 "\n\nIMPORTANTE: Gere SOMENTE a imagem final. Não retorne texto.",
             },
-            { inlineData: { mimeType: safeMime, data: imageBase64 } },
+            {
+              inlineData: { mimeType: safeMime, data: imageBase64 },
+            },
           ],
         },
       ],
     };
 
-async function callGeminiOnce() {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 60000);
+    async function callGeminiOnce() {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 60000);
 
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
 
-    clearTimeout(timer);
+        clearTimeout(timer);
 
-    const json = await response.json().catch(() => ({}));
+        const json = await response.json().catch(() => ({}));
 
-    return { response, json };
-  } catch (err) {
-    clearTimeout(timer);
-    throw err;
-  }
-}
+        return { response, json };
+      } catch (err) {
+        clearTimeout(timer);
+        throw err;
+      }
+    }
 
-// 🔁 PRIMEIRA TENTATIVA
-let { response, json } = await callGeminiOnce();
+    // PRIMEIRA TENTATIVA
+    let { response, json } = await callGeminiOnce();
 
-if (!response.ok) {
-  // tenta mais uma vez se erro 5xx
-  if (response.status >= 500) {
-    ({ response, json } = await callGeminiOnce());
-  }
-}
+    // Se erro 5xx, tenta mais uma vez
+    if (!response.ok && response.status >= 500) {
+      ({ response, json } = await callGeminiOnce());
+    }
 
-if (!response.ok) {
-  return res.status(response.status).json({
-    error: "Estamos em atualização, isso vai levar apenas uns minutos.",
-  });
-}
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: "Estamos em atualização, isso vai levar apenas uns minutos.",
+      });
+    }
 
-let parts = json?.candidates?.[0]?.content?.parts || [];
-let inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+    let parts = json?.candidates?.[0]?.content?.parts || [];
+    let inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
 
-// 🔁 Se não veio imagem, tenta mais uma vez
-if (!inline) {
-  ({ response, json } = await callGeminiOnce());
+    // Se não veio imagem, tenta mais uma vez
+    if (!inline) {
+      ({ response, json } = await callGeminiOnce());
 
-  parts = json?.candidates?.[0]?.content?.parts || [];
-  inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
-}
+      parts = json?.candidates?.[0]?.content?.parts || [];
+      inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+    }
 
-if (!inline) {
-  return res.status(500).json({
-    error: "Estamos em atualização, isso vai levar apenas uns minutos.",
-  });
-}
+    if (!inline) {
+      return res.status(500).json({
+        error: "Estamos em atualização, isso vai levar apenas uns minutos.",
+      });
+    }
+
+    // =========================
+    // CONTA NO PLANO SOMENTE APÓS SUCESSO REAL
+    // =========================
+    const updatedPlanUsed = await kv.incr(planUsedKey);
+    await kv.expire(planUsedKey, planTtlSeconds);
 
     return res.status(200).json({
       imageBase64: inline,
@@ -588,12 +625,18 @@ if (!inline) {
         cooldown_seconds: COOLDOWN_SECONDS,
         scope: scopeType,
       },
+      plan: {
+        used: updatedPlanUsed,
+        limit: PLAN_TOTAL_LIMIT,
+        scope: scopeType,
+      },
     });
   } catch (err) {
     const msg =
       err?.name === "AbortError"
         ? "Timeout generating image"
         : err?.message || "Unexpected error";
+
     return res.status(500).json({ error: msg });
   }
 }
