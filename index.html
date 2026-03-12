@@ -18,12 +18,81 @@
     img { max-width:420px; width:100%; margin-top:18px; border-radius:12px; background:#fff; }
     .hint { max-width:420px; margin:6px auto 0; font-size:12px; opacity:.75; }
 
-    /* Caixa cooldown */
+    /* Caixa cooldown / aviso */
     #cooldownBox{
       display:none; margin:14px auto 0; max-width:420px;
       background:rgba(255, 210, 0, .12);
       border:1px solid rgba(255, 210, 0, .35);
       padding:12px; border-radius:12px; text-align:left;
+    }
+
+    /* ===== Modal de plano ===== */
+    #planModal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+    #planModal.show{
+      display:flex;
+    }
+    .plan-modal-card{
+      width:100%;
+      max-width:460px;
+      background:#161616;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;
+      box-shadow:0 18px 50px rgba(0,0,0,.45);
+      padding:24px 20px;
+      text-align:center;
+    }
+    .plan-modal-card h2{
+      margin:0 0 12px;
+      font-size:24px;
+      line-height:1.2;
+      color:#fff;
+    }
+    .plan-modal-card p{
+      margin:0;
+      color:rgba(255,255,255,.88);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .plan-modal-actions{
+      margin-top:20px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .plan-modal-actions a,
+    .plan-modal-actions button{
+      width:auto;
+      max-width:none;
+      min-width:170px;
+      margin:0;
+      padding:12px 16px;
+      border-radius:10px;
+      border:none;
+      font-size:15px;
+      font-weight:700;
+      text-decoration:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .plan-modal-upgrade{
+      background:#25D366;
+      color:#0b1a12;
+    }
+    .plan-modal-close{
+      background:#2c2c2c;
+      color:#fff;
     }
 
     /* ===== Comparador antes/depois (ARRASTÁVEL) ===== */
@@ -41,7 +110,7 @@
       border:1px solid rgba(255,255,255,.12);
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
       user-select:none;
-      touch-action: pan-y; /* permite scroll vertical no mobile */
+      touch-action: pan-y;
     }
     .ot-compare img{
       width:100%;
@@ -49,7 +118,7 @@
       display:block;
       -webkit-user-drag:none;
       user-select:none;
-      pointer-events:none; /* importante: dedo não “pega” a imagem */
+      pointer-events:none;
       background:#fff;
     }
     .ot-compare .ot-after{
@@ -100,8 +169,6 @@
       align-items:center;
       justify-content:center;
       cursor: ew-resize;
-
-      /* trava o comportamento do dedo no puxador */
       touch-action: none;
     }
     .ot-compare .ot-knob{
@@ -116,7 +183,7 @@
       box-shadow: 0 0 18px rgba(0,255,102,.75);
     }
 
-    /* Botões de ação (opcional, estilo simples) */
+    /* Botões de ação */
     .actions{
       max-width:420px;
       margin: 10px auto 0;
@@ -142,7 +209,7 @@
 <body>
 
   <h1>Gerador de Decalque</h1>
-  <div class="hint">Limite de uso: <b>20 gerações</b>. Ao atingir, aguarde <b>40 minutos</b> e libera novamente.</div>
+  <div class="hint">Limite temporário de uso: <b>20 gerações</b>. Ao atingir, aguarde <b>10 minutos</b> e libera novamente.</div>
 
   <input type="file" id="image" accept="image/*" />
 
@@ -163,6 +230,26 @@
 
   <div id="resultado"></div>
 
+  <!-- Modal limite do plano -->
+  <div id="planModal" aria-hidden="true">
+    <div class="plan-modal-card">
+      <h2>Limite do plano atingido</h2>
+      <p id="planModalText">O limite do seu plano foi atingido.</p>
+      <div class="plan-modal-actions">
+        <a
+          id="planModalLink"
+          class="plan-modal-upgrade"
+          href="https://orientetattoo.app/planos"
+        >Aumentar plano</a>
+        <button
+          type="button"
+          id="planModalClose"
+          class="plan-modal-close"
+        >Fechar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const btn = document.getElementById("btnGerar");
     const loader = document.getElementById("loader");
@@ -170,31 +257,64 @@
     const resultado = document.getElementById("resultado");
     const cooldownBox = document.getElementById("cooldownBox");
 
+    const planModal = document.getElementById("planModal");
+    const planModalText = document.getElementById("planModalText");
+    const planModalLink = document.getElementById("planModalLink");
+    const planModalClose = document.getElementById("planModalClose");
+
     // Config
     const MAX_FILE_MB = 6;
     const MAX_W = 1200;
     const JPEG_QUALITY = 0.86;
     const API_TIMEOUT_MS = 60000;
+    const PLAN_UPGRADE_URL = "https://orientetattoo.app/planos";
 
-    // Endpoint (mesmo projeto Vercel)
+    // Endpoint
     const API_URL = "/api/generate";
 
     function showError(msg) {
       erroBox.style.display = "block";
       erroBox.textContent = msg;
     }
+
     function clearError() {
       erroBox.style.display = "none";
       erroBox.textContent = "";
     }
+
     function showCooldown(msgHtml){
       cooldownBox.style.display = "block";
       cooldownBox.innerHTML = msgHtml;
     }
+
     function hideCooldown(){
       cooldownBox.style.display = "none";
       cooldownBox.innerHTML = "";
     }
+
+    function showPlanModal(message, url = PLAN_UPGRADE_URL){
+      planModalText.textContent = message;
+      planModalLink.href = url;
+      planModal.classList.add("show");
+      planModal.setAttribute("aria-hidden", "false");
+    }
+
+    function hidePlanModal(){
+      planModal.classList.remove("show");
+      planModal.setAttribute("aria-hidden", "true");
+    }
+
+    planModalClose.addEventListener("click", hidePlanModal);
+
+    planModal.addEventListener("click", (e) => {
+      if (e.target === planModal) hidePlanModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && planModal.classList.contains("show")) {
+        hidePlanModal();
+      }
+    });
 
     function getDeviceId() {
       const key = "__ot_device_id__";
@@ -206,7 +326,6 @@
       return id;
     }
 
-    // Opcional: se você usar ?uid= no link, trava por conta em qualquer dispositivo
     function getUserId() {
       const key = "__ot_user_id__";
       const params = new URLSearchParams(location.search);
@@ -266,16 +385,16 @@
     }
 
     function secondsToMinSec(s){
-      const m = Math.floor(s/60);
+      const m = Math.floor(s / 60);
       const r = s % 60;
-      return `${m}m ${String(r).padStart(2,"0")}s`;
+      return `${m}m ${String(r).padStart(2, "0")}s`;
     }
 
-    // ===== Comparador antes/depois (helpers) =====
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+    function clamp(n, min, max){
+      return Math.max(min, Math.min(max, n));
+    }
 
     function mountCompare(beforeSrc, afterSrc){
-      // limpa área e recria
       resultado.innerHTML = "";
 
       const wrap = document.createElement("div");
@@ -298,12 +417,10 @@
         </div>
       `;
 
-      // Mantém uma img “original” escondida (compatibilidade / download)
       const hiddenResult = document.createElement("img");
       hiddenResult.id = "resultImg";
       hiddenResult.style.display = "none";
 
-      // Botões (download e gerar de novo / reset)
       const actions = document.createElement("div");
       actions.className = "actions";
       actions.innerHTML = `
@@ -326,7 +443,7 @@
 
       beforeImg.src = beforeSrc;
       afterImg.src = afterSrc;
-      resultImg.src = afterSrc; // base para download
+      resultImg.src = afterSrc;
 
       function setComparePositionByPercent(pct){
         const p = clamp(pct, 0, 100);
@@ -335,7 +452,6 @@
         compareLine.style.left = p + "%";
       }
 
-      // Arrasto horizontal perfeito: só pelo puxador
       (function initCompareDrag(){
         let dragging = false;
 
@@ -371,23 +487,21 @@
         setComparePositionByPercent(50);
       })();
 
-      // Ações
       document.getElementById("downloadBtn").onclick = () => {
         const a = document.createElement("a");
         a.href = resultImg.src;
         a.download = "decalque.png";
         a.click();
       };
+
       document.getElementById("againBtn").onclick = () => {
-        // só limpa o resultado pra gerar outra sem recarregar a página
         resultado.innerHTML = "";
       };
+
       document.getElementById("resetBtn").onclick = () => location.reload();
     }
 
-    // ✅ ÚLTIMO CASO: se falhar (erro/bloqueio/sem imagem), mostrar EXATAMENTE a imagem enviada.
     function showOriginalAsResult(beforeSrc){
-      // opcional: mensagem discreta (sem “erro vermelho”)
       showCooldown(
         `<b>Não foi possível gerar agora.</b><br><br>` +
         `Mostrando a imagem original enviada (sem alterações).`
@@ -398,6 +512,7 @@
     async function gerar() {
       clearError();
       hideCooldown();
+      hidePlanModal();
       resultado.innerHTML = "";
 
       const file = document.getElementById("image").files[0];
@@ -424,10 +539,9 @@
       let beforeImgEl = null;
 
       try {
-        // preview do upload (ANTES) – usa blob local
         const before = await fileToImageEl(file);
         beforeImgEl = before.img;
-        beforeSrc = before.url; // usado no comparador
+        beforeSrc = before.url;
 
         const { base64: imageBase64, mimeType } = await fileToBase64Compressed(file);
 
@@ -453,7 +567,6 @@
         clearTimeout(t);
         const data = await res.json().catch(() => ({}));
 
-        // Cooldown (mantido como está)
         if (res.status === 429 && data?.code === "COOLDOWN") {
           const retry = Number(data.retry_after_seconds || 0);
           showCooldown(
@@ -464,7 +577,23 @@
           return;
         }
 
-        // ✅ Se a API falhar / não vier imagem => mostrar a mesma imagem enviada (último caso)
+        if (res.status === 429 && data?.code === "PLAN_LIMIT") {
+          const used = Number(data.used || 150);
+          const limit = Number(data.limit || 150);
+
+          showPlanModal(
+            `O limite do seu plano de ${limit} gerações foi atingido. Aumente seu plano ou adquira mais créditos.`,
+            PLAN_UPGRADE_URL
+          );
+
+          showCooldown(
+            `<b>Limite do plano atingido.</b><br><br>` +
+            `Uso atual: <b>${used}/${limit}</b> gerações.<br>` +
+            `Para continuar, aumente seu plano ou adquira mais créditos.`
+          );
+          return;
+        }
+
         if (!res.ok || !data.imageBase64) {
           if (beforeSrc) showOriginalAsResult(beforeSrc);
           else showError("Não foi possível gerar agora. Tente novamente.");
@@ -475,7 +604,6 @@
         mountCompare(beforeSrc, afterSrc);
 
       } catch (err) {
-        // ✅ Se der erro (timeout/500/etc), mostrar a mesma imagem enviada (último caso)
         if (beforeSrc) {
           showOriginalAsResult(beforeSrc);
         } else {
