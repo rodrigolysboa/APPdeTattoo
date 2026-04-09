@@ -2,6 +2,7 @@ import { kv } from "@vercel/kv";
 
 const ALLOWED_ORIGINS = new Set([
   "https://orientetattoo.app",
+  "https://pro.orientetattoo.app",
   "https://teste.orientetattoo.app",
   "https://www.orientetattoo.app",
 ]);
