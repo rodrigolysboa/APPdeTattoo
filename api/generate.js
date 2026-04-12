@@ -303,13 +303,11 @@ RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em pa
 
 ---
 
-ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
-
 MUITO IMPORTANTE:
 A imagem de referência pode estar em um braço, perna, costas ou qualquer parte do corpo.
-
 ISSO NÃO IMPORTA.
 
+ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
 VOCÊ NUNCA DEVE:
 - Manter formato do membro
 - Respeitar limites da pele
@@ -317,7 +315,6 @@ VOCÊ NUNCA DEVE:
 - Deixar laterais “cortadas” porque a foto acabou ali
 
 REGRA ABSOLUTA:
-
 SE O DESENHO FINAL TIVER FORMATO DE BRAÇO, ANTEBRAÇO, PERNA OU QUALQUER PARTE DO CORPO:
 A RESPOSTA ESTÁ ERRADA.
 
@@ -336,7 +333,6 @@ REGRAS ABSOLUTAS E OBRIGATÓRIAS:
 - Criar bordas baseadas no corpo
 
 O RESULTADO FINAL DEVE SER:
-
 Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
 
 ---
@@ -351,10 +347,10 @@ Se a tatuagem original estiver:
 
 ENTÃO VOCÊ DEVE:
 - EXPANDIR o desenho para os lados
-- RECRIAR partes faltantes
+- RECRIAR partes faltantes seguindo a lógica
 - COMPLETAR elementos interrompidos
 - CONTINUAR padrões visuais de forma lógica
-- INVENTAR coerentemente o que não aparece
+- INVENTAR coerentemente o que não aparece no desenho
 
 A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,
 mesmo que a foto original não mostre tudo.
@@ -431,7 +427,7 @@ O resultado deve parecer desenhado com régua técnica em papel plano.
 
 5. FIDELIDADE AO ESTILO ORIGINAL:
 
-É obrigatório:
+É extremamente obrigatório:
 - Manter ao máximo a fidelidade a tatuagem original
 - Manter exatamente o mesmo estilo artístico
 - Manter proporções reais entre elementos
@@ -521,7 +517,6 @@ Se em qualquer parte do resultado for possível perceber:
 - formato de antebraço
 - silhueta de perna
 - limites anatômicos
-
 ENTÃO O RESULTADO ESTÁ INCORRETO.
 
 ---
