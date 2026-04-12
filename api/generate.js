@@ -293,236 +293,201 @@ A imagem final deve estar sobre fundo totalmente branco (#FFFFFF), limpa e pront
 Gere somente a imagem final. Não retorne texto.
 `,
 clean: `
-OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
+OBJETIVO — MODO CLEAN (RECONSTRUÇÃO TOTAL DO DESENHO)
 
 Você receberá a imagem de uma tatuagem aplicada na pele humana.
-Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
+Sua tarefa NÃO é recortar a tatuagem, remover o fundo ou apenas isolar o desenho.
 
-SUA TAREFA REAL É:
-RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
+SUA MISSÃO É:
+RECONSTRUIR COMPLETAMENTE A ARTE como se ela tivesse sido redesenhada do zero em folha A4 branca, pronta para impressão e uso profissional.
 
----
+O resultado final deve parecer um desenho original em papel.
+NUNCA deve parecer uma tatuagem recortada do corpo.
 
-MUITO IMPORTANTE:
-A imagem de referência pode estar em um braço, perna, costas ou qualquer parte do corpo.
-ISSO NÃO IMPORTA.
+--------------------------------------------------
+PRIORIDADE MÁXIMA
+--------------------------------------------------
 
-ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
-VOCÊ NUNCA DEVE:
-- Manter formato do membro
-- Respeitar limites da pele
-- Criar um desenho com contorno de braço ou perna
-- Deixar laterais “cortadas” porque a foto acabou ali
+A pele, o corpo, a anatomia, a curvatura do membro, a perspectiva da foto e os limites da fotografia devem ser completamente ignorados.
+
+O desenho final deve ser:
+- plano
+- frontal
+- centralizado
+- completo
+- limpo
+- independente do corpo
+
+--------------------------------------------------
+ERROS PROIBIDOS
+--------------------------------------------------
+
+É absolutamente proibido:
+- manter formato de braço, antebraço, perna, costas ou qualquer parte do corpo
+- preservar curvatura da pele
+- copiar silhueta anatômica
+- deixar bordas externas com formato corporal
+- manter sombras da pele
+- deixar laterais cortadas porque a foto terminou
+- gerar qualquer resultado que ainda pareça tatuagem na pele
 
 REGRA ABSOLUTA:
-SE O DESENHO FINAL TIVER FORMATO DE BRAÇO, ANTEBRAÇO, PERNA OU QUALQUER PARTE DO CORPO:
-A RESPOSTA ESTÁ ERRADA.
+Se o resultado final tiver aparência de membro humano, o resultado está errado.
 
----
+--------------------------------------------------
+O QUE VOCÊ DEVE FAZER
+--------------------------------------------------
 
-REGRAS ABSOLUTAS E OBRIGATÓRIAS:
+1. RECONSTRUIR A ARTE COMPLETA
+- redesenhar toda a tatuagem
+- limpar borrões, falhas, ruídos e imperfeições da foto
+- substituir distorções por traços limpos
+- reconstruir partes ocultas, desfocadas, inclinadas ou deformadas
+- transformar a tatuagem em uma arte final limpa, completa e profissional
 
-1. IGNORAR TOTALMENTE A PELE E A ANATOMIA:
+2. COMPLETAR AS PARTES FALTANTES
+Se a tatuagem estiver:
+- cortada nas bordas
+- parcialmente fora da foto
+- incompleta por causa do enquadramento
+- interrompida pela anatomia ou ângulo
 
-É PROIBIDO:
-- Manter contorno do braço, perna ou corpo
-- Preservar curvatura da pele
-- Deixar laterais com formato anatômico
-- Copiar a “silhueta” da foto original
-- Manter sombras externas da pele
-- Criar bordas baseadas no corpo
+você deve:
+- expandir a composição
+- completar partes faltantes
+- continuar padrões e estruturas de forma coerente
+- fechar a arte como um desenho inteiro e finalizado
 
-O RESULTADO FINAL DEVE SER:
-Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
+A reconstrução deve seguir a lógica do próprio desenho original.
+Não adicionar elementos aleatórios ou decorativos que não pertençam à arte.
 
----
+3. CORRIGIR TODA DISTORÇÃO CAUSADA PELA PELE
+- desfazer deformações anatômicas
+- corrigir inclinação da foto
+- corrigir perspectiva
+- restaurar proporções corretas
+- planar completamente o desenho
 
-2. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS:
-
-Se a tatuagem original estiver:
-- Cortada nas bordas
-- Parcialmente fora da foto
-- Limitada pelo formato do membro
-- Incompleta nas extremidades
-
-ENTÃO VOCÊ DEVE:
-- EXPANDIR o desenho para os lados
-- RECRIAR partes faltantes seguindo a lógica
-- COMPLETAR elementos interrompidos
-- CONTINUAR padrões visuais de forma lógica
-- INVENTAR coerentemente o que não aparece no desenho
-
-A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,
-mesmo que a foto original não mostre tudo.
-
----
-
-3. RECONSTRUÇÃO TOTAL DA ARTE:
-
-Você deve:
-- Redesenhar TODAS as partes da tatuagem
-- Reconstruir áreas borradas
-- Recriar partes escondidas por ângulo ou pele
-- Completar detalhes incompletos
-- Substituir imperfeições da foto por traços limpos
-
-FOCO PRINCIPAL:
-REDESENHAR – não apenas copiar.
-
----
-
-4. GEOMETRIA E SIMETRIA PERFEITAS:
+--------------------------------------------------
+GEOMETRIA E SIMETRIA
+--------------------------------------------------
 
 Sempre que houver:
-- Círculos
-- Mandalas
-- Padrões repetitivos
-- Geometria
-- Elementos simétricos
-
-Círculos devem ser perfeitamente circulares,
-sem deformação causada pela pele ou perspectiva da foto.
-
-Você deve:
-→ alinhar perfeitamente
-→ centralizar
-→ corrigir distorções
-→ reconstruir partes deformadas
-→ desfazer completamente a deformação causada pela curvatura do corpo
-
-4.1 CORREÇÃO ABSOLUTA DE LINHAS RETAS:
-
-Sempre que houver linhas que representem:
-- linhas estruturais
-- linhas guias
+- círculos
+- mandalas
+- eixos centrais
 - molduras
-- linhas técnicas
-- divisões geométricas
+- padrões repetitivos
+- ornamentação geométrica
 - elementos arquitetônicos
-- linhas de layout
-- cruzamentos geométricos
+- composição simétrica
 
-Essas linhas DEVEM ser reconstruídas como linhas perfeitamente retas.
-Linhas que funcionam como base de texto devem ser perfeitamente retas,
-como se desenhadas com régua técnica.
+você deve:
+- centralizar
+- alinhar
+- corrigir deformações
+- reconstruir simetria
+- tornar círculos perfeitamente circulares
+- tornar eixos perfeitamente retos
+- restaurar paralelismo e ângulos corretos
 
-REGRAS OBRIGATÓRIAS:
+LINHAS ESTRUTURAIS DEVEM SER:
+- horizontais quando forem horizontais
+- verticais quando forem verticais
+- paralelas quando forem paralelas
+- com ângulos corretos quando houver geometria técnica
 
-- Linhas horizontais devem ser 100% horizontais.
-- Linhas verticais devem ser 100% verticais.
-- Linhas que deveriam ser paralelas devem permanecer paralelas.
-- Linhas que deveriam formar ângulos de 90° devem formar ângulos de 90°.
+Nunca copiar torturas visuais causadas pela pele, pela curvatura do corpo ou pela inclinação da foto.
 
-NUNCA copie a deformação causada pela pele.
+O resultado deve parecer desenhado em superfície plana com precisão técnica.
 
-Se a foto estiver levemente inclinada, distorcida ou curva,
-VOCÊ DEVE:
+--------------------------------------------------
+FIDELIDADE AO ESTILO ORIGINAL
+--------------------------------------------------
 
-- corrigir a inclinação
-- redesenhar a linha completamente reta
-- reconstruir a geometria correta
-
-O resultado deve parecer desenhado com régua técnica em papel plano.
----
-
-5. FIDELIDADE AO ESTILO ORIGINAL:
-
-É extremamente obrigatório:
-- Manter ao máximo a fidelidade a tatuagem original
-- Manter exatamente o mesmo estilo artístico
-- Manter proporções reais entre elementos
-- Manter tipo de traço e estética
-- Preservar sombras e detalhes originais
-
-É extremamente PROIBIDO:
-- Mudar estilo
-- Embelezar excessivamente
-- Simplificar demais
-- Transformar em outro tipo de arte
-- Adicionar símbolos ou elementos novos
-- Espelhar o lado tatuagem ou partes da tatuagem
-- Criar ornamentos inexistentes
-- Inserir molduras, arabescos ou enfeites não presentes
-
-Corrija APENAS o que foi deformado pela pele e pela fotografia.
-
-5.1 RECONSTRUÇÃO TIPOGRÁFICA OBRIGATÓRIA:
-
-Sempre que houver TEXTO na tatuagem (palavras, frases, números ou letras isoladas):
-Texto deve parecer tipografia editorial limpa,
-não lettering desenhado à mão.
-
-VOCÊ NÃO DEVE copiar o texto pixel por pixel da imagem.
-
-VOCÊ DEVE:
-
-- ler o texto presente na tatuagem
-- reescrever o texto novamente
-- reconstruir a tipografia de forma limpa e correta
-
-REGRAS PARA TEXTO:
-
-• Letras devem ser redesenhadas como tipografia limpa.
-• Alinhamento deve ser corrigido.
-• Espaçamento entre letras deve ser uniforme.
-• Linhas de texto devem ficar perfeitamente retas.
-• Texto não pode acompanhar curvatura da pele.
-
-Se o estilo parecer semelhante a fontes como:
-
-- serifadas (ex: Times / New Roman)
-- monoespaçadas (ex: Courier)
-- caixa alta geométrica
-- tipografia editorial
-
-VOCÊ DEVE recriar o texto com aparência tipográfica limpa,
-como se tivesse sido digitado novamente em papel.
+É obrigatório:
+- manter o mesmo estilo artístico da tatuagem original
+- preservar linguagem visual, tipo de traço e estética
+- manter a proporção real entre os elementos
+- respeitar a composição do desenho
+- preservar detalhes e sombras do estilo original, porém limpos e reconstruídos
 
 É proibido:
+- mudar o estilo artístico
+- estilizar demais
+- simplificar demais
+- embelezar excessivamente
+- transformar em outro tipo de arte
+- espelhar elementos
+- inventar ornamentos inexistentes
+- adicionar molduras, arabescos, símbolos ou enfeites não presentes
 
-- copiar distorções da pele
-- manter letras inclinadas por causa da foto
-- manter espaçamento irregular
-- manter deformações da tatuagem na pele
----
+Corrija apenas o que foi prejudicado pela pele, perspectiva, corte ou baixa qualidade da foto.
 
-6. RESULTADO FINAL EXIGIDO:
+--------------------------------------------------
+TEXTO E LETTERING
+--------------------------------------------------
 
-A saída deve ser exatamente:
-- Um DESENHO COMPLETO e FINALIZADO
-- Em folha A4 branca
-- Plano e frontal
-- Fundo totalmente branco
-- Sem textura de pele
-- Sem formato de membro
-- Sem sombras externas
-- Sem marcas do corpo
-- Sem cortes laterais
-- Sem qualquer elemento que denuncie que veio de uma foto
+Se houver texto, números ou letras:
 
----
+- reconstruir o conteúdo com aparência limpa e legível
+- alinhar corretamente
+- uniformizar espaçamento
+- corrigir distorções causadas pela pele
+- deixar linhas de texto retas
+- remover curvatura anatômica
 
-REGRA DE OURO DEFINITIVA:
+Se o texto estiver claramente legível:
+- reescrever com fidelidade
 
-A IMAGEM FINAL DEVE PARECER:
-“Um desenho profissional criado do zero em papel”
+Se estiver parcialmente legível:
+- completar de forma coerente com o trecho visível
 
-e NUNCA:
-“uma tatuagem recortada do corpo”.
+Se estiver ilegível:
+- reconstruir a estrutura tipográfica com aparência limpa, sem inventar palavras absurdas
 
----
+O texto final deve parecer tipografia limpa em papel, e não lettering deformado pela pele.
 
-Se em qualquer parte do resultado for possível perceber:
+--------------------------------------------------
+SAÍDA FINAL OBRIGATÓRIA
+--------------------------------------------------
+
+A imagem final deve ser:
+- uma única arte final completa
+- em folha A4 branca
+- frontal
+- plana
+- centralizada
+- com o desenho inteiro visível
+- com margens respiráveis
+- fundo totalmente branco
+- sem textura de pele
+- sem corpo
+- sem sombras externas do membro
+- sem cortes laterais
+- sem qualquer evidência de origem fotográfica
+
+--------------------------------------------------
+REGRA DE OURO
+--------------------------------------------------
+
+A imagem final deve parecer:
+“um desenho profissional recriado do zero em papel”
+
+e nunca:
+“uma tatuagem recortada da pele”.
+
+Se for possível perceber:
 - curvatura de braço
-- formato de antebraço
-- silhueta de perna
-- limites anatômicos
-ENTÃO O RESULTADO ESTÁ INCORRETO.
+- formato de perna
+- silhueta anatômica
+- limites do corpo
+- deformação da pele
 
----
+então o resultado está incorreto.
 
-Gere SOMENTE a imagem final do desenho recriado.
-Não retorne nenhum texto.
+Retorne somente a imagem final.
+Não retorne texto.
 `,
     };
 
