@@ -393,8 +393,84 @@
     function clamp(n, min, max){
       return Math.max(min, Math.min(max, n));
     }
+function dataURLToBlob(dataURL) {
+  const parts = dataURL.split(",");
+  const meta = parts[0];
+  const base64 = parts[1];
+  const mimeMatch = meta.match(/data:(.*?);base64/);
+  const mimeType = mimeMatch ? mimeMatch[1] : "image/png";
 
-    function mountCompare(beforeSrc, afterSrc){
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+
+  return new Blob([bytes], { type: mimeType });
+}
+
+function loadImageFromSrc(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("Falha ao carregar imagem para download."));
+    img.src = src;
+  });
+}
+
+async function makeDownloadBlobFromSrc(src, format = "png", quality = 0.92) {
+  const img = await loadImageFromSrc(src);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = img.naturalWidth || img.width;
+  canvas.height = img.naturalHeight || img.height;
+
+  const ctx = canvas.getContext("2d");
+
+  if (format === "jpg" || format === "jpeg") {
+    // fundo branco para evitar fundo preto em JPG
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0);
+
+    const blob = await new Promise((resolve) =>
+      canvas.toBlob(resolve, "image/jpeg", quality)
+    );
+
+    if (!blob) throw new Error("Não foi possível gerar o JPG para download.");
+    return blob;
+  }
+
+  ctx.drawImage(img, 0, 0);
+
+  const blob = await new Promise((resolve) =>
+    canvas.toBlob(resolve, "image/png")
+  );
+
+  if (!blob) throw new Error("Não foi possível gerar o PNG para download.");
+  return blob;
+}
+
+async function triggerReliableDownload(src, fileName, format = "png") {
+  const blob = await makeDownloadBlobFromSrc(src, format);
+  const blobUrl = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = blobUrl;
+  a.download = fileName;
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(() => {
+    URL.revokeObjectURL(blobUrl);
+  }, 15000);
+}
+
+    function mountCompare(beforeSrc, afterSrc, outputMimeType = "image/png"){
       resultado.innerHTML = "";
 
       const wrap = document.createElement("div");
@@ -424,10 +500,11 @@
       const actions = document.createElement("div");
       actions.className = "actions";
       actions.innerHTML = `
-        <button id="downloadBtn">Baixar</button>
-        <button id="againBtn" class="secondary">Gerar novamente</button>
-        <button id="resetBtn" class="tertiary">Começar de novo</button>
-      `;
+        <button id="downloadPngBtn">Baixar PNG</button>
+  <button id="downloadJpgBtn">Baixar JPG</button>
+  <button id="againBtn" class="secondary">Gerar novamente</button>
+  <button id="resetBtn" class="tertiary">Começar de novo</button>
+`;
 
       resultado.appendChild(wrap);
       resultado.appendChild(hiddenResult);
@@ -487,12 +564,21 @@
         setComparePositionByPercent(50);
       })();
 
-      document.getElementById("downloadBtn").onclick = () => {
-        const a = document.createElement("a");
-        a.href = resultImg.src;
-        a.download = "decalque.png";
-        a.click();
-      };
+      document.getElementById("downloadPngBtn").onclick = async () => {
+  try {
+    await triggerReliableDownload(resultImg.src, "decalque.png", "png");
+  } catch (err) {
+    showError("Não foi possível baixar em PNG: " + (err?.message || err));
+  }
+};
+
+document.getElementById("downloadJpgBtn").onclick = async () => {
+  try {
+    await triggerReliableDownload(resultImg.src, "decalque.jpg", "jpg");
+  } catch (err) {
+    showError("Não foi possível baixar em JPG: " + (err?.message || err));
+  }
+};
 
       document.getElementById("againBtn").onclick = () => {
         resultado.innerHTML = "";
@@ -502,12 +588,12 @@
     }
 
     function showOriginalAsResult(beforeSrc){
-      showCooldown(
-        `<b>Não foi possível gerar agora.</b><br><br>` +
-        `Mostrando a imagem original enviada (sem alterações).`
-      );
-      mountCompare(beforeSrc, beforeSrc);
-    }
+  showCooldown(
+    `<b>Não foi possível gerar agora.</b><br><br>` +
+    `Mostrando a imagem original enviada (sem alterações).`
+  );
+  mountCompare(beforeSrc, beforeSrc, "image/jpeg");
+}
 
     async function gerar() {
       clearError();
@@ -600,8 +686,9 @@
           return;
         }
 
-        const afterSrc = "data:image/png;base64," + data.imageBase64;
-        mountCompare(beforeSrc, afterSrc);
+        const outputMimeType = data.outputMimeType || "image/png";
+const afterSrc = `data:${outputMimeType};base64,${data.imageBase64}`;
+mountCompare(beforeSrc, afterSrc, outputMimeType);
 
       } catch (err) {
         if (beforeSrc) {
