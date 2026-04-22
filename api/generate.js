@@ -596,15 +596,19 @@ Não retorne nenhum texto.
     }
 
     let parts = json?.candidates?.[0]?.content?.parts || [];
-    let inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
+let inlinePart = parts.find((p) => p?.inlineData?.data);
+let inline = inlinePart?.inlineData?.data;
+let outputMimeType = inlinePart?.inlineData?.mimeType || "image/png";
 
     // Se não veio imagem, tenta mais uma vez
     if (!inline) {
-      ({ response, json } = await callGeminiOnce());
+  ({ response, json } = await callGeminiOnce());
 
-      parts = json?.candidates?.[0]?.content?.parts || [];
-      inline = parts.find((p) => p?.inlineData?.data)?.inlineData?.data;
-    }
+  parts = json?.candidates?.[0]?.content?.parts || [];
+  inlinePart = parts.find((p) => p?.inlineData?.data);
+  inline = inlinePart?.inlineData?.data;
+  outputMimeType = inlinePart?.inlineData?.mimeType || "image/png";
+}
 
     if (!inline) {
       return res.status(500).json({
@@ -619,19 +623,20 @@ Não retorne nenhum texto.
     await kv.expire(planUsedKey, planTtlSeconds);
 
     return res.status(200).json({
-      imageBase64: inline,
-      quota: {
-        used: quota.used,
-        limit: LIMIT_PER_BATCH,
-        cooldown_seconds: COOLDOWN_SECONDS,
-        scope: scopeType,
-      },
-      plan: {
-        used: updatedPlanUsed,
-        limit: PLAN_TOTAL_LIMIT,
-        scope: scopeType,
-      },
-    });
+  imageBase64: inline,
+  outputMimeType,
+  quota: {
+    used: quota.used,
+    limit: LIMIT_PER_BATCH,
+    cooldown_seconds: COOLDOWN_SECONDS,
+    scope: scopeType,
+  },
+  plan: {
+    used: updatedPlanUsed,
+    limit: PLAN_TOTAL_LIMIT,
+    scope: scopeType,
+  },
+});
   } catch (err) {
     const msg =
       err?.name === "AbortError"
