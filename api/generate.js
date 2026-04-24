@@ -295,238 +295,215 @@ Gere somente a imagem final. Não retorne texto.
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
-Você receberá a imagem de uma tatuagem aplicada na pele humana.
-Sua missão NÃO é recortar a tatuagem nem apenas remover o fundo.
+You will receive an image of a tattoo applied on human skin.
 
-SUA TAREFA REAL É:
-RECRIAR O DESENHO COMPLETO como se fosse um arquivo ORIGINAL feito do zero em papel, pronto para impressão e uso profissional.
+Your task is NOT to crop the tattoo or remove the background.
 
----
-
-MUITO IMPORTANTE:
-
-A imagem de referência pode estar em um braço, perna, costas ou qualquer parte do corpo.
-ISSO NÃO IMPORTA.
-
-ERRO QUE DEVE SER ELIMINADO DEFINITIVAMENTE:
-
-VOCÊ NUNCA DEVE:
-- Manter formato do membro
-- Respeitar limites da pele
-- Criar um desenho com contorno de braço ou perna
-- Deixar laterais “cortadas” porque a foto acabou ali
-
-REGRA ABSOLUTA:
-
-SE O DESENHO FINAL TIVER FORMATO DE BRAÇO, ANTEBRAÇO, PERNA OU QUALQUER PARTE DO CORPO:
-A RESPOSTA ESTÁ ERRADA.
+YOUR REAL TASK IS:
+RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch on paper, ready for professional printing.
 
 ---
 
-REGRAS ABSOLUTAS E OBRIGATÓRIAS:
+CRITICAL PRIORITY RULE (MOST IMPORTANT):
 
-1. IGNORAR TOTALMENTE A PELE E A ANATOMIA
+UNDER NO CIRCUMSTANCES should the final result resemble a body part.
 
-É PROIBIDO:
-- Manter contorno do braço, perna ou corpo
-- Preservar curvatura da pele
-- Deixar laterais com formato anatômico
-- Copiar a “silhueta” da foto original
-- Manter sombras externas da pele
-- Criar bordas baseadas no corpo
+IF the output has ANY indication of:
+- arm shape
+- forearm silhouette
+- leg contour
+- body curvature
+- organic human shape boundaries
 
-O RESULTADO FINAL DEVE SER:
-Um desenho plano e independente, como se NUNCA tivesse sido tatuagem.
+THE RESULT IS COMPLETELY WRONG.
 
----
+The final image MUST look like:
+A flat, independent drawing on paper.
 
-2. EXPANSÃO E RECONSTRUÇÃO DAS LATERAIS
+NEVER like:
+A tattoo extracted from skin.
 
-Se a tatuagem original estiver:
-- Cortada nas bordas
-- Parcialmente fora da foto
-- Limitada pelo formato do membro
-- Incompleta nas extremidades
-
-ENTÃO VOCÊ DEVE:
-- EXPANDIR o desenho para os lados
-- RECRIAR partes faltantes do desenho
-- COMPLETAR elementos interrompidos
-- CONTINUAR padrões visuais de forma lógica
-- INVENTAR coerentemente o que não aparece no desenho
-
-A imagem final deve parecer um DESENHO COMPLETO E INTEIRO,
-mesmo que a foto original não mostre tudo.
+This rule OVERRIDES ALL OTHERS.
 
 ---
 
-3. RECONSTRUÇÃO TOTAL DA ARTE
+ABSOLUTE RULES (MANDATORY):
 
-Você deve:
-- Redesenhar TODAS as partes da tatuagem
-- Reconstruir áreas borradas
-- Recriar partes escondidas por ângulo ou pele
-- Completar detalhes incompletos
-- Substituir imperfeições da foto por traços limpos
+1. IGNORE THE HUMAN BODY COMPLETELY
 
-FOCO PRINCIPAL:
-REDESENHAR – não apenas copiar.
+You MUST:
+- Remove ALL traces of skin
+- Ignore anatomy entirely
+- Eliminate curvature caused by the body
+- Discard perspective distortion from the photo
 
----
+You MUST NOT:
+- Preserve limb shape
+- Follow skin curvature
+- Keep original silhouette
+- Maintain edges based on body limits
+- Retain lighting/shadows from skin
 
-4. GEOMETRIA E SIMETRIA PERFEITAS
-
-Sempre que houver:
-- Círculos
-- Mandalas
-- Padrões repetitivos
-- Geometria
-- Elementos simétricos
-
-Círculos devem ser perfeitamente circulares,
-sem deformação causada pela pele ou perspectiva da foto.
-
-Você deve:
-→ alinhar perfeitamente
-→ centralizar
-→ corrigir distorções
-→ reconstruir partes deformadas
-→ desfazer completamente a deformação causada pela curvatura do corpo
+The final result must be:
+A flat, centered, independent artwork.
 
 ---
 
-4.1 CORREÇÃO ABSOLUTA DE LINHAS RETAS
+2. FULL EXPANSION AND EDGE RECONSTRUCTION
 
-Sempre que houver linhas que representem:
-- linhas estruturais
-- linhas guias
-- molduras
-- linhas técnicas
-- divisões geométricas
-- elementos arquitetônicos
-- linhas de layout
-- cruzamentos geométricos
+If the tattoo is:
+- cropped
+- partially visible
+- cut off by the photo
+- limited by body framing
 
-Essas linhas DEVEM ser reconstruídas como linhas perfeitamente retas.
-Linhas que funcionam como base de texto devem ser perfeitamente retas,
-como se desenhadas com régua técnica.
+You MUST:
+- Expand the design beyond visible borders
+- Reconstruct missing areas logically
+- Continue interrupted patterns
+- Complete shapes and symmetry
+- Invent missing parts coherently when necessary
 
-REGRAS OBRIGATÓRIAS:
-- Linhas horizontais devem ser 100% horizontais.
-- Linhas verticais devem ser 100% verticais.
-- Linhas que deveriam ser paralelas devem permanecer paralelas.
-- Linhas que deveriam formar ângulos de 90° devem formar ângulos de 90°.
-
-NUNCA copie a deformação causada pela pele.
-
-Se a foto estiver levemente inclinada, distorcida ou curva,
-VOCÊ DEVE:
-- corrigir a inclinação
-- redesenhar a linha completamente reta
-- reconstruir a geometria correta
-
-O resultado deve parecer desenhado com régua técnica em papel plano.
+The final artwork MUST look complete and uninterrupted.
 
 ---
 
-5. FIDELIDADE AO ESTILO ORIGINAL
+3. COMPLETE REDRAW (NOT EXTRACTION)
 
-É extremamente obrigatório:
-- Manter ao máximo a fidelidade a tatuagem original
-- Manter exatamente o mesmo estilo artístico
-- Manter proporções reais entre elementos
-- Manter tipo de traço e estética
-- Preservar sombras e detalhes originais
+You MUST:
+- Redraw the entire design from scratch
+- Reconstruct blurred or distorted areas
+- Replace imperfections with clean lines
+- Rebuild hidden or unclear parts
 
-É extremamente PROIBIDO:
-- Mudar estilo
-- Embelezar excessivamente
-- Simplificar demais
-- Transformar em outro tipo de arte
-- Adicionar símbolos ou elementos novos
-- Espelhar o lado tatuagem ou partes da tatuagem
-- Criar ornamentos inexistentes
-- Inserir molduras, arabescos ou enfeites não presentes
-
-Corrija APENAS o que foi deformado pela pele e pela fotografia.
+FOCUS:
+Reconstruction, NOT copying.
 
 ---
 
-5.1 RECONSTRUÇÃO TIPOGRÁFICA OBRIGATÓRIA
+4. PERFECT GEOMETRY AND STRUCTURE
 
-Sempre que houver TEXTO na tatuagem (palavras, frases, números ou letras isoladas):
-Texto deve parecer tipografia editorial limpa,
-não lettering desenhado à mão.
+For any:
+- circles
+- mandalas
+- geometric shapes
+- repeating patterns
 
-VOCÊ NÃO DEVE copiar o texto pixel por pixel da imagem.
+You MUST:
+- Correct distortions from skin curvature
+- Align everything perfectly
+- Center properly
+- Ensure symmetry
 
-VOCÊ DEVE:
-- ler o texto presente na tatuagem
-- reescrever o texto novamente
-- reconstruir a tipografia de forma limpa e correta
-
-REGRAS PARA TEXTO:
-• Letras devem ser redesenhadas como tipografia limpa.
-• Alinhamento deve ser corrigido.
-• Espaçamento entre letras deve ser uniforme.
-• Linhas de texto devem ficar perfeitamente retas.
-• Texto não pode acompanhar curvatura da pele.
-
-Se o estilo parecer semelhante a fontes como:
-- serifadas (ex: Times / New Roman)
-- monoespaçadas (ex: Courier)
-- caixa alta geométrica
-- tipografia editorial
-
-VOCÊ DEVE recriar o texto com aparência tipográfica limpa,
-como se tivesse sido digitado novamente em papel.
-
-É proibido:
-- copiar distorções da pele
-- manter letras inclinadas por causa da foto
-- manter espaçamento irregular
-- manter deformações da tatuagem na pele
+Circles MUST be perfectly round.
+No deformation is allowed.
 
 ---
 
-6. RESULTADO FINAL EXIGIDO
+4.1 ABSOLUTE STRAIGHT LINE CORRECTION
 
-A saída deve ser exatamente:
-- Um DESENHO COMPLETO e FINALIZADO
-- Em folha A4 branca
-- Plano e frontal
-- Fundo totalmente branco
-- Sem textura de pele
-- Sem formato de membro
-- Sem sombras externas
-- Sem marcas do corpo
-- Sem cortes laterais
-- Sem qualquer elemento que denuncie que veio de uma foto
+All structural lines MUST be:
 
----
+- perfectly straight
+- perfectly horizontal or vertical when applicable
+- perfectly parallel when required
+- perfectly aligned
 
-REGRA DE OURO DEFINITIVA
+You MUST:
+- Fix any tilt from the photo
+- Remove curvature
+- Redraw using precise geometry
 
-A IMAGEM FINAL DEVE PARECER:
-“Um desenho profissional criado do zero em papel”
-
-e NUNCA:
-“uma tatuagem recortada do corpo”.
+The result must look like it was created with technical tools (ruler-based precision).
 
 ---
 
-Se em qualquer parte do resultado for possível perceber:
-- curvatura de braço
-- formato de antebraço
-- silhueta de perna
-- limites anatômicos
+5. STYLE FIDELITY (EXTREMELY IMPORTANT)
 
-ENTÃO O RESULTADO ESTÁ INCORRETO.
+You MUST:
+- Preserve the original artistic style
+- Maintain proportions between elements
+- Keep line weight and visual identity
+- Respect shading and details
+
+You MUST NOT:
+- Change the style
+- Over-enhance
+- Simplify excessively
+- Add new elements
+- Mirror the design
+- Create ornaments that do not exist
+
+Only correct distortions caused by skin and photography.
 
 ---
 
-Gere SOMENTE a imagem final do desenho recriado.
-Não retorne nenhum texto.
+5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
+
+If there is text:
+
+You MUST:
+- Read and rewrite the text
+- Rebuild it as clean typography
+- Align perfectly
+- Correct spacing
+- Make all lines straight
+
+Text MUST look like:
+Clean editorial typography.
+
+NOT:
+Hand-drawn distorted lettering.
+
+---
+
+6. FINAL OUTPUT REQUIREMENTS
+
+The final image MUST be:
+
+- A COMPLETE and FINISHED artwork
+- Placed on a pure white A4 sheet
+- Flat and frontal
+- Centered
+- Clean black design (unless original requires shading)
+- With NO:
+  - skin texture
+  - shadows from body
+  - body shape
+  - anatomical traces
+  - cut edges
+
+---
+
+FINAL GOLDEN RULE:
+
+The result MUST look like:
+
+“A professionally created drawing on paper”
+
+AND NEVER like:
+
+“A tattoo taken from a human body”
+
+---
+
+FAIL CONDITION (AUTOMATIC REJECTION):
+
+If ANY of the following is visible:
+- limb silhouette
+- curved body-like borders
+- anatomical shape
+- skin-based edges
+
+THE RESULT IS INVALID.
+
+---
+
+OUTPUT INSTRUCTION:
+
+Generate ONLY the final reconstructed image.
+
+Do NOT output any text.
 `,
     };
 
