@@ -418,6 +418,48 @@ The result must look like it was created with technical tools (ruler-based preci
 
 ---
 
+4.2 SPECIAL HANDLING FOR MAORI / POLYNESIAN / TRIBAL WRAP TATTOOS
+
+If the uploaded tattoo is a Maori, Polynesian, tribal, ornamental, geometric wrap, sleeve, arm band, leg band, or body-flow tattoo:
+
+Apply this section ONLY to this type of tattoo.
+
+These designs are often created to follow the arm, leg, shoulder, or body curvature.
+
+Your task is NOT to preserve the limb silhouette.
+
+You MUST convert the tattoo into a flat printable artwork.
+
+Do NOT use:
+- arm shape
+- leg shape
+- shoulder curve
+- forearm taper
+- body outline
+- skin border
+
+as the final boundary of the artwork.
+
+Instead:
+
+- unwrap the tattoo flow into a flat 2D drawing
+- keep the original tribal pattern language
+- preserve the same motifs, bands, triangles, curves, spacing, rhythm, and visual identity
+- reconstruct interrupted bands naturally
+- create clean logical outer edges when the original tattoo has no clear ending
+- complete missing pattern areas only by continuing the existing design logic
+
+The final result must look like:
+a professional Maori / Polynesian / Tribal tattoo flash design on white paper.
+
+It must NOT look like:
+a tattoo still wrapped around an arm, leg, or body part.
+
+This section must not change the style, ornaments, symbols, or visual identity of the original tattoo.
+It only removes the anatomical wrap effect and turns the design into a flat printable composition.
+
+---
+
 5. STYLE FIDELITY (EXTREMELY IMPORTANT)
 
 You MUST:
