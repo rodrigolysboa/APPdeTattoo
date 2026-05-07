@@ -300,7 +300,7 @@ You will receive an image of a tattoo applied on human skin.
 Your task is NOT to crop the tattoo or remove the background.
 
 YOUR REAL TASK IS:
-RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch, ready for professional printing.
+RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch on paper, ready for professional printing.
 
 ---
 
@@ -318,7 +318,7 @@ IF the output has ANY indication of:
 THE RESULT IS COMPLETELY WRONG.
 
 The final image MUST look like:
-A flat, independent reconstructed artwork on a completely pure white background.
+A flat, independent drawing on paper.
 
 NEVER like:
 A tattoo extracted from skin.
@@ -450,7 +450,7 @@ Instead:
 - complete missing pattern areas only by continuing the existing design logic
 
 The final result must look like:
-a professional Maori / Polynesian / Tribal tattoo flash design on a completely pure white background.
+a professional Maori / Polynesian / Tribal tattoo flash design on white paper.
 
 It must NOT look like:
 a tattoo still wrapped around an arm, leg, or body part.
@@ -504,7 +504,7 @@ Hand-drawn distorted lettering.
 The final image MUST be:
 
 - A COMPLETE and FINISHED artwork
-- Placed on a completely pure white background (#FFFFFF)
+- Placed on a pure white A4 sheet
 - Flat and frontal
 - Centered
 - Clean black design (unless original requires shading)
@@ -521,7 +521,7 @@ FINAL GOLDEN RULE:
 
 The result MUST look like:
 
-“A professionally reconstructed tattoo artwork on a completely pure white background”
+“A professionally created drawing on paper”
 
 AND NEVER like:
 
