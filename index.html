@@ -204,6 +204,76 @@
     }
     .actions button.secondary{ background:#444; }
     .actions button.tertiary{ background:#25D366; color:#0b1a12; }
+
+
+    /* ===== Download único + Editor local ===== */
+    #downloadMenu{
+      display:none; position:fixed; inset:0; z-index:10000;
+      background:rgba(0,0,0,.62); align-items:center; justify-content:center; padding:18px;
+    }
+    #downloadMenu.show{ display:flex; }
+    .download-card{
+      width:100%; max-width:320px; background:#161616; border:1px solid rgba(255,255,255,.12);
+      border-radius:18px; padding:18px; box-shadow:0 18px 50px rgba(0,0,0,.48); text-align:center;
+    }
+    .download-card h3{ margin:0 0 12px; font-size:20px; }
+    .download-card button{ width:100%; max-width:none; margin:8px 0; }
+    .download-card .dark{ background:#333; color:#fff; }
+
+    #editorModal{
+      display:none; position:fixed; inset:0; z-index:10001; background:#0d0d0d;
+      overflow:auto; padding:18px; text-align:left;
+    }
+    #editorModal.show{ display:block; }
+    .editor-shell{ width:100%; max-width:980px; margin:0 auto; }
+    .editor-top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin-bottom:14px; background:#151515; border:1px solid rgba(255,255,255,.09);
+      border-radius:16px; padding:12px;
+    }
+    .editor-top h2{ margin:0; font-size:22px; color:#fff; }
+    .editor-top button{ width:auto; max-width:none; margin:0; padding:10px 14px; }
+    .editor-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:14px; align-items:start; }
+    .editor-panel{
+      background:#151515; border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:14px;
+    }
+    .editor-panel h3{ margin:0 0 10px; font-size:17px; color:#fff; }
+    .editor-preview-wrap{
+      position:relative; width:100%; min-height:300px; background:#fff; border-radius:12px; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    #editCanvas{ max-width:100%; width:auto; height:auto; display:block; background:#fff; border-radius:0; margin:0; }
+    #cropBox{
+      position:absolute; border:2px solid #00ff66; box-shadow:0 0 0 9999px rgba(0,0,0,.35);
+      display:none; cursor:move; touch-action:none;
+    }
+    #cropBox::after{
+      content:""; position:absolute; right:-7px; bottom:-7px; width:14px; height:14px;
+      background:#00ff66; border-radius:50%; cursor:nwse-resize;
+    }
+    .tool-row{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
+    .tool-row button{ width:auto; max-width:none; margin:0; padding:10px 12px; border-radius:10px; background:#2b6cff; color:#fff; }
+    .tool-row button.green{ background:#25D366; color:#0b1a12; }
+    .tool-row button.gray{ background:#444; color:#fff; }
+    .tool-row button.red{ background:#8b1e1e; color:#fff; }
+    .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
+    .field-row label{ display:block; color:rgba(255,255,255,.76); font-size:12px; margin-bottom:4px; }
+    .field-row input{
+      width:100%; max-width:none; margin:0; box-sizing:border-box; background:#222; color:#fff; border:1px solid rgba(255,255,255,.09);
+    }
+    .small-note{ color:rgba(255,255,255,.62); font-size:12px; line-height:1.45; margin:8px 0 0; }
+    #a4Preview{
+      margin-top:10px; color:#fff; font-size:13px; line-height:1.45;
+      background:rgba(37,211,102,.09); border:1px solid rgba(37,211,102,.25); padding:10px; border-radius:12px;
+    }
+    .a4-mini-grid{ display:grid; gap:4px; margin-top:8px; max-width:240px; }
+    .a4-mini-cell{ aspect-ratio:21/29.7; background:#fff; color:#111; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; }
+    @media(max-width:760px){
+      body{ padding:20px 12px; }
+      .editor-grid{ grid-template-columns:1fr; }
+      .editor-preview-wrap{ min-height:260px; }
+    }
+
   </style>
 </head>
 <body>
@@ -249,6 +319,81 @@
       </div>
     </div>
   </div>
+
+
+
+  <!-- Mini popup de download -->
+  <div id="downloadMenu" aria-hidden="true">
+    <div class="download-card">
+      <h3>Baixar imagem</h3>
+      <button type="button" id="downloadJpgOption">Baixar JPG</button>
+      <button type="button" id="downloadPngOption">Baixar PNG</button>
+      <button type="button" id="downloadClose" class="dark">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Editor local gratuito -->
+  <div id="editorModal" aria-hidden="true">
+    <div class="editor-shell">
+      <div class="editor-top">
+        <h2>Editar decalque</h2>
+        <div class="tool-row" style="margin:0;">
+          <button type="button" id="editorBack" class="gray">Voltar</button>
+          <button type="button" id="editorClose" class="red">Fechar</button>
+        </div>
+      </div>
+
+      <div class="editor-grid">
+        <div class="editor-panel">
+          <h3>Prévia da imagem</h3>
+          <div class="editor-preview-wrap" id="editorPreviewWrap">
+            <canvas id="editCanvas"></canvas>
+            <div id="cropBox"></div>
+          </div>
+          <p class="small-note">As ferramentas abaixo funcionam no navegador, sem API e sem custo extra.</p>
+        </div>
+
+        <div class="editor-panel">
+          <h3>Ferramentas rápidas</h3>
+          <div class="tool-row">
+            <button type="button" id="mirrorHBtn">Espelhar horizontal</button>
+            <button type="button" id="mirrorVBtn">Espelhar vertical</button>
+          </div>
+
+          <h3 style="margin-top:16px;">Corte</h3>
+          <div class="tool-row">
+            <button type="button" id="startCropBtn">Ativar corte</button>
+            <button type="button" id="applyCropBtn" class="green">Aplicar corte</button>
+            <button type="button" id="cancelCropBtn" class="gray">Cancelar</button>
+          </div>
+          <p class="small-note">Arraste a área verde para posicionar. Puxe o canto inferior direito para ajustar o tamanho.</p>
+
+          <h3 style="margin-top:16px;">Impressão A4</h3>
+          <div class="field-row">
+            <div>
+              <label>Largura final em cm</label>
+              <input type="number" id="printWidthCm" min="1" step="0.1" value="21">
+            </div>
+            <div>
+              <label>Altura final em cm</label>
+              <input type="number" id="printHeightCm" min="1" step="0.1" value="29.7">
+            </div>
+          </div>
+          <div class="tool-row">
+            <button type="button" id="calcA4Btn">Calcular folhas</button>
+            <button type="button" id="printA4Btn" class="green">Imprimir A4</button>
+          </div>
+          <div id="a4Preview">Informe o tamanho final e clique em calcular.</div>
+
+          <div class="tool-row" style="margin-top:14px;">
+            <button type="button" id="saveEditedJpgBtn">Baixar editada JPG</button>
+            <button type="button" id="saveEditedPngBtn" class="gray">Baixar editada PNG</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     const btn = document.getElementById("btnGerar");
@@ -470,6 +615,359 @@ async function triggerReliableDownload(src, fileName, format = "png") {
   }, 15000);
 }
 
+
+let currentResultSrc = "";
+let currentBeforeSrc = "";
+let editedImageSrc = "";
+let editBaseImage = null;
+let cropState = null;
+let cropMode = null;
+
+const downloadMenu = document.getElementById("downloadMenu");
+const downloadJpgOption = document.getElementById("downloadJpgOption");
+const downloadPngOption = document.getElementById("downloadPngOption");
+const downloadClose = document.getElementById("downloadClose");
+const editorModal = document.getElementById("editorModal");
+const editCanvas = document.getElementById("editCanvas");
+const cropBox = document.getElementById("cropBox");
+const editorPreviewWrap = document.getElementById("editorPreviewWrap");
+const a4Preview = document.getElementById("a4Preview");
+
+function openDownloadMenu(){
+  downloadMenu.classList.add("show");
+  downloadMenu.setAttribute("aria-hidden", "false");
+}
+
+function closeDownloadMenu(){
+  downloadMenu.classList.remove("show");
+  downloadMenu.setAttribute("aria-hidden", "true");
+}
+
+downloadClose.addEventListener("click", closeDownloadMenu);
+downloadMenu.addEventListener("click", (e) => {
+  if (e.target === downloadMenu) closeDownloadMenu();
+});
+
+downloadJpgOption.addEventListener("click", async () => {
+  try {
+    closeDownloadMenu();
+    await triggerReliableDownload(editedImageSrc || currentResultSrc, "decalque.jpg", "jpg");
+  } catch (err) {
+    showError("Não foi possível baixar em JPG: " + (err?.message || err));
+  }
+});
+
+downloadPngOption.addEventListener("click", async () => {
+  try {
+    closeDownloadMenu();
+    await triggerReliableDownload(editedImageSrc || currentResultSrc, "decalque.png", "png");
+  } catch (err) {
+    showError("Não foi possível baixar em PNG: " + (err?.message || err));
+  }
+});
+
+function openEditor(){
+  if (!currentResultSrc) {
+    showError("Gere uma imagem primeiro para editar.");
+    return;
+  }
+  editedImageSrc = editedImageSrc || currentResultSrc;
+  editorModal.classList.add("show");
+  editorModal.setAttribute("aria-hidden", "false");
+  loadEditorImage(editedImageSrc);
+  updateA4Preview();
+}
+
+function closeEditor(){
+  editorModal.classList.remove("show");
+  editorModal.setAttribute("aria-hidden", "true");
+  hideCropBox();
+}
+
+document.getElementById("editorBack").addEventListener("click", closeEditor);
+document.getElementById("editorClose").addEventListener("click", closeEditor);
+
+async function loadEditorImage(src){
+  editBaseImage = await loadImageFromSrc(src);
+  drawEditCanvas(editBaseImage);
+}
+
+function drawEditCanvas(img){
+  const maxCanvasW = Math.min(900, img.naturalWidth || img.width);
+  const ratio = maxCanvasW / (img.naturalWidth || img.width);
+  const w = Math.round((img.naturalWidth || img.width) * ratio);
+  const h = Math.round((img.naturalHeight || img.height) * ratio);
+
+  editCanvas.width = w;
+  editCanvas.height = h;
+  editCanvas.style.width = "100%";
+  editCanvas.style.maxWidth = w + "px";
+
+  const ctx = editCanvas.getContext("2d");
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, w, h);
+  ctx.drawImage(img, 0, 0, w, h);
+}
+
+function canvasToDataUrl(format = "png"){
+  if (format === "jpg" || format === "jpeg") {
+    const temp = document.createElement("canvas");
+    temp.width = editCanvas.width;
+    temp.height = editCanvas.height;
+    const ctx = temp.getContext("2d");
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, temp.width, temp.height);
+    ctx.drawImage(editCanvas, 0, 0);
+    return temp.toDataURL("image/jpeg", 0.92);
+  }
+  return editCanvas.toDataURL("image/png");
+}
+
+function syncEditedResult(){
+  editedImageSrc = canvasToDataUrl("png");
+  currentResultSrc = editedImageSrc;
+  const resultImg = document.getElementById("resultImg");
+  const afterImg = document.getElementById("afterImg");
+  if (resultImg) resultImg.src = editedImageSrc;
+  if (afterImg) afterImg.src = editedImageSrc;
+}
+
+function mirrorCanvas(horizontal, vertical){
+  const temp = document.createElement("canvas");
+  temp.width = editCanvas.width;
+  temp.height = editCanvas.height;
+  const tctx = temp.getContext("2d");
+  tctx.drawImage(editCanvas, 0, 0);
+
+  const ctx = editCanvas.getContext("2d");
+  ctx.save();
+  ctx.clearRect(0, 0, editCanvas.width, editCanvas.height);
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, editCanvas.width, editCanvas.height);
+  ctx.translate(horizontal ? editCanvas.width : 0, vertical ? editCanvas.height : 0);
+  ctx.scale(horizontal ? -1 : 1, vertical ? -1 : 1);
+  ctx.drawImage(temp, 0, 0);
+  ctx.restore();
+  syncEditedResult();
+}
+
+document.getElementById("mirrorHBtn").addEventListener("click", () => mirrorCanvas(true, false));
+document.getElementById("mirrorVBtn").addEventListener("click", () => mirrorCanvas(false, true));
+
+function getCanvasDisplayRect(){
+  return editCanvas.getBoundingClientRect();
+}
+
+function showCropBox(){
+  const rect = getCanvasDisplayRect();
+  const wrapRect = editorPreviewWrap.getBoundingClientRect();
+  const w = rect.width * 0.72;
+  const h = rect.height * 0.72;
+  const left = rect.left - wrapRect.left + (rect.width - w) / 2;
+  const top = rect.top - wrapRect.top + (rect.height - h) / 2;
+  cropState = { left, top, width: w, height: h };
+  renderCropBox();
+  cropBox.style.display = "block";
+}
+
+function hideCropBox(){
+  cropBox.style.display = "none";
+  cropState = null;
+  cropMode = null;
+}
+
+function renderCropBox(){
+  if (!cropState) return;
+  cropBox.style.left = cropState.left + "px";
+  cropBox.style.top = cropState.top + "px";
+  cropBox.style.width = cropState.width + "px";
+  cropBox.style.height = cropState.height + "px";
+}
+
+document.getElementById("startCropBtn").addEventListener("click", showCropBox);
+document.getElementById("cancelCropBtn").addEventListener("click", hideCropBox);
+
+cropBox.addEventListener("pointerdown", (e) => {
+  if (!cropState) return;
+  const rect = cropBox.getBoundingClientRect();
+  const isResize = e.clientX > rect.right - 22 && e.clientY > rect.bottom - 22;
+  cropMode = {
+    type: isResize ? "resize" : "move",
+    startX: e.clientX,
+    startY: e.clientY,
+    start: { ...cropState }
+  };
+  cropBox.setPointerCapture(e.pointerId);
+  e.preventDefault();
+});
+
+cropBox.addEventListener("pointermove", (e) => {
+  if (!cropMode || !cropState) return;
+  const dx = e.clientX - cropMode.startX;
+  const dy = e.clientY - cropMode.startY;
+  const canvasRect = getCanvasDisplayRect();
+  const wrapRect = editorPreviewWrap.getBoundingClientRect();
+  const minLeft = canvasRect.left - wrapRect.left;
+  const minTop = canvasRect.top - wrapRect.top;
+  const maxRight = minLeft + canvasRect.width;
+  const maxBottom = minTop + canvasRect.height;
+
+  if (cropMode.type === "move") {
+    cropState.left = clamp(cropMode.start.left + dx, minLeft, maxRight - cropState.width);
+    cropState.top = clamp(cropMode.start.top + dy, minTop, maxBottom - cropState.height);
+  } else {
+    cropState.width = clamp(cropMode.start.width + dx, 40, maxRight - cropState.left);
+    cropState.height = clamp(cropMode.start.height + dy, 40, maxBottom - cropState.top);
+  }
+  renderCropBox();
+  e.preventDefault();
+});
+
+cropBox.addEventListener("pointerup", (e) => {
+  cropMode = null;
+  try { cropBox.releasePointerCapture(e.pointerId); } catch {}
+});
+
+cropBox.addEventListener("pointercancel", (e) => {
+  cropMode = null;
+  try { cropBox.releasePointerCapture(e.pointerId); } catch {}
+});
+
+document.getElementById("applyCropBtn").addEventListener("click", () => {
+  if (!cropState) return;
+  const canvasRect = getCanvasDisplayRect();
+  const wrapRect = editorPreviewWrap.getBoundingClientRect();
+  const canvasLeft = canvasRect.left - wrapRect.left;
+  const canvasTop = canvasRect.top - wrapRect.top;
+  const scaleX = editCanvas.width / canvasRect.width;
+  const scaleY = editCanvas.height / canvasRect.height;
+
+  const sx = Math.round((cropState.left - canvasLeft) * scaleX);
+  const sy = Math.round((cropState.top - canvasTop) * scaleY);
+  const sw = Math.round(cropState.width * scaleX);
+  const sh = Math.round(cropState.height * scaleY);
+
+  if (sw <= 10 || sh <= 10) return;
+
+  const temp = document.createElement("canvas");
+  temp.width = sw;
+  temp.height = sh;
+  const tctx = temp.getContext("2d");
+  tctx.fillStyle = "#FFFFFF";
+  tctx.fillRect(0, 0, sw, sh);
+  tctx.drawImage(editCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
+
+  editCanvas.width = sw;
+  editCanvas.height = sh;
+  const ctx = editCanvas.getContext("2d");
+  ctx.drawImage(temp, 0, 0);
+  hideCropBox();
+  syncEditedResult();
+  updateA4Preview();
+});
+
+function getA4Settings(){
+  const targetW = Math.max(1, Number(document.getElementById("printWidthCm").value || 21));
+  const targetH = Math.max(1, Number(document.getElementById("printHeightCm").value || 29.7));
+  const pageW = 21;
+  const pageH = 29.7;
+  const cols = Math.max(1, Math.ceil(targetW / pageW));
+  const rows = Math.max(1, Math.ceil(targetH / pageH));
+  return { targetW, targetH, pageW, pageH, cols, rows, total: cols * rows };
+}
+
+function updateA4Preview(){
+  const s = getA4Settings();
+  let cells = "";
+  for (let r = 0; r < s.rows; r++) {
+    for (let c = 0; c < s.cols; c++) {
+      cells += `<div class="a4-mini-cell">${r + 1}.${c + 1}</div>`;
+    }
+  }
+  a4Preview.innerHTML = `
+    Tamanho final: <b>${s.targetW.toFixed(1)}cm × ${s.targetH.toFixed(1)}cm</b><br>
+    Folhas A4 necessárias: <b>${s.total}</b> (${s.cols} coluna(s) × ${s.rows} linha(s))
+    <div class="a4-mini-grid" style="grid-template-columns:repeat(${s.cols}, 1fr);">${cells}</div>
+  `;
+}
+
+document.getElementById("calcA4Btn").addEventListener("click", updateA4Preview);
+document.getElementById("printWidthCm").addEventListener("input", updateA4Preview);
+document.getElementById("printHeightCm").addEventListener("input", updateA4Preview);
+
+document.getElementById("printA4Btn").addEventListener("click", () => {
+  syncEditedResult();
+  const s = getA4Settings();
+  const src = editedImageSrc || currentResultSrc;
+  let pages = "";
+
+  for (let r = 0; r < s.rows; r++) {
+    for (let c = 0; c < s.cols; c++) {
+      pages += `
+        <section class="page">
+          <img src="${src}" style="width:${s.targetW}cm;height:${s.targetH}cm;left:-${c * s.pageW}cm;top:-${r * s.pageH}cm;">
+          <div class="mark">${r + 1}.${c + 1}</div>
+        </section>
+      `;
+    }
+  }
+
+  const win = window.open("", "_blank");
+  if (!win) {
+    showError("O navegador bloqueou a janela de impressão. Libere pop-ups para imprimir.");
+    return;
+  }
+
+  win.document.open();
+  win.document.write(`
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8">
+      <title>Impressão A4 - Oriente Tattoo App</title>
+      <style>
+        @page { size: A4 portrait; margin: 0; }
+        *{ box-sizing:border-box; }
+        body{ margin:0; background:#fff; }
+        .page{
+          width:21cm; height:29.7cm; overflow:hidden; position:relative;
+          page-break-after:always; background:#fff;
+        }
+        .page img{ position:absolute; display:block; max-width:none; max-height:none; object-fit:fill; }
+        .mark{
+          position:absolute; right:.25cm; bottom:.25cm; font:700 10px Arial; color:#777;
+          border:1px solid #ddd; padding:2px 4px; border-radius:3px; background:#fff;
+        }
+        @media print { .page{ page-break-after:always; } }
+      </style>
+    </head>
+    <body>${pages}</body>
+    </html>
+  `);
+  win.document.close();
+  win.focus();
+  setTimeout(() => win.print(), 350);
+});
+
+document.getElementById("saveEditedJpgBtn").addEventListener("click", async () => {
+  try {
+    syncEditedResult();
+    await triggerReliableDownload(canvasToDataUrl("jpg"), "decalque-editado.jpg", "jpg");
+  } catch (err) {
+    showError("Não foi possível baixar a imagem editada em JPG: " + (err?.message || err));
+  }
+});
+
+document.getElementById("saveEditedPngBtn").addEventListener("click", async () => {
+  try {
+    syncEditedResult();
+    await triggerReliableDownload(canvasToDataUrl("png"), "decalque-editado.png", "png");
+  } catch (err) {
+    showError("Não foi possível baixar a imagem editada em PNG: " + (err?.message || err));
+  }
+});
+
+
     function mountCompare(beforeSrc, afterSrc, outputMimeType = "image/png"){
       resultado.innerHTML = "";
 
@@ -500,11 +998,11 @@ async function triggerReliableDownload(src, fileName, format = "png") {
       const actions = document.createElement("div");
       actions.className = "actions";
       actions.innerHTML = `
-        <button id="downloadPngBtn">Baixar PNG</button>
-  <button id="downloadJpgBtn">Baixar JPG</button>
-  <button id="againBtn" class="secondary">Gerar novamente</button>
-  <button id="resetBtn" class="tertiary">Começar de novo</button>
-`;
+        <button id="downloadImageBtn">Baixar imagem</button>
+        <button id="editImageBtn" class="secondary">Edição</button>
+        <button id="againBtn" class="secondary">Gerar novamente</button>
+        <button id="resetBtn" class="tertiary">Começar de novo</button>
+      `;
 
       resultado.appendChild(wrap);
       resultado.appendChild(hiddenResult);
@@ -521,6 +1019,9 @@ async function triggerReliableDownload(src, fileName, format = "png") {
       beforeImg.src = beforeSrc;
       afterImg.src = afterSrc;
       resultImg.src = afterSrc;
+      currentBeforeSrc = beforeSrc;
+      currentResultSrc = afterSrc;
+      editedImageSrc = afterSrc;
 
       function setComparePositionByPercent(pct){
         const p = clamp(pct, 0, 100);
@@ -564,21 +1065,8 @@ async function triggerReliableDownload(src, fileName, format = "png") {
         setComparePositionByPercent(50);
       })();
 
-      document.getElementById("downloadPngBtn").onclick = async () => {
-  try {
-    await triggerReliableDownload(resultImg.src, "decalque.png", "png");
-  } catch (err) {
-    showError("Não foi possível baixar em PNG: " + (err?.message || err));
-  }
-};
-
-document.getElementById("downloadJpgBtn").onclick = async () => {
-  try {
-    await triggerReliableDownload(resultImg.src, "decalque.jpg", "jpg");
-  } catch (err) {
-    showError("Não foi possível baixar em JPG: " + (err?.message || err));
-  }
-};
+      document.getElementById("downloadImageBtn").onclick = openDownloadMenu;
+      document.getElementById("editImageBtn").onclick = openEditor;
 
       document.getElementById("againBtn").onclick = () => {
         resultado.innerHTML = "";
