@@ -241,56 +241,338 @@ RESULTADO FINAL:
 `,
       shadow: `
 OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
-Converta uma imagem hiper-realista em um contorno profissional de estêncil para tatuagem.
-Preserve exatamente a anatomia, proporções, expressão facial, microdetalhes e textura da imagem original. Nenhuma estrutura deve ser simplificada ou perdida.
-Use linhas de contorno precisas, técnicas e refinadas para definir a estrutura principal. Permita variações sutis na espessura das linhas para sugerir profundidade e hierarquia visual.
+You will receive an image that is usually:
+- a digital artwork
+- a drawing made on paper
+- a realism reference
+- an illustration
+- a finished design
 
-CAPTURA DE DETALHES:
+Sometimes the image may also be a tattoo already applied on human skin, but that is NOT the main case.
 
-Extraia e traduza todos os mínimos detalhes da imagem:
-• textura da pele
-• fios individuais de cabelo
-• pelos da barba
-• marcas, cicatrizes, rugas
-• relevos de armadura, tecidos e ornamentos
+Your task is to convert the uploaded artwork into a clean, professional tattoo stencil that preserves the original design faithfully while translating shading into subtle technical guides.
 
-Não omita microinformações importantes.
-Não simplifique excessivamente áreas complexas.
+The final result must look like a professional stencil sheet prepared for tattoo application.
 
-MARCAÇÃO DE SOMBRA (ESTILO TÉCNICO PROFISSIONAL):
-Delimite claramente todas as transições de luz e sombra.
-Utilize linhas auxiliares estruturais para indicar volumes.
-Marque as separações de áreas de sombra com tracejado MUITO DISCRETO.
-Os tracejados devem ser pequenos, somente onde apareça separações de tons.
-Nunca use vermelho.
-Nunca use cinza.
-Nunca use preenchimento sólido para indicar sombra.
-Os tracejados devem ser mínimos, somente como complemento.
+---
 
-ESPAÇOS NEGATIVOS:
-Preserve totalmente os espaços brancos e áreas de highlight.
-Não preencha áreas de luz.
-Não desenhe dentro das áreas de brilho.
-O branco deve permanecer completamente limpo.
+PRIMARY GOAL
 
-FUNDO:
-Contorne apenas elementos essenciais que interagem com o sujeito.
-Simplifique o fundo em formas técnicas legíveis.
-Remova completamente qualquer poluição visual irrelevante.
+Preserve the original artwork as faithfully as possible.
 
-RESULTADO FINAL:
+You MUST:
+- keep the original composition
+- keep the original proportions
+- keep the original orientation
+- keep all important visual elements
+- preserve the design identity exactly
 
-O resultado deve parecer um estêncil técnico profissional avançado de estúdio de tatuagem:
+You MUST NOT:
+- mirror the artwork
+- flip the artwork
+- rotate it unnecessarily
+- add new elements
+- replace existing elements
+- remove relevant parts of the design
 
-• Contornos estruturais precisos
-• Microdetalhes preservados
-• Pontilhado preto técnico indicando sombra
-• Áreas brancas limpas e abertas
-• Leitura clara, marcante e pronta para transferência
+This is a faithful stencil conversion, NOT a redesign.
 
-A imagem final deve estar sobre fundo totalmente branco (#FFFFFF), limpa e pronta para impressão.
+---
 
-Gere somente a imagem final. Não retorne texto.
+CORE TASK
+
+Convert the artwork into a black stencil drawing using:
+
+1. Clean structural contour lines
+2. Internal detail lines
+3. Very subtle black shadow guides
+4. Clean white negative space
+
+The result must preserve both:
+- the main subject
+- all relevant secondary elements belonging to the artwork
+
+If the original artwork includes decorative or surrounding elements such as:
+- flowers
+- petals
+- leaves
+- ornaments
+- architectural details
+- background structures
+- sun
+- moon
+- weapons
+- accessories
+- frames
+- symbolic objects
+
+you MUST preserve them if they are part of the actual design.
+
+Do NOT omit secondary elements just because they are lighter, decorative, or placed in the background.
+
+---
+
+DETAIL PRESERVATION (VERY IMPORTANT)
+
+Extract and preserve all important visible information from the original artwork, including:
+
+- facial structure
+- anatomy
+- expression
+- hair flow
+- fabric folds
+- armor details
+- engraved details
+- object contours
+- floral details
+- ornamental details
+- architectural details
+- line rhythm
+- texture indications
+- separation between materials and planes
+
+Do NOT oversimplify complex areas.
+
+Do NOT erase fine details unless they are truly irrelevant visual noise.
+
+Microdetails should be translated as clearly as possible into stencil language.
+
+---
+
+SHADING TRANSLATION RULES
+
+This mode is NOT full shading fill.
+This mode is also NOT pure line-only extraction.
+
+You must indicate shadows using ONLY subtle technical guides.
+
+Use:
+- delicate dashed lines
+- light broken lines
+- subtle black stipple-like guides when needed
+- minimal tonal separation marks
+
+These shadow guides should gently indicate:
+- value transitions
+- shadow boundaries
+- depth separation
+- darker zones
+- volume structure
+
+The shadow indication must be:
+- black only
+- subtle
+- clean
+- readable
+- minimal but useful
+
+Never make the shadow marks too heavy.
+
+The goal is to show where the shadows belong, not to fully render them.
+
+---
+
+ABSOLUTE PROHIBITIONS
+
+Do NOT use:
+- solid black fill for shadow areas
+- gray shading
+- red shading
+- colored shading
+- airbrush effect
+- painterly rendering
+- soft digital painting
+- blur as shadow
+- full-tone fill
+- large dark mass fill unless it is a truly essential contour-defined black shape in the original design
+
+Do NOT preserve color fills from the source image.
+
+If the original artwork contains filled color areas, such as:
+- a red moon
+- a colored sun
+- colored petals
+- painted ornaments
+- colored background accents
+
+you MUST convert them into stencil information using:
+- outer contour lines
+- internal separation lines
+- subtle shadow guide marks if needed
+
+Never keep these areas as flat color fills.
+
+Example:
+A red moon in the original image must become a line-defined circular form with internal guide lines if necessary, NOT a solid red or solid filled shape.
+
+---
+
+NEGATIVE SPACE
+
+Preserve clean white negative space wherever the original art has light or open areas.
+
+Do NOT clutter the image.
+Do NOT fill white highlight areas unnecessarily.
+Do NOT draw inside every light zone.
+
+White space must remain open and intentional.
+
+A professional stencil needs breathing room and readability.
+
+---
+
+BACKGROUND HANDLING
+
+Important distinction:
+
+If the background contains actual design elements that belong to the artwork, you MUST preserve them.
+Examples:
+- temple structures
+- ornamental scenery
+- halo elements
+- symbolic architecture
+- decorative floral backgrounds
+
+If the background contains only irrelevant noise, paper texture, skin texture, blur, lighting artifacts, or photographic interference, remove those.
+
+Keep only the background elements that are truly part of the design composition.
+
+Do NOT accidentally delete meaningful background art.
+
+---
+
+WHEN THE SOURCE IS DIGITAL ART OR PAPER ART
+
+This is the main use case.
+
+If the input is a digital illustration, painting, realism artwork, sketch, flash design, or paper drawing:
+
+- treat the artwork itself as the original master composition
+- preserve all design elements faithfully
+- convert tone and color into line-based stencil structure
+- keep the original arrangement and visual hierarchy
+- maintain clarity and print-readiness
+
+The result must look like a tattoo stencil version of that artwork.
+
+---
+
+WHEN THE SOURCE IS A TATTOO ON SKIN
+
+If the input is a tattoo photographed on human skin:
+
+- ignore skin texture
+- ignore lighting reflections
+- ignore body texture
+- ignore photographic noise
+- ignore distortions caused by skin as much as possible
+
+But still preserve the tattoo design itself faithfully.
+
+Do NOT make the final image look like a tattoo still sitting on skin.
+It should look like a clean stencil reconstruction of the design.
+
+---
+
+LINE QUALITY
+
+Use lines that are:
+- precise
+- clean
+- controlled
+- technically readable
+- suitable for stencil transfer
+
+You may use subtle variation in line weight only when helpful for structure and hierarchy.
+
+But do NOT over-stylize.
+Do NOT make lines excessively bold.
+Do NOT turn it into a comic or sketch style unless the original art clearly requires that visual language.
+
+---
+
+FAITHFULNESS RULES
+
+You MUST preserve:
+- original orientation
+- original composition
+- original subject placement
+- original design flow
+- original symbolic content
+- original decorative elements
+- original stylistic identity
+
+You MUST NOT:
+- mirror any part
+- create symmetry that does not exist
+- invent missing decorative elements
+- remove flowers, ornaments, or shapes that are present
+- simplify major forms into generic substitutes
+
+If a flower exists, keep the flower.
+If petals exist, keep the petals.
+If a moon exists, keep the moon as line information.
+If a temple or background structure exists, preserve it as part of the design.
+If ornamental details exist, preserve them.
+
+---
+
+FINAL VISUAL OUTPUT
+
+The final image must be:
+
+- black stencil drawing only
+- on a pure white background (#FFFFFF)
+- clean
+- centered
+- print-ready
+- visually readable
+- technically useful for tattoo application
+
+It must contain:
+- contour lines
+- internal structural lines
+- subtle black shadow guide marks
+- preserved design details
+- clean open negative spaces
+
+It must NOT contain:
+- color fills
+- red areas
+- gray wash
+- painterly shading
+- skin texture
+- paper texture
+- photographic artifacts
+- interface elements
+- borders
+- mockup elements
+- mirrored composition
+- newly invented elements
+
+---
+
+FINAL RESULT
+
+The final result must look like:
+
+“A professional tattoo stencil conversion of the original artwork, preserving all important elements, with clean linework and subtle black shadow guides.”
+
+It must NOT look like:
+- a simplified incomplete sketch
+- a cropped or partially erased version
+- a color illustration
+- a mirrored redesign
+- a line art missing secondary elements
+- a filled-color poster
+- a tattoo still attached to skin
+
+---
+
+OUTPUT INSTRUCTION
+
+Generate ONLY the final image.
+Do NOT output any text.
 `,
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
