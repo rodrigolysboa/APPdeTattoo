@@ -244,7 +244,7 @@ OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
 
 Convert a hyper-realistic image into a professional tattoo stencil outline.
 
-The main focus is to extract clean linework with subtle shadow guides for tattoo stencil transfer.
+The main focus is to extract clean, strong, readable linework with subtle shadow guides for tattoo stencil transfer.
 
 Preserve exactly:
 - the anatomy
@@ -256,6 +256,7 @@ Preserve exactly:
 No important structure should be simplified, altered, invented, or lost.
 
 Use precise, technical, and refined contour lines to define the main structure.
+The main structural lines must be clearly visible, well-defined, and stronger than the secondary lines, so the drawing does not look faded or weak.
 Allow subtle variations in line thickness to suggest depth and visual hierarchy.
 
 Do NOT invent anything beyond the original artwork.
@@ -268,20 +269,42 @@ The final result must remain as faithful as possible to the original image.
 
 DETAIL CAPTURE
 
-Extract and translate all the smallest details from the image, including:
+Extract and translate the maximum amount of visible detail from the image, including:
 
 - skin texture
 - individual hair strands
 - beard hairs
-- marks, scars, and wrinkles
+- wrinkles
+- scars
+- scratches
+- feather details
+- scales
+- engraved details
 - armor reliefs
 - fabric details
 - ornamental details
+- texture separation
+- material separation
+- fine structural marks
 
 Do not omit important micro-information.
 Do not oversimplify complex areas.
 Do not erase secondary elements.
 Do not ignore decorative elements that belong to the original artwork.
+
+Preserve as many line-based details as possible, especially in:
+- hair
+- beard
+- skin texture
+- feathers
+- scales
+- engravings
+- scratches
+- folds
+- ornaments
+- structural surfaces
+
+The stencil must capture the richest possible line information from the original image.
 
 ---
 
@@ -296,9 +319,18 @@ Mark shadow separation areas with VERY SUBTLE dashed lines.
 The dashed lines must be:
 - small
 - delicate
+- minimal
 - used only where tonal separation appears
 
+The dashed lines must indicate only the separation between:
+- light tones
+- mid tones
+- dark tones
+
 The shadow guides must serve only as light technical markings for tattoo stencil application.
+
+The shadow must be minimal.
+The main focus must always remain on the stencil linework.
 
 Never use red.
 Never use gray.
@@ -340,6 +372,21 @@ Completely remove any irrelevant visual noise.
 
 However, do NOT remove background elements that are actually part of the original artwork or composition.
 
+If the image contains background elements such as:
+- clouds
+- mist
+- smoke
+- light effects
+- glow
+- soft shadows
+- atmosphere behind the subject
+- subtle elements behind the main drawing
+
+these elements should be translated only very lightly, using subtle dashed indications when necessary.
+
+Background shadow or atmospheric elements must remain soft and minimal.
+They must never overpower the main linework of the stencil.
+
 ---
 
 FINAL RESULT
@@ -347,7 +394,9 @@ FINAL RESULT
 The result must look like an advanced professional tattoo studio stencil, with:
 
 - precise structural contours
+- strong and readable main lines
 - preserved micro-details
+- maximum line-based detail extraction
 - technical black stippling or subtle black shadow indication
 - clean and open white areas
 - clear, strong readability
