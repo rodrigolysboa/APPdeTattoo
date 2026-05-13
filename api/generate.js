@@ -257,6 +257,7 @@ No important structure should be simplified, altered, invented, or lost.
 
 Use precise, technical, and refined contour lines to define the main structure.
 The main structural lines must be clearly visible, well-defined, and stronger than the secondary lines, so the drawing does not look faded or weak.
+The main structural lines and contour lines must be black.
 Allow subtle variations in line thickness to suggest depth and visual hierarchy.
 
 Do NOT invent anything beyond the original artwork.
@@ -282,6 +283,10 @@ Extract and translate the maximum amount of visible detail from the image, inclu
 - engraved details
 - armor reliefs
 - fabric details
+- clothing details
+- clothing folds
+- seams
+- textile textures
 - ornamental details
 - texture separation
 - material separation
@@ -301,6 +306,8 @@ Preserve as many line-based details as possible, especially in:
 - engravings
 - scratches
 - folds
+- clothing
+- fabric
 - ornaments
 - structural surfaces
 
@@ -332,9 +339,12 @@ The shadow guides must serve only as light technical markings for tattoo stencil
 The shadow must be minimal.
 The main focus must always remain on the stencil linework.
 
-Never use red.
+The dashed shadow guides must be a very dark red, only to help identify shadow separation more clearly.
+Use a dark red tone such as #5A0A0A or an equivalent very dark red.
+
 Never use gray.
-Never use any color.
+Never use bright red.
+Never use any other color.
 Never use solid fill to indicate shadow.
 Never use solid black fill.
 Never use any kind of filled area.
@@ -344,7 +354,7 @@ It is EXTREMELY forbidden to use:
 - solid fill
 - black fill
 - gray fill
-- colored fill
+- colored fill blocks
 - any painted area
 - any fully filled shadow block
 
@@ -384,8 +394,10 @@ If the image contains background elements such as:
 
 these elements should be translated only very lightly, using subtle dashed indications when necessary.
 
+These dashed background indications should also use the same very dark red tone.
+
 Background shadow or atmospheric elements must remain soft and minimal.
-They must never overpower the main linework of the stencil.
+They must never overpower the main black linework of the stencil.
 
 ---
 
@@ -397,7 +409,7 @@ The result must look like an advanced professional tattoo studio stencil, with:
 - strong and readable main lines
 - preserved micro-details
 - maximum line-based detail extraction
-- technical black stippling or subtle black shadow indication
+- subtle very dark red dashed shadow indication
 - clean and open white areas
 - clear, strong readability
 - transfer-ready appearance
@@ -405,13 +417,13 @@ The result must look like an advanced professional tattoo studio stencil, with:
 The final image must be composed ONLY of:
 - black lines
 - black contour lines
-- subtle black dashed shadow guides
+- subtle very dark red dashed shadow guides
 - clean white negative space
 
 The final image must NOT contain:
-- any color
-- any red
 - any gray
+- any bright red
+- any other color
 - any solid fill
 - any painted shading
 - any invented element
