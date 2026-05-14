@@ -687,7 +687,7 @@ OUTPUT INSTRUCTION:
 
 Generate ONLY the final reconstructed image.
 
-Do NOT output any text.
+Do not display any text or watermark.
 `,
     };
 
