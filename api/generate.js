@@ -568,8 +568,9 @@ Only correct distortions caused by skin and photography.
 5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
 If there is text:
 You MUST:
-- Understand what is written and don't invent extra words.
-- Read and rewrite the text
+- Read and understand what is written to avoid grammatical errors.
+- Do not invent or add extra words
+- Rewrite the text correctly.
 - Rebuild it as clean typography
 - Align perfectly
 - Correct spacing
