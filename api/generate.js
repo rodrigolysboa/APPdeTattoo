@@ -551,21 +551,6 @@ It only removes the anatomical wrap effect and turns the design into a flat prin
 ---
 5. STYLE FIDELITY (EXTREMELY IMPORTANT)
 You MUST:
-- Preserve the original artistic style
-- Maintain proportions between elements
-- Keep line weight and visual identity
-- Respect shading and details
-You MUST NOT:
-- Change the style
-- Over-enhance
-- Simplify excessively
-- Add new elements
-- Mirror the design
-- Create ornaments that do not exist
-Only correct distortions caused by skin and photography.
----
-5. STYLE FIDELITY (EXTREMELY IMPORTANT)
-You MUST:
 - Preserve the maximum original artistic style
 - Maintain proportions between elements
 - Keep line weight and visual identity
