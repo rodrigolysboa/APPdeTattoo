@@ -577,8 +577,6 @@ You MUST:
 - Preserve the original lettering style as much as possible
 - Rebuild the text cleanly while keeping its visual identity
 - Correct distortions caused by skin curvature, photo angle, blur, or low clarity
-- Improve readability without turning the lettering into a different style
-- Correct spacing and alignment only when needed
 - Keep decorative strokes, flourishes, extensions, serifs, swashes, and stylistic details when they are part of the original lettering
 - Make lines clean and technically well reconstructed
 
