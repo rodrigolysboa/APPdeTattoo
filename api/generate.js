@@ -626,7 +626,7 @@ Instead:
 
 - unwrap the tattoo flow into a flat 2D drawing
 - keep the original tribal pattern language
-- preserve the same motifs, bands, triangles, curves, spacing, rhythm, and visual identity
+- preserve the same lines, elements, motifs, bands, triangles, curves, spacing, rhythm, and visual identity
 - reconstruct interrupted bands naturally
 - create clean logical outer edges when the original tattoo has no clear ending
 - complete missing pattern areas only by continuing the existing design logic
