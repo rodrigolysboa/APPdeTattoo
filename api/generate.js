@@ -574,18 +574,18 @@ MANDATORY RULE FOR TATTOOS WITH WRITING:
 You MUST:
 - Carefully read and understand what is written before reconstructing it
 - Identify each word correctly, even if the lettering is highly stylized
-- Reconstruct the text faithfully without changing the wording
+- Recreate the missing letters in the word, following the logic of the sentence and maintaining the style.
+- Reconstruct the text faithfully
 - Preserve the original lettering style as much as possible
 - Rebuild the text cleanly while keeping its visual identity
 - Correct distortions caused by skin curvature, photo angle, blur, or low clarity
 - Keep decorative strokes and stylistic details when they are part of the original lettering
 
-You MUST NOT:
+YOU MUST NEVER:
 - Replace graffiti, script, calligraphy, or sketch-style lettering with a standard font look
-- Invent extra flourishes, ornaments
 - Misread the text and create different words
 
-Text MUST look like:
+THE RESULT SHOULD BE:
 A clean, faithful reconstruction of the original tattoo lettering style.
 ---
 6. FINAL OUTPUT REQUIREMENTS
