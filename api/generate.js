@@ -565,20 +565,37 @@ You MUST NOT:
 - Create ornaments that do not exist
 Only correct distortions caused by skin and photography.
 ---
-5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
-If there is text:
+5.1 TYPOGRAPHY / LETTERING RECONSTRUCTION (IF TEXT EXISTS)
+
+If there is text, lettering, calligraphy, script, graffiti-style text, hand-drawn lettering, or stylized letters:
+
 You MUST:
-- Read and understand what is written to avoid grammatical errors.
-- Do not invent or add extra words
-- Rewrite the text correctly.
-- Rebuild it as clean typography
-- Align perfectly
-- Correct spacing
-- Make all lines straight
+- Carefully read and understand what is written before reconstructing it
+- Identify each letter correctly, even if the lettering is highly stylized
+- Reconstruct the text faithfully without changing the wording
+- Do NOT invent, add, remove, or replace words or letters
+- Preserve the original lettering style as much as possible
+- Rebuild the text cleanly while keeping its visual identity
+- Correct distortions caused by skin curvature, photo angle, blur, or low clarity
+- Improve readability without turning the lettering into a different style
+- Correct spacing and alignment only when needed
+- Keep decorative strokes, flourishes, extensions, serifs, swashes, and stylistic details when they are part of the original lettering
+- Make lines clean and technically well reconstructed
+
+You MUST NOT:
+- Turn stylized tattoo lettering into generic plain typography
+- Replace graffiti, script, calligraphy, or sketch-style lettering with a standard font look
+- Invent extra flourishes, ornaments, or letters
+- Misread the text and create different words
+- Over-clean the lettering to the point that it loses its original character
+
 Text MUST look like:
-Clean editorial typography.
+A clean, faithful reconstruction of the original tattoo lettering style.
+
 NOT:
-Hand-drawn distorted lettering.
+- Hand-drawn distorted lettering from skin
+- Generic editorial typography unrelated to the original style
+- A rewritten phrase with different wording
 ---
 6. FINAL OUTPUT REQUIREMENTS
 The final image MUST be:
