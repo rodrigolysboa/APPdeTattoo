@@ -438,96 +438,140 @@ clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
 You will receive an image of a tattoo applied on human skin.
+
 Your task is NOT to crop the tattoo or remove the background.
+
 YOUR REAL TASK IS:
 RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch on paper, ready for professional printing.
+
 ---
+
 CRITICAL PRIORITY RULE (MOST IMPORTANT):
+
 UNDER NO CIRCUMSTANCES should the final result resemble a body part.
+
 IF the output has ANY indication of:
 - arm shape
 - forearm silhouette
 - leg contour
-- curvature of any part of the body
+- body curvature
 - organic human shape boundaries
+
 THE RESULT IS COMPLETELY WRONG.
+
 The final image MUST look like:
 A flat, independent drawing on paper.
+
 NEVER like:
 A tattoo extracted from skin.
+
 This rule OVERRIDES ALL OTHERS.
+
 ---
+
 ABSOLUTE RULES (MANDATORY):
+
 1. IGNORE THE HUMAN BODY COMPLETELY
+
 You MUST:
 - Remove ALL traces of skin
 - Ignore anatomy entirely
 - Eliminate curvature caused by the body
 - Discard perspective distortion from the photo
+
 You MUST NOT:
 - Preserve limb shape
 - Follow skin curvature
 - Keep original silhouette
 - Maintain edges based on body limits
 - Retain lighting/shadows from skin
+
 The final result must be:
 A flat, centered, independent artwork.
+
 ---
+
 2. FULL EXPANSION AND EDGE RECONSTRUCTION
+
 If the tattoo is:
 - cropped
 - partially visible
 - cut off by the photo
 - limited by body framing
+
 You MUST:
 - Expand the design beyond visible borders
-- Understanding and logically reconstructing missing areas
+- Reconstruct missing areas logically
 - Continue interrupted patterns
 - Complete shapes and symmetry
-- Do not complete partial elements that are intentionally incomplete or only partially visible in the reference.
-- Invent missing parts totally coherently when necessary MUST look complete and uninterrupted.
+- Invent missing parts coherently when necessary
+
+The final artwork MUST look complete and uninterrupted.
+
 ---
+
 3. COMPLETE REDRAW (NOT EXTRACTION)
+
 You MUST:
 - Redraw the entire design from scratch
 - Reconstruct blurred or distorted areas
 - Replace imperfections with clean lines
 - Rebuild hidden or unclear parts
+
 FOCUS:
 Reconstruction, NOT copying.
+
 ---
+
 4. PERFECT GEOMETRY AND STRUCTURE
+
 For any:
 - circles
 - mandalas
 - geometric shapes
 - repeating patterns
+
 You MUST:
 - Correct distortions from skin curvature
 - Align everything perfectly
 - Center properly
 - Ensure symmetry
+
 Circles MUST be perfectly round.
 No deformation is allowed.
+
 ---
+
 4.1 ABSOLUTE STRAIGHT LINE CORRECTION
+
 All structural lines MUST be:
+
 - perfectly straight
 - perfectly horizontal or vertical when applicable
 - perfectly parallel when required
 - perfectly aligned
+
 You MUST:
 - Fix any tilt from the photo
 - Remove curvature
 - Redraw using precise geometry
+
 The result must look like it was created with technical tools (ruler-based precision).
+
 ---
+
 4.2 SPECIAL HANDLING FOR MAORI / POLYNESIAN / TRIBAL WRAP TATTOOS
+
 If the uploaded tattoo is a Maori, Polynesian, tribal, ornamental, geometric wrap, sleeve, arm band, leg band, or body-flow tattoo:
+
 Apply this section ONLY to this type of tattoo.
+
 These designs are often created to follow the arm, leg, shoulder, or body curvature.
+
 Your task is NOT to preserve the limb silhouette.
+
 You MUST convert the tattoo into a flat printable artwork.
+
 Do NOT use:
 - arm shape
 - leg shape
@@ -535,27 +579,37 @@ Do NOT use:
 - forearm taper
 - body outline
 - skin border
+
 as the final boundary of the artwork.
+
 Instead:
+
 - unwrap the tattoo flow into a flat 2D drawing
 - keep the original tribal pattern language
 - preserve the same lines, elements, motifs, bands, triangles, curves, spacing, rhythm, and visual identity
 - reconstruct interrupted bands naturally
 - create clean logical outer edges when the original tattoo has no clear ending
 - complete missing pattern areas only by continuing the existing design logic
+
 The final result must look like:
 a professional Maori / Polynesian / Tribal tattoo flash design on white paper.
+
 It must NOT look like:
 a tattoo still wrapped around an arm, leg, or body part.
+
 This section must not change the style, ornaments, symbols, or visual identity of the original tattoo.
 It only removes the anatomical wrap effect and turns the design into a flat printable composition.
+
 ---
+
 5. STYLE FIDELITY (EXTREMELY IMPORTANT)
+
 You MUST:
-- Preserve the maximum original artistic style
+- Preserve the original artistic style
 - Maintain proportions between elements
 - Keep line weight and visual identity
 - Respect shading and details
+
 You MUST NOT:
 - Change the style
 - Over-enhance
@@ -563,63 +617,77 @@ You MUST NOT:
 - Add new elements
 - Mirror the design
 - Create ornaments that do not exist
-Only correct distortions caused by skin and photography.
----
-5.1 TYPOGRAPHY / LETTERING RECONSTRUCTION (IF TEXT EXISTS)
 
-If there is text, lettering, calligraphy, script, graffiti-style text, hand-drawn lettering, or stylized letters:
-MANDATORY RULE FOR TATTOOS WITH WRITING:
-- It is mandatory to read the entire sentence, carefully understanding what is written in each word before reconstructing it.
+Only correct distortions caused by skin and photography.
+
+---
+
+5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
+
+If there is text:
 
 You MUST:
-- Carefully read and understand what is written before reconstructing it
-- Identify each word correctly, even if the lettering is highly stylized
-- Recreate the missing letters in the word, following the logic of the sentence and maintaining the style.
-- Reconstruct the text faithfully
-- Preserve the original lettering style as much as possible
-- Rebuild the text cleanly while keeping its visual identity
-- Correct distortions caused by skin curvature, photo angle, blur, or low clarity
-- Keep decorative strokes and stylistic details when they are part of the original lettering
+- Read, understand and rewrite the text
+- Rebuild it as clean typography
+- Align perfectly
+- Correct spacing
+- Make all lines straight
 
-YOU MUST NEVER:
-- Replace graffiti, script, calligraphy, or sketch-style lettering with a standard font look
-- Misread the text and create different words
+Text MUST look like:
+Clean editorial typography.
 
-THE RESULT SHOULD BE:
-A clean, faithful reconstruction of the original tattoo lettering style.
+NOT:
+Hand-drawn distorted lettering.
+
 ---
+
 6. FINAL OUTPUT REQUIREMENTS
+
 The final image MUST be:
+
 - A COMPLETE and FINISHED artwork
 - Placed on a pure white A4 sheet
 - Flat and frontal
 - Centered
 - Clean black design (unless original requires shading)
 - With NO:
-- skin texture
-- shadows from body
-- body shape
-- anatomical traces
-- cut edges
+  - skin texture
+  - shadows from body
+  - body shape
+  - anatomical traces
+  - cut edges
+
 ---
+
 FINAL GOLDEN RULE:
+
 The result MUST look like:
+
 “A professionally created drawing on paper”
+
 AND NEVER like:
+
 “A tattoo taken from a human body”
+
 ---
+
 FAIL CONDITION (AUTOMATIC REJECTION):
+
 If ANY of the following is visible:
 - limb silhouette
 - curved body-like borders
 - anatomical shape
 - skin-based edges
+
 THE RESULT IS INVALID.
+
 ---
 
 OUTPUT INSTRUCTION:
+
 Generate ONLY the final reconstructed image.
-Do NOT include any text or watermarks on the image.
+
+Do NOT output any text.
 `,
     };
 
