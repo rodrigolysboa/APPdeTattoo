@@ -438,180 +438,95 @@ clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
 You will receive an image of a tattoo applied on human skin.
-
 Your task is NOT to crop the tattoo or remove the background.
-
 YOUR REAL TASK IS:
 RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch on paper, ready for professional printing.
-
 ---
-
 CRITICAL PRIORITY RULE (MOST IMPORTANT):
-
 UNDER NO CIRCUMSTANCES should the final result resemble a body part.
-
 IF the output has ANY indication of:
 - arm shape
 - forearm silhouette
 - leg contour
-- back shape
-- chest shape
-- torso shape
-- shoulder shape
-- neck shape
-- hip shape
-- waist shape
-- any body-part silhouette
-- body curvature
+- curvature of any part of the body
 - organic human shape boundaries
-
 THE RESULT IS COMPLETELY WRONG.
-
 The final image MUST look like:
 A flat, independent drawing on paper.
-
 NEVER like:
 A tattoo extracted from skin.
-
 This rule OVERRIDES ALL OTHERS.
-
 ---
-
 ABSOLUTE RULES (MANDATORY):
-
-0. BEFORE RECONSTRUCTING THE DRAWING, ANALYZE THE ORIGINAL TATTOO FIRST
-
-Before generating the final artwork, you MUST carefully observe the uploaded tattoo image and identify:
-- the main subjects
-- the real objects
-- the original ornaments
-- the visible borders
-- the structural lines
-- the geometric elements
-- the shading areas
-- the actual composition of the tattoo
-
-You MUST understand what truly exists in the original tattoo before reconstructing it.
-
-The reconstruction must be based ONLY on the elements that belong to the original tattoo.
-
-Do NOT add extra objects, decorative elements, frames, borders, ornaments, backgrounds, or shapes that are not part of the original tattoo design.
-
----
-
 1. IGNORE THE HUMAN BODY COMPLETELY
-
 You MUST:
 - Remove ALL traces of skin
 - Ignore anatomy entirely
 - Eliminate curvature caused by the body
 - Discard perspective distortion from the photo
-
 You MUST NOT:
 - Preserve limb shape
 - Follow skin curvature
 - Keep original silhouette
 - Maintain edges based on body limits
 - Retain lighting/shadows from skin
-
 The final result must be:
 A flat, centered, independent artwork.
-
 ---
-
 2. FULL EXPANSION AND EDGE RECONSTRUCTION
-
 If the tattoo is:
 - cropped
 - partially visible
 - cut off by the photo
 - limited by body framing
-
 You MUST:
 - Expand the design beyond visible borders
-- Reconstruct missing areas logically
+- Understanding and logically reconstructing missing areas
 - Continue interrupted patterns
 - Complete shapes and symmetry
-- Invent missing parts coherently when necessary
-
-The final artwork MUST look complete and uninterrupted.
-
-Do NOT create invented outer frames, decorative borders, background ornaments, or surrounding shapes that do not exist in the original tattoo.
-
-The outer shape around the artwork must come from the original tattoo design itself, never from invented decoration.
-
-The goal is to recreate the original tattoo design 100%, without extra elements.
-
+- Invent missing parts totaly coherently when necessary MUST look complete and uninterrupted.
 ---
-
 3. COMPLETE REDRAW (NOT EXTRACTION)
-
 You MUST:
 - Redraw the entire design from scratch
 - Reconstruct blurred or distorted areas
 - Replace imperfections with clean lines
 - Rebuild hidden or unclear parts
-
 FOCUS:
 Reconstruction, NOT copying.
-
 ---
-
 4. PERFECT GEOMETRY AND STRUCTURE
-
 For any:
 - circles
 - mandalas
-- crosses
 - geometric shapes
 - repeating patterns
-
 You MUST:
 - Correct distortions from skin curvature
 - Align everything perfectly
 - Center properly
 - Ensure symmetry
-
 Circles MUST be perfectly round.
-Crosses MUST be straight, aligned, and structurally clean when they exist in the tattoo.
 No deformation is allowed.
-
-If a cross appears only partially in the original tattoo, keep it partial.
-Do NOT recreate, extend, complete, or invent missing parts of the cross.
-Only align and clean the part of the cross that truly exists in the original tattoo.
-
 ---
-
 4.1 ABSOLUTE STRAIGHT LINE CORRECTION
-
 All structural lines MUST be:
-
 - perfectly straight
 - perfectly horizontal or vertical when applicable
 - perfectly parallel when required
 - perfectly aligned
-
 You MUST:
 - Fix any tilt from the photo
 - Remove curvature
 - Redraw using precise geometry
-
 The result must look like it was created with technical tools (ruler-based precision).
-
 ---
-
 4.2 SPECIAL HANDLING FOR MAORI / POLYNESIAN / TRIBAL WRAP TATTOOS
-
 If the uploaded tattoo is a Maori, Polynesian, tribal, ornamental, geometric wrap, sleeve, arm band, leg band, or body-flow tattoo:
-
 Apply this section ONLY to this type of tattoo.
-
 These designs are often created to follow the arm, leg, shoulder, or body curvature.
-
 Your task is NOT to preserve the limb silhouette.
-
 You MUST convert the tattoo into a flat printable artwork.
-
 Do NOT use:
 - arm shape
 - leg shape
@@ -619,37 +534,27 @@ Do NOT use:
 - forearm taper
 - body outline
 - skin border
-
 as the final boundary of the artwork.
-
 Instead:
-
 - unwrap the tattoo flow into a flat 2D drawing
 - keep the original tribal pattern language
 - preserve the same lines, elements, motifs, bands, triangles, curves, spacing, rhythm, and visual identity
 - reconstruct interrupted bands naturally
 - create clean logical outer edges when the original tattoo has no clear ending
 - complete missing pattern areas only by continuing the existing design logic
-
 The final result must look like:
 a professional Maori / Polynesian / Tribal tattoo flash design on white paper.
-
 It must NOT look like:
 a tattoo still wrapped around an arm, leg, or body part.
-
 This section must not change the style, ornaments, symbols, or visual identity of the original tattoo.
 It only removes the anatomical wrap effect and turns the design into a flat printable composition.
-
 ---
-
 5. STYLE FIDELITY (EXTREMELY IMPORTANT)
-
 You MUST:
 - Preserve the original artistic style
 - Maintain proportions between elements
 - Keep line weight and visual identity
 - Respect shading and details
-
 You MUST NOT:
 - Change the style
 - Over-enhance
@@ -657,99 +562,69 @@ You MUST NOT:
 - Add new elements
 - Mirror the design
 - Create ornaments that do not exist
-
 Only correct distortions caused by skin and photography.
-
 ---
-
-5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
-
-If there is text:
-
+5. STYLE FIDELITY (EXTREMELY IMPORTANT)
 You MUST:
+- Preserve the maximum original artistic style
+- Maintain proportions between elements
+- Keep line weight and visual identity
+- Respect shading and details
+You MUST NOT:
+- Change the style
+- Over-enhance
+- Simplify excessively
+- Add new elements
+- Mirror the design
+- Create ornaments that do not exist
+Only correct distortions caused by skin and photography.
+---
+5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
+If there is text:
+You MUST:
+- Understand what is written and don't invent extra words.
 - Read and rewrite the text
 - Rebuild it as clean typography
 - Align perfectly
 - Correct spacing
 - Make all lines straight
-
 Text MUST look like:
 Clean editorial typography.
-
 NOT:
 Hand-drawn distorted lettering.
-
 ---
-
 6. FINAL OUTPUT REQUIREMENTS
-
 The final image MUST be:
-
 - A COMPLETE and FINISHED artwork
 - Placed on a pure white A4 sheet
 - Flat and frontal
 - Centered
 - Clean black design (unless original requires shading)
 - With NO:
-  - skin texture
-  - shadows from body
-  - body shape
-  - anatomical traces
-  - cut edges
-  - invented frames
-  - invented borders
-  - invented ornaments
-  - extra decorative elements outside the original tattoo
-  - body-part silhouette of any kind
-
+- skin texture
+- shadows from body
+- body shape
+- anatomical traces
+- cut edges
 ---
-
 FINAL GOLDEN RULE:
-
 The result MUST look like:
-
 “A professionally created drawing on paper”
-
 AND NEVER like:
-
 “A tattoo taken from a human body”
-
-The result MUST recreate the original tattoo design 100%, without adding new elements, new borders, new frames, or decorative parts that do not exist in the original tattoo.
-
 ---
-
 FAIL CONDITION (AUTOMATIC REJECTION):
-
 If ANY of the following is visible:
 - limb silhouette
-- arm silhouette
-- forearm silhouette
-- leg silhouette
-- back silhouette
-- chest silhouette
-- torso silhouette
-- shoulder silhouette
-- neck silhouette
-- hip silhouette
-- waist silhouette
-- any body-part silhouette
 - curved body-like borders
 - anatomical shape
 - skin-based edges
-- invented outer frame
-- invented decorative border
-- extra ornaments not present in the original tattoo
-- completed cross parts that were not visible in the original tattoo
-
 THE RESULT IS INVALID.
-
 ---
 
 OUTPUT INSTRUCTION:
-
 Generate ONLY the final reconstructed image.
-
-Do NOT output any text.
+Do NOT include any text or watermarks on the image.
 `,
     };
 
