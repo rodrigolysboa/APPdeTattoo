@@ -568,6 +568,8 @@ Only correct distortions caused by skin and photography.
 5.1 TYPOGRAPHY / LETTERING RECONSTRUCTION (IF TEXT EXISTS)
 
 If there is text, lettering, calligraphy, script, graffiti-style text, hand-drawn lettering, or stylized letters:
+MANDATORY RULE FOR TATTOOS WITH WRITING:
+- It is mandatory to read the entire sentence, carefully understanding what is written in each word before reconstructing it.
 
 You MUST:
 - Carefully read and understand what is written before reconstructing it
