@@ -484,7 +484,8 @@ You MUST:
 - Understanding and logically reconstructing missing areas
 - Continue interrupted patterns
 - Complete shapes and symmetry
-- Invent missing parts totaly coherently when necessary MUST look complete and uninterrupted.
+- Do not complete partial elements that are intentionally incomplete or only partially visible in the reference.
+- Invent missing parts totally coherently when necessary MUST look complete and uninterrupted.
 ---
 3. COMPLETE REDRAW (NOT EXTRACTION)
 You MUST:
