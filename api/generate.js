@@ -686,7 +686,6 @@ THE RESULT IS INVALID.
 OUTPUT INSTRUCTION:
 
 Generate ONLY the final reconstructed image.
-
 Do not display any text or watermark.
 `,
     };
