@@ -504,6 +504,9 @@ Você DEVE:
 - Completar formas e simetrias
 - Inventar partes ausentes de maneira coerente quando necessário
 
+Você NÃO DEVE:
+- Inventar molduras, linhas e elementos ao redor que não fazem parte do desenho.
+
 A arte final DEVE parecer completa e sem interrupções.
 
 ---
