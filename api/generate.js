@@ -437,256 +437,249 @@ Do not return any text.
 clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
-You will receive an image of a tattoo applied on human skin.
+Você receberá uma imagem de uma tatuagem aplicada sobre a pele humana.
+Sua tarefa NÃO é recortar a tatuagem nem remover o fundo.
 
-Your task is NOT to crop the tattoo or remove the background.
-
-YOUR REAL TASK IS:
-RECONSTRUCT the entire design as a clean, original artwork, as if it were created from scratch on paper, ready for professional printing.
-
----
-
-CRITICAL PRIORITY RULE (MOST IMPORTANT):
-
-UNDER NO CIRCUMSTANCES should the final result resemble a body part.
-
-IF the output has ANY indication of:
-- arm shape
-- forearm silhouette
-- leg contour
-- body curvature
-- organic human shape boundaries
-
-THE RESULT IS COMPLETELY WRONG.
-
-The final image MUST look like:
-A flat, independent drawing on paper.
-
-NEVER like:
-A tattoo extracted from skin.
-
-This rule OVERRIDES ALL OTHERS.
+SUA VERDADEIRA TAREFA É:
+RECONSTRUIR todo o desenho como uma arte original e limpa, como se tivesse sido criada do zero em uma folha de papel, pronta para impressão profissional.
 
 ---
 
-ABSOLUTE RULES (MANDATORY):
+REGRA DE PRIORIDADE CRÍTICA (A MAIS IMPORTANTE):
 
-1. IGNORE THE HUMAN BODY COMPLETELY
+SOB NENHUMA CIRCUNSTÂNCIA o resultado final deve se parecer com uma parte do corpo.
 
-You MUST:
-- Remove ALL traces of skin
-- Ignore anatomy entirely
-- Eliminate curvature caused by the body
-- Discard perspective distortion from the photo
+SE o resultado tiver QUALQUER indicação de:
+- formato de braço
+- silhueta de antebraço
+- contorno de perna
+- curvatura corporal
+- limites com formato humano orgânico
 
-You MUST NOT:
-- Preserve limb shape
-- Follow skin curvature
-- Keep original silhouette
-- Maintain edges based on body limits
-- Retain lighting/shadows from skin
+O RESULTADO ESTÁ COMPLETAMENTE ERRADO.
 
-The final result must be:
-A flat, centered, independent artwork.
+A imagem final DEVE parecer:
+Um desenho plano e independente sobre uma folha de papel.
 
----
+NUNCA:
+Uma tatuagem extraída da pele.
 
-2. FULL EXPANSION AND EDGE RECONSTRUCTION
-
-If the tattoo is:
-- cropped
-- partially visible
-- cut off by the photo
-- limited by body framing
-
-You MUST:
-- Expand the design beyond visible borders
-- Reconstruct missing areas logically
-- Continue interrupted patterns
-- Complete shapes and symmetry
-- Invent missing parts coherently when necessary
-
-The final artwork MUST look complete and uninterrupted.
+Esta regra TEM PRIORIDADE SOBRE TODAS AS OUTRAS.
 
 ---
 
-3. COMPLETE REDRAW (NOT EXTRACTION)
+REGRAS ABSOLUTAS (OBRIGATÓRIAS):
 
-You MUST:
-- Redraw the entire design from scratch
-- Reconstruct blurred or distorted areas
-- Replace imperfections with clean lines
-- Rebuild hidden or unclear parts
+1. IGNORE COMPLETAMENTE O CORPO HUMANO
 
-FOCUS:
-Reconstruction, NOT copying.
+Você DEVE:
+- Remover TODOS os vestígios de pele
+- Ignorar completamente a anatomia
+- Eliminar a curvatura causada pelo corpo
+- Descartar a distorção de perspectiva da foto
+
+Você NÃO DEVE:
+- Preservar o formato do membro
+- Seguir a curvatura da pele
+- Manter a silhueta original
+- Manter bordas baseadas nos limites do corpo
+- Preservar iluminação ou sombras provenientes da pele
+
+O resultado final deve ser:
+Uma arte plana, centralizada e independente.
 
 ---
 
-4. PERFECT GEOMETRY AND STRUCTURE
+2. EXPANSÃO COMPLETA E RECONSTRUÇÃO DAS BORDAS
 
-For any:
-- circles
+Se a tatuagem estiver:
+- recortada
+- parcialmente visível
+- cortada pela foto
+- limitada pelo enquadramento do corpo
+Você DEVE:
+- Expandir o desenho para além das bordas visíveis
+- Reconstruir logicamente as áreas ausentes
+- Continuar padrões interrompidos
+- Completar formas e simetrias
+- Inventar partes ausentes de maneira coerente quando necessário
+
+A arte final DEVE parecer completa e sem interrupções.
+
+---
+
+3. REDESENHO COMPLETO (NÃO EXTRAÇÃO)
+
+Você DEVE:
+- Redesenhar todo o desenho do zero
+- Reconstruir áreas borradas ou distorcidas
+- Substituir imperfeições por linhas limpas
+- Refazer partes ocultas ou pouco nítidas
+
+FOCO:
+Reconstrução, NÃO cópia.
+
+---
+
+4. GEOMETRIA E ESTRUTURA PERFEITAS
+
+Para quaisquer:
+- círculos
 - mandalas
-- geometric shapes
-- repeating patterns
+- cruz
+- formas geométricas
+- padrões repetitivos
 
-You MUST:
-- Correct distortions from skin curvature
-- Align everything perfectly
-- Center properly
-- Ensure symmetry
+Você DEVE:
+- Corrigir distorções causadas pela curvatura da pele
+- Alinhar tudo perfeitamente
+- Centralizar corretamente
+- Garantir simetria
 
-Circles MUST be perfectly round.
-No deformation is allowed.
-
----
-
-4.1 ABSOLUTE STRAIGHT LINE CORRECTION
-
-All structural lines MUST be:
-
-- perfectly straight
-- perfectly horizontal or vertical when applicable
-- perfectly parallel when required
-- perfectly aligned
-
-You MUST:
-- Fix any tilt from the photo
-- Remove curvature
-- Redraw using precise geometry
-
-The result must look like it was created with technical tools (ruler-based precision).
+Os círculos DEVEM ser perfeitamente redondos.
+Nenhuma deformação é permitida.
 
 ---
 
-4.2 SPECIAL HANDLING FOR MAORI / POLYNESIAN / TRIBAL WRAP TATTOOS
+4.1 CORREÇÃO ABSOLUTA DE LINHAS RETAS
 
-If the uploaded tattoo is a Maori, Polynesian, tribal, ornamental, geometric wrap, sleeve, arm band, leg band, or body-flow tattoo:
+Todas as linhas estruturais DEVEM ser:
 
-Apply this section ONLY to this type of tattoo.
+- perfeitamente retas
+- perfeitamente horizontais ou verticais, quando aplicável
+- perfeitamente paralelas, quando necessário
+- perfeitamente alinhadas
 
-These designs are often created to follow the arm, leg, shoulder, or body curvature.
+Você DEVE:
+- Corrigir qualquer inclinação causada pela foto
+- Remover curvaturas
+- Redesenhar utilizando geometria precisa
 
-Your task is NOT to preserve the limb silhouette.
-
-You MUST convert the tattoo into a flat printable artwork.
-
-Do NOT use:
-- arm shape
-- leg shape
-- shoulder curve
-- forearm taper
-- body outline
-- skin border
-
-as the final boundary of the artwork.
-
-Instead:
-
-- unwrap the tattoo flow into a flat 2D drawing
-- keep the original tribal pattern language
-- preserve the same lines, elements, motifs, bands, triangles, curves, spacing, rhythm, and visual identity
-- reconstruct interrupted bands naturally
-- create clean logical outer edges when the original tattoo has no clear ending
-- complete missing pattern areas only by continuing the existing design logic
-
-The final result must look like:
-a professional Maori / Polynesian / Tribal tattoo flash design on white paper.
-
-It must NOT look like:
-a tattoo still wrapped around an arm, leg, or body part.
-
-This section must not change the style, ornaments, symbols, or visual identity of the original tattoo.
-It only removes the anatomical wrap effect and turns the design into a flat printable composition.
+O resultado deve parecer criado com ferramentas técnicas, com precisão de régua.
 
 ---
 
-5. STYLE FIDELITY (EXTREMELY IMPORTANT)
+4.2 TRATAMENTO ESPECIAL PARA TATUAGENS MAORI / POLINÉSIAS / TRIBAIS ENVOLVENTES
 
-You MUST:
-- Preserve the original artistic style
-- Maintain proportions between elements
-- Keep line weight and visual identity
-- Respect shading and details
+Se a tatuagem enviada for Maori, Polinésia, tribal, ornamental, geométrica envolvente, manga fechada, braçadeira, tornozeleira, faixa de perna ou uma tatuagem que acompanhe o fluxo corporal:
+Aplique esta seção SOMENTE a esse tipo de tatuagem.
+Esses desenhos geralmente são criados para acompanhar a curvatura do braço, da perna, do ombro ou do corpo.
+Sua tarefa NÃO é preservar a silhueta do membro.
+Você DEVE converter a tatuagem em uma arte plana e pronta para impressão.
 
-You MUST NOT:
-- Change the style
-- Over-enhance
-- Simplify excessively
-- Add new elements
-- Mirror the design
-- Create ornaments that do not exist
+NÃO utilize:
+- formato do braço
+- formato da perna
+- curva do ombro
+- afunilamento do antebraço
+- contorno corporal
+- borda da pele
 
-Only correct distortions caused by skin and photography.
+como limite final da arte.
 
----
+Em vez disso:
 
-5.1 TYPOGRAPHY RECONSTRUCTION (IF TEXT EXISTS)
+- desdobre o fluxo da tatuagem em um desenho plano 2D
+- mantenha a linguagem original dos padrões tribais
+- preserve as mesmas linhas, elementos, motivos, faixas, triângulos, curvas, espaçamentos, ritmo e identidade visual
+- reconstrua naturalmente as faixas interrompidas
+- crie bordas externas limpas e lógicas quando a tatuagem original não tiver um término claramente visível
+- complete áreas ausentes dos padrões somente continuando a lógica já existente no desenho
 
-If there is text:
+O resultado final deve parecer:
+Uma arte flash profissional de tatuagem Maori / Polinésia / Tribal sobre papel branco.
 
-You MUST:
-- Read, understand and rewrite the text
-- Rebuild it as clean typography
-- Align perfectly
-- Correct spacing
-- Make all lines straight
+Ele NÃO deve parecer:
+Uma tatuagem ainda enrolada ao redor de um braço, perna ou parte do corpo.
 
-Text MUST look like:
-Clean editorial typography.
-
-NOT:
-Hand-drawn distorted lettering.
-
----
-
-6. FINAL OUTPUT REQUIREMENTS
-
-The final image MUST be:
-
-- A COMPLETE and FINISHED artwork
-- Placed on a pure white A4 sheet
-- Flat and frontal
-- Centered
-- Clean black design (unless original requires shading)
-- With NO:
-  - skin texture
-  - shadows from body
-  - body shape
-  - anatomical traces
-  - cut edges
+Esta seção não deve alterar o estilo, os ornamentos, os símbolos ou a identidade visual da tatuagem original.
+Ela serve apenas para remover o efeito anatômico envolvente e transformar o desenho em uma composição plana e pronta para impressão.
 
 ---
 
-FINAL GOLDEN RULE:
+5. FIDELIDADE AO ESTILO (EXTREMAMENTE IMPORTANTE)
 
-The result MUST look like:
+Você DEVE:
+- Preservar o estilo artístico original
+- Manter as proporções entre os elementos
+- Preservar a espessura das linhas e a identidade visual
+- Respeitar os sombreamentos e os detalhes
 
-“A professionally created drawing on paper”
+Você NÃO DEVE:
+- Alterar o estilo
+- Aprimorar excessivamente
+- Simplificar demais
+- Adicionar novos elementos
+- Espelhar o desenho
+- Criar ornamentos que não existem
 
-AND NEVER like:
-
-“A tattoo taken from a human body”
-
----
-
-FAIL CONDITION (AUTOMATIC REJECTION):
-
-If ANY of the following is visible:
-- limb silhouette
-- curved body-like borders
-- anatomical shape
-- skin-based edges
-
-THE RESULT IS INVALID.
+Apenas corrija distorções causadas pela pele e pela fotografia.
 
 ---
 
-OUTPUT INSTRUCTION:
+5.1 RECONSTRUÇÃO TIPOGRÁFICA (CASO EXISTA TEXTO)
 
-Generate ONLY the final reconstructed image.
-Do not display any text or watermark.
+Se houver texto:
+
+Você DEVE:
+- Ler, compreender a frase e reescrever o texto
+- Reconstruí-lo cada palavra como tipografia limpa
+- Alinhar perfeitamente
+- Corrigir os espaçamentos
+- Deixar todas as linhas retas
+
+O texto DEVE parecer:
+Tipografia editorial limpa.
+
+NÃO deve JAMAIS:
+- Criar Letras desenhadas à mão e distorcidas.
+- Inventar palavras que não estão na frase do desenho.
+---
+
+6. REQUISITOS DO RESULTADO FINAL
+
+A imagem final DEVE ser:
+
+- Uma arte COMPLETA e FINALIZADA
+- Posicionada sobre uma folha A4 branca pura
+- Plana e frontal
+- Centralizada
+- Com desenho preto limpo, a menos que o original exija sombreamento
+- Sem:
+  - textura de pele
+  - sombras provenientes do corpo
+  - formato corporal
+  - vestígios anatômicos
+  - bordas cortadas
+
+---
+
+REGRA DE OURO FINAL:
+
+O resultado DEVE parecer:
+“Um desenho criado profissionalmente sobre uma folha de papel”
+
+E NUNCA:
+“Uma tatuagem retirada de um corpo humano”
+
+---
+
+CONDIÇÃO DE FALHA (REJEIÇÃO AUTOMÁTICA):
+
+Se QUALQUER um dos itens abaixo estiver visível:
+- silhueta de membro
+- bordas curvas semelhantes a partes do corpo
+- formato anatômico
+- bordas baseadas na pele
+
+O RESULTADO É INVÁLIDO.
+
+---
+
+INSTRUÇÃO DE SAÍDA:
+
+Gere SOMENTE a imagem final reconstruída.
+Não exiba nenhum texto ou marca-d'água.
 `,
     };
 
