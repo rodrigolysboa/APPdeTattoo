@@ -441,7 +441,7 @@ Você receberá uma imagem de uma tatuagem aplicada sobre a pele humana.
 Sua tarefa NÃO é recortar a tatuagem nem remover o fundo.
 
 SUA VERDADEIRA TAREFA É:
-RECONSTRUIR todo o desenho como uma arte original e limpa, como se tivesse sido criada do zero em uma folha de papel, pronta para impressão profissional.
+RECONSTRUIR todo o desenho como uma arte original e limpa DO MESMO DESENHO, como se tivesse sido criada do zero em uma folha de papel, pronta para impressão profissional.
 
 ---
 
@@ -514,13 +514,13 @@ A arte final DEVE parecer completa e sem interrupções.
 3. REDESENHO COMPLETO (NÃO EXTRAÇÃO)
 
 Você DEVE:
-- Redesenhar todo o desenho do zero
+- Redesenhar todo o desenho da tatuagem enviada do zero
 - Reconstruir áreas borradas ou distorcidas
 - Substituir imperfeições por linhas limpas
 - Refazer partes ocultas ou pouco nítidas
 
 FOCO:
-Reconstrução, NÃO cópia.
+Reconstrução com total fidelidade, NÃO cópia.
 
 ---
 
@@ -610,10 +610,11 @@ Você DEVE:
 
 Você NÃO DEVE:
 - Alterar o estilo
+- Criar um desenho muito diferente da tatuagem enviada
 - Aprimorar excessivamente
 - Simplificar demais
 - Adicionar novos elementos
-- Espelhar o desenho
+- Jamais espelhar o desenho
 - Criar ornamentos que não existem
 
 Apenas corrija distorções causadas pela pele e pela fotografia.
