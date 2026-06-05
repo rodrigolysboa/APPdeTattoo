@@ -427,6 +427,29 @@
       erroBox.textContent = "";
     }
 
+    function buildApiErrorMessage(res, data) {
+      const parts = [];
+      const status = res?.status || 0;
+
+      if (status) parts.push(`HTTP ${status}`);
+      if (data?.code) parts.push(`Código: ${data.code}`);
+      if (data?.error) parts.push(`Erro: ${data.error}`);
+      if (data?.detail) parts.push(`Detalhe: ${data.detail}`);
+      if (data?.upstreamStatus) parts.push(`Gemini HTTP: ${data.upstreamStatus}`);
+      if (data?.geminiErrorStatus) parts.push(`Gemini status: ${data.geminiErrorStatus}`);
+      if (data?.geminiErrorCode) parts.push(`Gemini código: ${data.geminiErrorCode}`);
+      if (data?.geminiErrorMessage) parts.push(`Gemini mensagem: ${data.geminiErrorMessage}`);
+      if (data?.finishReason) parts.push(`Finish reason: ${data.finishReason}`);
+      if (data?.promptFeedbackBlockReason) parts.push(`Bloqueio: ${data.promptFeedbackBlockReason}`);
+
+      if (!parts.length) {
+        return 'A API não retornou imagem e não enviou detalhe do erro. Verifique os logs da Vercel.';
+      }
+
+      return parts.join('\n');
+    }
+
+
     function showCooldown(msgHtml){
       cooldownBox.style.display = "block";
       cooldownBox.innerHTML = msgHtml;
@@ -1169,8 +1192,7 @@ document.getElementById("saveEditedPngBtn").addEventListener("click", async () =
         }
 
         if (!res.ok || !data.imageBase64) {
-          if (beforeSrc) showOriginalAsResult(beforeSrc);
-          else showError("Não foi possível gerar agora. Tente novamente.");
+          showError("Erro real da geração:\n" + buildApiErrorMessage(res, data));
           return;
         }
 
@@ -1179,12 +1201,13 @@ const afterSrc = `data:${outputMimeType};base64,${data.imageBase64}`;
 mountCompare(beforeSrc, afterSrc, outputMimeType);
 
       } catch (err) {
-        if (beforeSrc) {
-          showOriginalAsResult(beforeSrc);
-        } else {
-          const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
-          showError("Erro: " + (isTimeout ? "Tempo excedido. Tente novamente." : (err?.message || String(err))));
-        }
+        const isTimeout = err && (err.name === "AbortError" || String(err.message || "").toLowerCase().includes("abort"));
+        const rawMsg = err?.message || String(err);
+        const msg = rawMsg === "Failed to fetch"
+          ? "Falha de conexão/CORS ao chamar a API. Verifique se o domínio atual está liberado no backend, se a Vercel está online e se o endpoint está correto.\n\nDetalhe técnico: Failed to fetch"
+          : (isTimeout ? "Tempo excedido ao chamar a API. Tente novamente." : rawMsg);
+
+        showError("Erro real da geração:\n" + msg);
       } finally {
         loader.style.display = "none";
         btn.disabled = false;
