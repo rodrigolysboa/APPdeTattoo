@@ -502,7 +502,7 @@ Você DEVE:
 - Reconstruir logicamente as áreas ausentes
 - Continuar padrões interrompidos
 - Completar formas e simetrias
-- Inventar partes ausentes de maneira coerente quando necessário
+- Criar partes ausentes de maneira COERENTE quando necessário
 
 Você NÃO DEVE JAMAIS:
 - Inventar molduras, linhas e elementos aleatórios ao redor que não fazem parte do desenho.
@@ -593,6 +593,7 @@ O resultado final deve parecer:
 Uma arte flash profissional de tatuagem Maori / Polinésia / Tribal sobre papel branco.
 
 Ele NÃO deve parecer:
+Uma tatuagem em cima de um membro do corpo
 Uma tatuagem ainda enrolada ao redor de um braço, perna ou parte do corpo.
 
 Esta seção não deve alterar o estilo, os ornamentos, os símbolos ou a identidade visual da tatuagem original.
@@ -600,7 +601,7 @@ Ela serve apenas para remover o efeito anatômico envolvente e transformar o des
 
 ---
 
-5. FIDELIDADE AO ESTILO (EXTREMAMENTE IMPORTANTE)
+5. FIDELIDADE TOTAL AO ESTILO (EXTREMAMENTE IMPORTANTE)
 
 Você DEVE:
 - Preservar o estilo artístico original
@@ -614,7 +615,7 @@ Você NÃO DEVE:
 - Aprimorar excessivamente
 - Simplificar demais
 - Adicionar novos elementos
-- Jamais espelhar o desenho
+- Jamais espelhe o desenho
 - Criar ornamentos que não existem
 
 Apenas corrija distorções causadas pela pele e pela fotografia.
@@ -649,7 +650,7 @@ A imagem final DEVE ser:
 - Plana e frontal
 - Centralizada
 - Com desenho preto limpo, a menos que o original exija sombreamento
-- Sem:
+NÃO deve JAMAIS conter:
   - textura de pele
   - sombras provenientes do corpo
   - formato corporal
@@ -683,7 +684,7 @@ O RESULTADO É INVÁLIDO.
 INSTRUÇÃO DE SAÍDA:
 
 Gere SOMENTE a imagem final reconstruída.
-Não exiba nenhum texto ou marca-d'água.
+Não exiba nenhum texto digital, logo marca ou marca-d'água.
 `,
     };
 
