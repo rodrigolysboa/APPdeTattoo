@@ -435,226 +435,255 @@ Generate only the final image.
 Do not return any text.
 `,
 clean: `
-OBJETIVO — MODO CLEAN / RECONSTRUÇÃO LIMPA E FIEL
+OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
 Você receberá uma imagem de uma tatuagem aplicada sobre a pele humana.
+Sua tarefa NÃO é recortar a tatuagem nem remover o fundo.
 
-Sua tarefa NÃO é simplesmente recortar a tatuagem da fotografia.
-
-Sua tarefa é RECONSTRUIR O MESMO DESENHO como uma arte limpa, plana e independente, como se o arquivo original tivesse sido criado diretamente sobre uma folha branca, pronto para impressão profissional.
-
-A prioridade máxima é:
-PRESERVAR O DESENHO ORIGINAL.
-
-O resultado deve continuar sendo claramente o MESMO desenho da imagem enviada.
+SUA VERDADEIRA TAREFA É:
+RECONSTRUIR todo o desenho como uma arte original e limpa DO MESMO DESENHO, como se tivesse sido criada do zero em uma folha de papel, pronta para impressão profissional.
 
 ---
 
-1. REMOVA COMPLETAMENTE O CORPO HUMANO
+REGRA DE PRIORIDADE CRÍTICA (A MAIS IMPORTANTE):
 
-Ignore como parte da arte:
+SOB NENHUMA CIRCUNSTÂNCIA o resultado final deve se parecer com uma parte do corpo.
 
-- pele
-- textura da pele
-- formato do braço ou perna
-- anatomia corporal
-- iluminação da fotografia
-- reflexos da pele
-- sombras produzidas pelo corpo
-- curvatura causada pelo membro
-- distorções de perspectiva da fotografia
+SE o resultado tiver QUALQUER indicação de:
+- formato de braço
+- silhueta de antebraço
+- contorno de perna
+- curvatura corporal
+- limites com formato humano orgânico
 
-O resultado final NÃO pode parecer uma tatuagem ainda aplicada sobre um corpo.
+O RESULTADO ESTÁ COMPLETAMENTE ERRADO.
 
-Ele deve parecer uma arte plana e independente sobre fundo branco.
+A imagem final DEVE parecer:
+Um desenho plano e independente sobre uma folha de papel.
 
----
+NUNCA:
+Uma tatuagem extraída da pele.
 
-2. PRESERVE O DESENHO ORIGINAL
-
-Mantenha com máxima fidelidade:
-
-- o mesmo tema
-- os mesmos elementos
-- a mesma composição
-- as mesmas proporções entre os elementos
-- a mesma orientação
-- a mesma identidade visual
-- os mesmos ornamentos
-- os mesmos símbolos
-- os mesmos padrões
-- os mesmos detalhes importantes
-- a mesma distribuição de linhas, preto, sombras e espaços negativos quando fizerem parte da arte
-
-NÃO:
-
-- troque elementos
-- transforme o desenho em outro estilo
-- substitua partes por elementos semelhantes
-- crie novos ornamentos
-- adicione símbolos inexistentes
-- simplifique excessivamente
-- embeleze de forma que altere a identidade
-- espelhe o desenho
+Esta regra TEM PRIORIDADE SOBRE TODAS AS OUTRAS.
 
 ---
 
-3. RECONSTRUÇÃO E LIMPEZA
+REGRAS ABSOLUTAS (OBRIGATÓRIAS):
 
-Redesenhe o desenho de forma limpa e profissional.
+1. IGNORE COMPLETAMENTE O CORPO HUMANO
 
-Você pode:
+Você DEVE:
+- Remover TODOS os vestígios de pele
+- Ignorar completamente a anatomia
+- Eliminar a curvatura causada pelo corpo
+- Descartar a distorção de perspectiva da foto
 
-- corrigir deformações causadas pela curvatura da pele
-- corrigir perspectiva fotográfica
-- limpar linhas borradas
-- melhorar a definição de linhas existentes
-- reconstruir pequenos trechos interrompidos
-- continuar padrões quando a sequência for claramente identificável
-- corrigir pequenas imperfeições causadas pela fotografia
+Você NÃO DEVE:
+- Preservar o formato do membro
+- Seguir a curvatura da pele
+- Manter a silhueta original
+- Manter bordas baseadas nos limites do corpo
+- Preservar iluminação ou sombras provenientes da pele
 
-IMPORTANTE:
-
-Reconstrua partes ausentes SOMENTE quando a continuação puder ser determinada com segurança pelo próprio desenho.
-
-Se uma área grande estiver escondida, cortada ou impossível de identificar, NÃO crie uma nova composição por imaginação.
-
-Nunca invente objetos ou elementos que não tenham relação clara com o desenho visível.
+O resultado final deve ser:
+Uma arte plana, centralizada e independente.
 
 ---
 
-4. GEOMETRIA E ESTRUTURA
+2. EXPANSÃO COMPLETA E RECONSTRUÇÃO DAS BORDAS
 
-Em elementos que claramente foram criados para possuir geometria precisa, como:
+Se a tatuagem estiver:
+- recortada
+- parcialmente visível
+- cortada pela foto
+- limitada pelo enquadramento do corpo
+Você DEVE:
+- Expandir o desenho para além das bordas visíveis
+- Reconstruir logicamente as áreas ausentes
+- Continuar padrões interrompidos
+- Completar formas e simetrias
+- Inventar partes ausentes de maneira coerente quando necessário
 
+Você NÃO DEVE JAMAIS:
+- Inventar molduras, linhas e elementos aleatórios ao redor que não fazem parte do desenho.
+
+A arte final DEVE parecer completa e sem interrupções.
+
+---
+
+3. REDESENHO COMPLETO (NÃO EXTRAÇÃO)
+
+Você DEVE:
+- Redesenhar todo o desenho da tatuagem enviada do zero
+- Reconstruir áreas borradas ou distorcidas
+- Substituir imperfeições por linhas limpas
+- Refazer partes ocultas ou pouco nítidas
+
+FOCO:
+Reconstrução com total fidelidade, NÃO cópia.
+
+---
+
+4. GEOMETRIA E ESTRUTURA PERFEITAS
+
+Para quaisquer:
 - círculos
 - mandalas
-- cruzes
-- linhas geométricas
+- cruz
+- formas geométricas
 - padrões repetitivos
-- formas simétricas
 
-corrija apenas as deformações causadas pela pele ou pela perspectiva.
+Você DEVE:
+- Corrigir distorções causadas pela curvatura da pele
+- Alinhar tudo perfeitamente
+- Centralizar corretamente
+- Garantir simetria
 
-Círculos que originalmente são circulares devem voltar a ser circulares.
-
-Linhas que originalmente são retas devem voltar a ser retas.
-
-Elementos paralelos ou simétricos devem ser corrigidos quando essa intenção estiver claramente presente no desenho original.
-
-NÃO transforme elementos naturalmente irregulares ou assimétricos em formas perfeitamente simétricas.
+Os círculos DEVEM ser perfeitamente redondos.
+Nenhuma deformação é permitida.
 
 ---
 
-5. TATUAGENS MAORI / POLINÉSIAS / TRIBAIS ENVOLVENTES
+4.1 CORREÇÃO ABSOLUTA DE LINHAS RETAS
 
-Aplique esta regra somente quando a tatuagem for:
+Todas as linhas estruturais DEVEM ser:
 
-- Maori
-- Polinésia
-- tribal
-- ornamental
-- geométrica envolvente
-- braçadeira
-- tornozeleira
-- faixa
-- manga ou padrão que acompanhe a curvatura do corpo
+- perfeitamente retas
+- perfeitamente horizontais ou verticais, quando aplicável
+- perfeitamente paralelas, quando necessário
+- perfeitamente alinhadas
 
-O objetivo é transformar o padrão visível em uma arte plana 2D.
+Você DEVE:
+- Corrigir qualquer inclinação causada pela foto
+- Remover curvaturas
+- Redesenhar utilizando geometria precisa
 
-NÃO use como limite final:
+O resultado deve parecer criado com ferramentas técnicas, com precisão de régua.
 
+---
+
+4.2 TRATAMENTO ESPECIAL PARA TATUAGENS MAORI / POLINÉSIAS / TRIBAIS ENVOLVENTES
+
+Se a tatuagem enviada for Maori, Polinésia, tribal, ornamental, geométrica envolvente, manga fechada, braçadeira, tornozeleira, faixa de perna ou uma tatuagem que acompanhe o fluxo corporal:
+Aplique esta seção SOMENTE a esse tipo de tatuagem.
+Esses desenhos geralmente são criados para acompanhar a curvatura do braço, da perna, do ombro ou do corpo.
+Sua tarefa NÃO é preservar a silhueta do membro.
+Você DEVE converter a tatuagem em uma arte plana e pronta para impressão.
+
+NÃO utilize:
 - formato do braço
 - formato da perna
 - curva do ombro
-- afunilamento do membro
-- contorno da pele
+- afunilamento do antebraço
+- contorno corporal
+- borda da pele
 
-Preserve exatamente:
+como limite final da arte.
 
-- linhas
-- motivos
-- faixas
-- triângulos
-- curvas
-- espaçamentos
-- ritmo dos padrões
-- símbolos
-- identidade visual
+Em vez disso:
 
-Desdobre visualmente a área que está deformada pela curvatura do corpo.
+- desdobre o fluxo da tatuagem em um desenho plano 2D
+- mantenha a linguagem original dos padrões tribais
+- preserve as mesmas linhas, elementos, motivos, faixas, triângulos, curvas, espaçamentos, ritmo e identidade visual
+- reconstrua naturalmente as faixas interrompidas
+- crie bordas externas limpas e lógicas quando a tatuagem original não tiver um término claramente visível
+- complete áreas ausentes dos padrões somente continuando a lógica já existente no desenho
 
-Continue pequenos trechos de padrões interrompidos somente quando a sequência for clara.
+O resultado final deve parecer:
+Uma arte flash profissional de tatuagem Maori / Polinésia / Tribal sobre papel branco.
 
-Não invente o verso oculto da tatuagem.
+Ele NÃO deve parecer:
+Uma tatuagem ainda enrolada ao redor de um braço, perna ou parte do corpo.
 
-Não substitua padrões reais por padrões tribais genéricos.
-
-O resultado deve parecer uma arte profissional Maori / Polinésia / Tribal plana sobre papel branco, e não uma fotografia de uma tatuagem enrolada em um braço ou perna.
+Esta seção não deve alterar o estilo, os ornamentos, os símbolos ou a identidade visual da tatuagem original.
+Ela serve apenas para remover o efeito anatômico envolvente e transformar o desenho em uma composição plana e pronta para impressão.
 
 ---
 
-6. TEXTOS E LETTERING
+5. FIDELIDADE AO ESTILO (EXTREMAMENTE IMPORTANTE)
+
+Você DEVE:
+- Preservar o estilo artístico original
+- Manter as proporções entre os elementos
+- Preservar a espessura das linhas e a identidade visual
+- Respeitar os sombreamentos e os detalhes
+
+Você NÃO DEVE:
+- Alterar o estilo
+- Criar um desenho muito diferente da tatuagem enviada
+- Aprimorar excessivamente
+- Simplificar demais
+- Adicionar novos elementos
+- Jamais espelhar o desenho
+- Criar ornamentos que não existem
+
+Apenas corrija distorções causadas pela pele e pela fotografia.
+
+---
+
+5.1 RECONSTRUÇÃO TIPOGRÁFICA (CASO EXISTA TEXTO)
 
 Se houver texto:
 
-- preserve exatamente as palavras visíveis
-- mantenha o estilo original das letras sempre que possível
-- corrija apenas deformações causadas pela pele ou perspectiva
-- alinhe corretamente quando o texto original tiver essa estrutura
-- mantenha espaçamentos coerentes com a referência
+Você DEVE:
+- Ler, compreender a frase e reescrever o texto
+- Reconstruí-lo cada palavra como tipografia limpa
+- Alinhar perfeitamente
+- Corrigir os espaçamentos
+- Deixar todas as linhas retas
 
-NÃO:
+O texto DEVE parecer:
+Tipografia editorial limpa.
 
-- invente palavras
-- altere frases
-- substitua letras legíveis
-- transforme o lettering em outro estilo sem necessidade
+NÃO deve JAMAIS:
+- Criar Letras desenhadas à mão e distorcidas.
+- Inventar palavras que não estão na frase do desenho.
+---
 
-Se alguma letra estiver realmente ilegível, não invente uma palavra diferente.
+6. REQUISITOS DO RESULTADO FINAL
+
+A imagem final DEVE ser:
+
+- Uma arte COMPLETA e FINALIZADA
+- Posicionada sobre uma folha A4 branca pura
+- Plana e frontal
+- Centralizada
+- Com desenho preto limpo, a menos que o original exija sombreamento
+- Sem:
+  - textura de pele
+  - sombras provenientes do corpo
+  - formato corporal
+  - vestígios anatômicos
+  - bordas cortadas
 
 ---
 
-7. RESULTADO FINAL
+REGRA DE OURO FINAL:
 
-A imagem final deve ser:
+O resultado DEVE parecer:
+“Um desenho criado profissionalmente sobre uma folha de papel”
 
-- uma arte completa e limpa
-- plana e frontal
-- centralizada
-- sobre fundo branco puro
-- pronta para impressão
-- visualmente fiel à tatuagem enviada
-- sem pele
-- sem formato corporal
-- sem anatomia
-- sem sombras provenientes do corpo
-- sem vestígios da fotografia
-
-Mantenha preto, cinza, sombras e detalhes quando fizerem parte do desenho original.
+E NUNCA:
+“Uma tatuagem retirada de um corpo humano”
 
 ---
 
-REGRA DE OURO
+CONDIÇÃO DE FALHA (REJEIÇÃO AUTOMÁTICA):
 
-O resultado deve parecer:
+Se QUALQUER um dos itens abaixo estiver visível:
+- silhueta de membro
+- bordas curvas semelhantes a partes do corpo
+- formato anatômico
+- bordas baseadas na pele
 
-“O arquivo original e limpo do MESMO desenho da tatuagem.”
-
-E nunca:
-
-“Uma tatuagem recortada de um corpo”
-ou
-“Uma nova arte inspirada na tatuagem”.
-
-Ao comparar a referência com o resultado, deve ser imediatamente reconhecível que se trata do MESMO desenho.
+O RESULTADO É INVÁLIDO.
 
 ---
 
 INSTRUÇÃO DE SAÍDA:
 
 Gere SOMENTE a imagem final reconstruída.
-Não adicione legenda, explicação, interface ou marca-d'água.
+Não exiba nenhum texto ou marca-d'água.
 `,
     };
 
