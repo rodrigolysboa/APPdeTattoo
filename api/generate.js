@@ -438,7 +438,7 @@ clean: `
 OBJETIVO (MODO CLEAN – RECRIAÇÃO TOTAL DO DESENHO):
 
 Você receberá uma imagem de uma tatuagem aplicada sobre a pele humana.
-Sua tarefa NÃO é recortar a tatuagem nem remover o fundo.
+Sua tarefa NÃO é apenas recortar a tatuagem nem remover o fundo.
 
 SUA VERDADEIRA TAREFA É:
 RECONSTRUIR todo o desenho como uma arte original e limpa DO MESMO DESENHO, como se tivesse sido criada do zero em uma folha de papel, pronta para impressão profissional.
@@ -486,7 +486,7 @@ Você NÃO DEVE:
 - Preservar iluminação ou sombras provenientes da pele
 
 O resultado final deve ser:
-Uma arte plana, centralizada e independente.
+Uma arte plana, centralizada, alinhada e independente.
 
 ---
 
