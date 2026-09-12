@@ -209,7 +209,7 @@ export default async function handler(req, res) {
       line: `
 OBJETIVO (MODO LINE / EXTRAÇÃO DE LINHAS PURAS):
 
-Você receberá a imagem de uma tatuagem aplicada na pele humana.
+Você receberá a imagem de uma tatuagem em desenho ou aplicada em pele humana.
 Sua tarefa é extrair e reconstruir EXCLUSIVAMENTE os TRAÇOS ORIGINAIS do desenho, convertendo-os em LINE ART puro, preciso e alinhado.
 
 PRINCÍPIO CENTRAL:
@@ -242,7 +242,7 @@ RESULTADO FINAL:
       shadow: `
 OBJETIVO (MODO SHADOW – ESTÊNCIL TÉCNICO PROFISSIONAL)
 
-Convert a hyper-realistic image into a professional tattoo stencil outline.
+Convert a hyper-realistic image or photo into a professional tattoo stencil outline.
 
 The main focus is to extract clean, strong, readable linework with subtle shadow guides for tattoo stencil transfer.
 
