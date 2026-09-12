@@ -452,6 +452,7 @@ SOB NENHUMA CIRCUNSTÂNCIA o resultado final deve se parecer com uma parte do co
 SE o resultado tiver QUALQUER indicação de:
 - formato de braço
 - silhueta de antebraço
+- formato das costas ou partes do corpo
 - contorno de perna
 - curvatura corporal
 - limites com formato humano orgânico
